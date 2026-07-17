@@ -35,9 +35,10 @@ function startRealtimeSubscriptions(){
    const ms=new Date(v||0).getTime();
    return Number.isNaN(ms)?0:ms;
  };
+ const statusPriority={payment_pending:0,new:0,accepted:1,paid:1,cooking:2,ready:3,completed:3,cancelled:4};
  orders=snapshot.docs
    .map(doc=>({id:doc.id,...doc.data()}))
-   .sort((a,b)=>toMillis(b)-toMillis(a))
+   .sort((a,b)=>(statusPriority[a.status]??9)-(statusPriority[b.status]??9)||toMillis(b)-toMillis(a))
    .slice(0,100);
  render();
  if(!initialLoad)notifyNewOrders(added.filter(o=>o.status==='payment_pending'));
@@ -99,6 +100,7 @@ let activeChannel='all';
 let initialLoad=true;
 let soundEnabled=localStorage.getItem('pjAdminSoundEnabled')!=='false';
 let audioContext=null;
+let audioMaster=null;
 let customAudioUrl=null;
 let settings={preset:'papa',volume:1,voice:true};
 
@@ -133,12 +135,37 @@ function orderSeatLabel(order){
 }
 function orderZoneLabel(order){return ADMIN_ZONE_NAMES[order?.seat?.zone]||order?.seat?.zone||'-'}
 
+function normalizedOption(value){return String(value||'').trim().toLowerCase().replace(/[\s_-]+/g,'')}
+function adminSizeLabel(item){
+ const raw=item?.size||item?.pizzaSize||item?.selectedSize||'';
+ const n=normalizedOption(raw);
+ if(item?.promo==='upup'&&(!n||n==='l→f'||n==='ltof'))return '14"';
+ if(['r','regular','레귤러','9','9inch','9인치'].includes(n))return '9"';
+ if(['l','large','라지','12','12inch','12인치'].includes(n))return '12"';
+ if(['f','family','패밀리','14','14inch','14인치'].includes(n))return '14"';
+ return raw;
+}
+function adminCrustDoughLabel(item){
+ const dough=normalizedOption(item?.dough||item?.doughType);
+ const crust=normalizedOption(item?.crust||item?.crustType);
+ const labels=[];
+ if(dough.includes('thin')||dough.includes('씬'))labels.push('TH');
+ else if(dough.includes('croissant')||dough.includes('크루아상')||dough==='cro')labels.push('CRO');
+ else if(dough&&!dough.includes('original')&&!dough.includes('오리지널'))labels.push(item.dough||item.doughType);
+ if(crust.includes('cheeseroll')||crust.includes('치즈롤')||crust==='ch')labels.push('치즈롤');
+ else if(crust.includes('goldring')||crust.includes('골드링')||crust==='g')labels.push('골드링');
+ else if(crust&&!crust.includes('original')&&!crust.includes('오리지널')&&!labels.length)labels.push(item.crust||item.crustType);
+ if(!labels.length)labels.push('오리지널');
+ return labels.join(' ');
+}
+function adminPizzaLine(item){
+ return [adminSizeLabel(item),adminCrustDoughLabel(item),item?.pizzaName||'피자'].filter(Boolean).join(' ');
+}
 function selectedNames(map,master){return Object.entries(map||{}).filter(([,q])=>q>0).map(([id,q])=>`${productName(id,master)} ×${q}`).join(', ')}
 function itemHTML(item){
  const benefit=item.set?`${item.set}인 세트`:item.promo==='upup'?'UP & UP':item.promo==='takeout'?'포장 20%':'일반주문';
- const size=item.promo==='upup'?'L→F':item.size||'';
  const top=selectedNames(item.toppings,TOPPINGS),includedSides=selectedNames(item.includedSides,SIDES),includedDrinks=selectedNames(item.includedDrinks,DRINKS),extraSides=selectedNames(item.sides,SIDES),extraDrinks=selectedNames(item.drinks,DRINKS);
- return `<div class="order-item"><strong>${item.qty||1}× ${benefit} · ${item.pizzaName||'피자'}</strong><span>${item.dough||item.doughType||'오리지널'} · ${size} · ${item.crust||''}${(item.pizzaMode||item.mode)==='half'?' · 하프앤하프':''}</span>${top?`<small>토핑: ${top}</small>`:''}${includedSides?`<small>포함 사이드: ${includedSides}</small>`:''}${includedDrinks?`<small>포함 음료: ${includedDrinks}</small>`:''}${extraSides?`<small>추가 사이드: ${extraSides}</small>`:''}${extraDrinks?`<small>추가 음료: ${extraDrinks}</small>`:''}</div>`;
+ return `<div class="order-item"><strong>${item.qty||1}× ${adminPizzaLine(item)}</strong><span>${benefit}${(item.pizzaMode||item.mode)==='half'?' · 하프앤하프':''}</span>${top?`<small>토핑: ${top}</small>`:''}${includedSides?`<small>포함 사이드: ${includedSides}</small>`:''}${includedDrinks?`<small>포함 음료: ${includedDrinks}</small>`:''}${extraSides?`<small>추가 사이드: ${extraSides}</small>`:''}${extraDrinks?`<small>추가 음료: ${extraDrinks}</small>`:''}</div>`;
 }
 function orderDetailsHTML(order){
  const lines=[['주문번호',order.customerNumber||order.orderNo||'-'],['주문채널',PJCommon.legacyChannel(order)==='mobile'?'모바일':'PC'],['이용방법',order.orderType==='takeout'?'포장':'먹고가기'],['주문시간',formatTime(order.createdAt||order.createdAtClient)],['예약/수령',order.pickup?.time||'바로 주문'],['인원',order.partySize?order.partySize+'명':'-'],['구역',order.seat?orderZoneLabel(order):'-'],['좌석',orderSeatLabel(order)||'-'],['연락처',order.phoneMasked||'-'],['적용 혜택',order.benefit||order.promo||'-'],['결제수단',order.payment?.methodName||'-'],['분할결제',order.payment?.splitCount>1?order.payment.splitCount+'명 · '+(order.payment.splitAmounts||[]).map(money).join(' / '):'-'],['결제금액',money(order.total)]];
@@ -174,7 +201,16 @@ async function setStatus(id,status){
   if(status==='completed'&&order){playPreset('cafe');enqueueSpeech(`${order.customerNumber||order.orderNo} 고객님 주문 조리가 완료되었습니다.`)}
  }catch(error){alert('상태 변경 실패: '+error.message)}
 }
-function ensureAudio(){audioContext=audioContext||new (window.AudioContext||window.webkitAudioContext)();return audioContext.resume()}
+function ensureAudio(){
+ audioContext=audioContext||new (window.AudioContext||window.webkitAudioContext)();
+ if(!audioMaster){
+  const compressor=audioContext.createDynamicsCompressor();
+  compressor.threshold.value=-24;compressor.knee.value=18;compressor.ratio.value=5;compressor.attack.value=.003;compressor.release.value=.18;
+  audioMaster=audioContext.createGain();audioMaster.gain.value=1.65;
+  audioMaster.connect(compressor);compressor.connect(audioContext.destination);
+ }
+ return audioContext.resume();
+}
 
 async function unlockAdminAudio(){
  try{
@@ -186,7 +222,7 @@ async function unlockAdminAudio(){
 }
 document.addEventListener('pointerdown',unlockAdminAudio,{once:true,passive:true});
 document.addEventListener('keydown',unlockAdminAudio,{once:true});
-function tone(freq,start,duration,gain=.36,type='sine'){const now=audioContext.currentTime+start,osc=audioContext.createOscillator(),g=audioContext.createGain();osc.frequency.value=freq;osc.type=type;g.gain.setValueAtTime(.0001,now);g.gain.exponentialRampToValueAtTime(Math.max(.0001,gain*settings.volume),now+.015);g.gain.exponentialRampToValueAtTime(.0001,now+duration);osc.connect(g);g.connect(audioContext.destination);osc.start(now);osc.stop(now+duration+.03)}
+function tone(freq,start,duration,gain=.48,type='sine'){const now=audioContext.currentTime+start,osc=audioContext.createOscillator(),g=audioContext.createGain();osc.frequency.value=freq;osc.type=type;g.gain.setValueAtTime(.0001,now);g.gain.exponentialRampToValueAtTime(Math.max(.0001,gain*settings.volume),now+.012);g.gain.exponentialRampToValueAtTime(.0001,now+duration);osc.connect(g);g.connect(audioMaster||audioContext.destination);osc.start(now);osc.stop(now+duration+.04)}
 async function playPreset(forcePreset){
  if(!soundEnabled)return;
  await ensureAudio();const preset=forcePreset||settings.preset;
@@ -206,7 +242,7 @@ function speakText(text){
  return new Promise(resolve=>{
   if(!soundEnabled||!settings.voice||!('speechSynthesis'in window)){resolve();return}
   const u=new SpeechSynthesisUtterance(text);
-  u.lang='ko-KR';u.rate=1.02;u.pitch=1.12;u.volume=settings.volume;
+  u.lang='ko-KR';u.rate=1.02;u.pitch=1.12;u.volume=1;
   const voice=chooseKoreanVoice();if(voice)u.voice=voice;
   u.onend=resolve;u.onerror=resolve;
   window.speechSynthesis.speak(u);
@@ -220,8 +256,8 @@ function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
 async function playTripleDing(){
  if(!soundEnabled)return;
  await ensureAudio();
- [[1320,0,.12],[1480,.17,.12],[1660,.34,.16]].forEach(x=>tone(...x,.32,'sine'));
- await wait(610);
+ [[1320,0,.16],[1480,.19,.16],[1660,.38,.22]].forEach(x=>{tone(...x,.52,'sine');tone(x[0]*1.006,x[1],x[2],.22,'triangle')});
+ await wait(720);
 }
 function orderAnnouncementText(order){
  const pickupMode=order?.pickup?.mode;
