@@ -114,6 +114,25 @@ const MOBILE_DRINK_NAMES={D001:'코카-콜라 500ml',D002:'코카-콜라 1.25L',
 const MOBILE_TOPPING_NAMES={T001:'2블랜드 치즈',T002:'3블랜드 치즈',T003:'엑스트라 치즈',T004:'체다치즈',T005:'이탈리안소세지',T006:'비프',T007:'베이컨',T008:'치킨',T009:'햄',T010:'페퍼로니',T011:'토마토',T012:'포테이토',T013:'콘',T014:'파인애플',T015:'블랙 올리브',T016:'할라피뇨',T017:'양파',T018:'청피망',T019:'양송이'};
 function productName(id,master){return master.find(x=>x.id===id)?.name||MOBILE_TOPPING_NAMES[id]||MOBILE_SIDE_NAMES[id]||MOBILE_DRINK_NAMES[id]||id}
 
+const ADMIN_SEAT_NAMES={
+ 'papa-2':'파파존 2인석','papa-bar4':'파파존 4인 바테이블',
+ 'outdoor-1':'야외석 1번','outdoor-2':'야외석 2번','outdoor-3':'야외석 3번','outdoor-4':'야외석 4번',
+ 'annex-1':'별관 1번','annex-2':'별관 2번','annex-3':'별관 3번','annex-4':'별관 4번',
+ 'room-1':'룸테이블 1','room-2':'룸테이블 2','room-3':'룸테이블 3'
+};
+const ADMIN_ZONE_NAMES={papa:'파파존',outdoor:'야외석',annex:'별관',room:'별관룸'};
+function orderSeatIds(order){
+ const tables=Array.isArray(order?.seat?.tables)?order.seat.tables.filter(Boolean):[];
+ if(tables.length)return [...new Set(tables)];
+ return order?.seat?.id?[order.seat.id]:[];
+}
+function orderSeatLabel(order){
+ if(order?.seat?.name)return order.seat.name;
+ const ids=orderSeatIds(order);
+ return ids.map(id=>ADMIN_SEAT_NAMES[id]||id).join(' + ');
+}
+function orderZoneLabel(order){return ADMIN_ZONE_NAMES[order?.seat?.zone]||order?.seat?.zone||'-'}
+
 function selectedNames(map,master){return Object.entries(map||{}).filter(([,q])=>q>0).map(([id,q])=>`${productName(id,master)} ×${q}`).join(', ')}
 function itemHTML(item){
  const benefit=item.set?`${item.set}인 세트`:item.promo==='upup'?'UP & UP':item.promo==='takeout'?'포장 20%':'일반주문';
@@ -122,7 +141,7 @@ function itemHTML(item){
  return `<div class="order-item"><strong>${item.qty||1}× ${benefit} · ${item.pizzaName||'피자'}</strong><span>${item.dough||item.doughType||'오리지널'} · ${size} · ${item.crust||''}${(item.pizzaMode||item.mode)==='half'?' · 하프앤하프':''}</span>${top?`<small>토핑: ${top}</small>`:''}${includedSides?`<small>포함 사이드: ${includedSides}</small>`:''}${includedDrinks?`<small>포함 음료: ${includedDrinks}</small>`:''}${extraSides?`<small>추가 사이드: ${extraSides}</small>`:''}${extraDrinks?`<small>추가 음료: ${extraDrinks}</small>`:''}</div>`;
 }
 function orderDetailsHTML(order){
- const lines=[['주문번호',order.customerNumber||order.orderNo||'-'],['주문채널',PJCommon.legacyChannel(order)==='mobile'?'모바일':'PC'],['이용방법',order.orderType==='takeout'?'포장':'먹고가기'],['주문시간',formatTime(order.createdAt||order.createdAtClient)],['예약/수령',order.pickup?.time||'바로 주문'],['인원',order.partySize?order.partySize+'명':'-'],['좌석',order.seat?.name||'-'],['연락처',order.phoneMasked||'-'],['적용 혜택',order.benefit||order.promo||'-'],['결제수단',order.payment?.methodName||'-'],['분할결제',order.payment?.splitCount>1?order.payment.splitCount+'명 · '+(order.payment.splitAmounts||[]).map(money).join(' / '):'-'],['결제금액',money(order.total)]];
+ const lines=[['주문번호',order.customerNumber||order.orderNo||'-'],['주문채널',PJCommon.legacyChannel(order)==='mobile'?'모바일':'PC'],['이용방법',order.orderType==='takeout'?'포장':'먹고가기'],['주문시간',formatTime(order.createdAt||order.createdAtClient)],['예약/수령',order.pickup?.time||'바로 주문'],['인원',order.partySize?order.partySize+'명':'-'],['구역',order.seat?orderZoneLabel(order):'-'],['좌석',orderSeatLabel(order)||'-'],['연락처',order.phoneMasked||'-'],['적용 혜택',order.benefit||order.promo||'-'],['결제수단',order.payment?.methodName||'-'],['분할결제',order.payment?.splitCount>1?order.payment.splitCount+'명 · '+(order.payment.splitAmounts||[]).map(money).join(' / '):'-'],['결제금액',money(order.total)]];
  return `<div class="order-detail" id="detail-${order.id}" hidden><div class="detail-grid">${lines.map(([k,v])=>`<div><b>${k}</b><span>${v}</span></div>`).join('')}</div><h4>전체 주문 구성</h4><div class="detail-items">${(order.items||[]).map(itemHTML).join('')||'<p>저장된 상품 상세가 없습니다.</p>'}</div></div>`
 }
 function toggleOrderDetail(id,button){const box=document.getElementById('detail-'+id);if(!box)return;box.hidden=!box.hidden;button.textContent=box.hidden?'상세보기':'상세접기'}
@@ -130,13 +149,30 @@ window.toggleOrderDetail=toggleOrderDetail;
 function filterOrders(order){const channel=PJCommon.legacyChannel(order);if(activeChannel!=='all'&&channel!==activeChannel)return false;if(activeFilter==='all')return true;if(activeFilter==='payment_pending')return ['payment_pending','new'].includes(order.status);if(activeFilter==='accepted')return ['accepted','paid'].includes(order.status);if(activeFilter==='completed')return ['completed','ready'].includes(order.status);return order.status===activeFilter}
 function render(){
  const filtered=orders.filter(filterOrders);
- orderList.innerHTML=filtered.length?filtered.map(order=>`<article class="order-card ${order.status}"><div class="order-head"><span class="channel-badge ${PJCommon.legacyChannel(order)}">${PJCommon.legacyChannel(order)==="mobile"?"모바일":"PC"}</span><div><div class="order-no">#${order.customerNumber||order.orderNo||order.phoneMasked||'-'}</div><small>${formatTime(order.createdAt||order.createdAtClient)}</small></div><span class="status-badge ${order.status}">${statusNames[order.status]||order.status}</span></div><div class="order-meta"><span>${order.orderType==='takeout'?'🥡 포장':'🍽️ 먹고가기'}</span>${order.partySize?`<span>👥 ${order.partySize}명</span>`:''}${order.seat?.name?`<span>🪑 ${order.seat.name}${order.seat.groupSize?` · ${order.seat.groupSize}명`:''}</span>`:''}${order.pickup?.time?`<span>🕒 오늘 ${order.pickup.time}${order.pickup.isHappyHour?' · 해피아워':''}</span>`:''}${order.phoneMasked?`<span>☎️ ${order.phoneMasked}</span>`:''}${order.payment?.methodName?`<span>💳 ${order.payment.methodName}${order.payment.splitCount>1?` · ${order.payment.splitCount}명 분할`:''}</span>`:''}<span>상품 ${order.itemCount||0}개</span></div><div class="order-items">${(order.items||[]).map(itemHTML).join('')}</div><button class="detail-toggle" onclick="toggleOrderDetail('${order.id}',this)">상세보기</button>${orderDetailsHTML(order)}<div class="order-foot"><div class="order-total"><span>결제금액</span><strong>${money(order.total)}</strong></div><div class="actions">${['payment_pending','new'].includes(order.status)?`<button class="accept" onclick="setStatus('${order.id}','accepted')">접수</button>`:''}${['accepted','paid'].includes(order.status)?`<button class="cook" onclick="setStatus('${order.id}','cooking')">조리 시작</button>`:''}${order.status==='cooking'?`<button class="ready" onclick="setStatus('${order.id}','completed')">완료</button>`:''}${['ready','completed'].includes(order.status)?`<button class="call" onclick="callCustomer('${order.customerNumber||order.orderNo||''}')">📢 고객 호출</button>`:''}${!['cancelled','completed'].includes(order.status)?`<button class="cancel" onclick="setStatus('${order.id}','cancelled')">취소</button>`:''}</div></div></article>`).join(''):'<div class="empty">해당 상태의 주문이 없습니다.</div>';
+ orderList.innerHTML=filtered.length?filtered.map(order=>`<article class="order-card ${order.status}"><div class="order-head"><span class="channel-badge ${PJCommon.legacyChannel(order)}">${PJCommon.legacyChannel(order)==="mobile"?"모바일":"PC"}</span><div><div class="order-no">#${order.customerNumber||order.orderNo||order.phoneMasked||'-'}</div><small>${formatTime(order.createdAt||order.createdAtClient)}</small></div><span class="status-badge ${order.status}">${statusNames[order.status]||order.status}</span></div><div class="order-meta"><span>${order.orderType==='takeout'?'🥡 포장':'🍽️ 먹고가기'}</span>${order.partySize?`<span>👥 ${order.partySize}명</span>`:''}${orderSeatLabel(order)?`<span>🪑 ${orderSeatLabel(order)}${order.seat?.groupSize?` · ${order.seat.groupSize}명`:''}</span>`:''}${order.pickup?.time?`<span>🕒 오늘 ${order.pickup.time}${order.pickup.isHappyHour?' · 해피아워':''}</span>`:''}${order.phoneMasked?`<span>☎️ ${order.phoneMasked}</span>`:''}${order.payment?.methodName?`<span>💳 ${order.payment.methodName}${order.payment.splitCount>1?` · ${order.payment.splitCount}명 분할`:''}</span>`:''}<span>상품 ${order.itemCount||0}개</span></div><div class="order-items">${(order.items||[]).map(itemHTML).join('')}</div><button class="detail-toggle" onclick="toggleOrderDetail('${order.id}',this)">상세보기</button>${orderDetailsHTML(order)}<div class="order-foot"><div class="order-total"><span>결제금액</span><strong>${money(order.total)}</strong></div><div class="actions">${['payment_pending','new'].includes(order.status)?`<button class="accept" onclick="setStatus('${order.id}','accepted')">접수</button>`:''}${['accepted','paid'].includes(order.status)?`<button class="cook" onclick="setStatus('${order.id}','cooking')">조리 시작</button>`:''}${order.status==='cooking'?`<button class="ready" onclick="setStatus('${order.id}','completed')">완료</button>`:''}${['ready','completed'].includes(order.status)?`<button class="call" onclick="callCustomer('${order.customerNumber||order.orderNo||''}')">📢 고객 호출</button>`:''}${!['cancelled','completed'].includes(order.status)?`<button class="cancel" onclick="setStatus('${order.id}','cancelled')">취소</button>`:''}</div></div></article>`).join(''):'<div class="empty">해당 상태의 주문이 없습니다.</div>';
  const count=s=>orders.filter(o=>s.includes(o.status)).length;
  document.getElementById('newCount').textContent=count(['payment_pending','new']);document.getElementById('cookingCount').textContent=count(['paid','accepted','cooking']);document.getElementById('doneCount').textContent=count(['ready','completed']);
  const today=new Date();today.setHours(0,0,0,0);const sales=orders.filter(o=>{const d=o.createdAt?.toDate?o.createdAt.toDate():new Date(o.createdAtClient||0);return d>=today&&o.status!=='cancelled'}).reduce((s,o)=>s+Number(o.total||0),0);document.getElementById('todaySales').textContent=money(sales);
 }
 async function setStatus(id,status){
- try{const order=orders.find(o=>o.id===id);await db.collection('orders').doc(id).update({status,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});if(status!=='payment_pending')setTimeout(()=>{if(hasUnacceptedOrders())startNewOrderRepeat();else stopNewOrderRepeat()},300);if(status==='completed'&&order?.seat?.id){await db.collection('seats').doc(order.seat.id).set({status:'cleaning',updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});}if(status==='completed'&&order){playPreset('cafe');speak(`${order.customerNumber||order.orderNo} 고객님 주문 조리가 완료되었습니다.`)}}catch(error){alert('상태 변경 실패: '+error.message)}
+ try{
+  const order=orders.find(o=>o.id===id);
+  await db.collection('orders').doc(id).update({status,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+  if(!['payment_pending','new'].includes(status))setTimeout(()=>{if(hasUnacceptedOrders())startNewOrderRepeat();else stopNewOrderRepeat()},300);
+  const seatIds=orderSeatIds(order);
+  if(seatIds.length&&['completed','cancelled'].includes(status)){
+   const seatStatus=status==='completed'?'cleaning':'empty';
+   const batch=db.batch();
+   seatIds.forEach(seatId=>batch.set(db.collection('seats').doc(seatId),{
+    status:seatStatus,
+    orderId:null,orderNo:null,partySize:null,groupId:null,
+    occupiedAt:null,heldAt:null,heldUntil:null,
+    updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+   },{merge:true}));
+   await batch.commit();
+  }
+  if(status==='completed'&&order){playPreset('cafe');enqueueSpeech(`${order.customerNumber||order.orderNo} 고객님 주문 조리가 완료되었습니다.`)}
+ }catch(error){alert('상태 변경 실패: '+error.message)}
 }
 function ensureAudio(){audioContext=audioContext||new (window.AudioContext||window.webkitAudioContext)();return audioContext.resume()}
 
@@ -160,10 +196,50 @@ async function playPreset(forcePreset){
  if(preset==='cafe'){[[523,0,.22],[659,.15,.25],[784,.32,.32]].forEach(x=>tone(...x,.19,'sine'));return}
  [[660,0,.22],[880,.22,.30],[1040,.48,.30]].forEach(x=>tone(...x,.36,'sine'));
 }
-function speak(text){if(!soundEnabled||!settings.voice||!('speechSynthesis'in window))return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='ko-KR';u.rate=.96;u.pitch=1.02;u.volume=settings.volume;window.speechSynthesis.speak(u)}
+let speechQueue=Promise.resolve();
+function chooseKoreanVoice(){
+ const voices=window.speechSynthesis?.getVoices?.()||[];
+ const korean=voices.filter(v=>/^ko(-|_)?KR/i.test(v.lang)||/^ko/i.test(v.lang));
+ return korean.find(v=>/female|여성|yuna|sora|sunhi|google 한국어/i.test(`${v.name} ${v.voiceURI}`))||korean[0]||null;
+}
+function speakText(text){
+ return new Promise(resolve=>{
+  if(!soundEnabled||!settings.voice||!('speechSynthesis'in window)){resolve();return}
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='ko-KR';u.rate=1.02;u.pitch=1.12;u.volume=settings.volume;
+  const voice=chooseKoreanVoice();if(voice)u.voice=voice;
+  u.onend=resolve;u.onerror=resolve;
+  window.speechSynthesis.speak(u);
+ });
+}
+function enqueueSpeech(text){speechQueue=speechQueue.then(()=>speakText(text)).catch(()=>{});return speechQueue}
+function speak(text){return enqueueSpeech(text)}
+
+let announcementQueue=Promise.resolve();
+function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
+async function playTripleDing(){
+ if(!soundEnabled)return;
+ await ensureAudio();
+ [[1320,0,.12],[1480,.17,.12],[1660,.34,.16]].forEach(x=>tone(...x,.32,'sine'));
+ await wait(610);
+}
+function orderAnnouncementText(order){
+ const pickupMode=order?.pickup?.mode;
+ if(pickupMode&&pickupMode!=='now')return '예약 주문이 들어왔습니다.';
+ return order?.orderType==='takeout'?'포장 주문이 들어왔습니다.':'다이닝 주문이 들어왔습니다.';
+}
+function enqueueOrderAnnouncement(order){
+ announcementQueue=announcementQueue.then(async()=>{
+  if(!soundEnabled)return;
+  await playTripleDing();
+  await speakText(orderAnnouncementText(order));
+ }).catch(e=>console.warn('주문 음성 안내 실패',e));
+ return announcementQueue;
+}
 
 let newOrderRepeatTimer=null;
-function hasUnacceptedOrders(){return orders.some(o=>o.status==='payment_pending')}
+function hasUnacceptedOrders(){return orders.some(o=>['payment_pending','new'].includes(o.status))}
+function unacceptedOrders(){return orders.filter(o=>['payment_pending','new'].includes(o.status))}
 function stopNewOrderRepeat(){
  if(newOrderRepeatTimer)clearInterval(newOrderRepeatTimer);
  newOrderRepeatTimer=null;
@@ -171,14 +247,27 @@ function stopNewOrderRepeat(){
 function startNewOrderRepeat(){
  stopNewOrderRepeat();
  if(!soundEnabled||!hasUnacceptedOrders())return;
- newOrderRepeatTimer=setInterval(async()=>{
+ newOrderRepeatTimer=setInterval(()=>{
    if(!soundEnabled||!hasUnacceptedOrders()){stopNewOrderRepeat();return}
-   await playPreset();
-   setTimeout(()=>speak('접수되지 않은 결제대기 주문이 있습니다.'),600);
- },5000);
+   announcementQueue=announcementQueue.then(async()=>{await playTripleDing();await speakText('미접수 주문이 있습니다.');}).catch(()=>{});
+ },30000);
 }
 
-async function notifyNewOrders(added){if(!added.length)return;added.forEach(showToast);document.title=`(${added.length}) 새 결제대기 주문 · 관리자`;try{if(soundEnabled){await ensureAudio();await playPreset();setTimeout(()=>speak(added.length===1?'새 주문이 확정되었습니다. 결제를 확인해 주세요.':`결제대기 주문이 ${added.length}건 있습니다.`),settings.preset==='voice'?0:550);startNewOrderRepeat()}}catch(e){console.warn('새 주문 알림음 재생 실패',e);soundButton.classList.add('attention');soundButton.textContent='🔔 화면을 눌러 알림음 활성화'}}
+async function notifyNewOrders(added){
+ if(!added.length)return;
+ added.forEach(showToast);
+ document.title=`(${added.length}) 새 결제대기 주문 · 관리자`;
+ try{
+  if(soundEnabled){
+   await ensureAudio();
+   added.forEach(order=>enqueueOrderAnnouncement(order));
+   startNewOrderRepeat();
+  }
+ }catch(e){
+  console.warn('새 주문 알림음 재생 실패',e);
+  soundButton.classList.add('attention');soundButton.textContent='🔔 화면을 눌러 알림음 활성화';
+ }
+}
 function showToast(order){document.getElementById('toastText').textContent=`#${order.orderNo} · ${money(order.total)}`;const toast=document.getElementById('toast');toast.hidden=false;toast.classList.add('show');setTimeout(()=>{toast.classList.remove('show');toast.hidden=true},5000)}
 function callCustomer(orderNo){playPreset('cafe');setTimeout(()=>speak(`${orderNo}번 고객님, 주문이 준비되었습니다.`),420)}
 window.callCustomer=callCustomer;window.setStatus=setStatus;
@@ -190,7 +279,7 @@ document.getElementById('closeSoundSettings').addEventListener('click',()=>setti
 settingsModal.addEventListener('click',e=>{if(e.target===settingsModal)settingsModal.hidden=true});
 soundVolume.addEventListener('input',()=>volumeValue.textContent=soundVolume.value+'%');
 customSoundFile.addEventListener('change',()=>{const f=customSoundFile.files?.[0];if(!f)return;if(customAudioUrl)URL.revokeObjectURL(customAudioUrl);customAudioUrl=URL.createObjectURL(f);customSoundName.textContent=f.name;soundPreset.value='custom'});
-document.getElementById('previewSound').addEventListener('click',async()=>{settings={preset:soundPreset.value,volume:Number(soundVolume.value)/100,voice:voiceEnabled.checked};if(!soundEnabled){soundEnabled=true;soundButton.textContent='🔔 알림음 켜짐'}await playPreset();setTimeout(()=>speak('새 주문이 확정되었습니다. 결제를 확인해 주세요.'),settings.preset==='voice'?0:550)});
+document.getElementById('previewSound').addEventListener('click',async()=>{settings={preset:soundPreset.value,volume:Number(soundVolume.value)/100,voice:voiceEnabled.checked};if(!soundEnabled){soundEnabled=true;soundButton.textContent='🔔 알림음 켜짐'}await playPreset();setTimeout(()=>enqueueSpeech('다이닝 주문이 들어왔습니다.'),settings.preset==='voice'?0:550)});
 document.getElementById('saveSoundSettings').addEventListener('click',()=>{settings={preset:soundPreset.value,volume:Number(soundVolume.value)/100,voice:voiceEnabled.checked};localStorage.setItem('pjAdminSoundSettings',JSON.stringify(settings));settingsModal.hidden=true});
 document.getElementById('filters').addEventListener('click',e=>{const b=e.target.closest('button[data-filter]');if(!b)return;activeFilter=b.dataset.filter;document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('active',x===b));render()});
 

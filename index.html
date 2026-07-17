@@ -2537,7 +2537,7 @@ function buildMobileOrderPayload(){
  }];
  return {
   channel:'mobile',deviceId:localStorage.getItem('pjDeviceId')||'mobile-01',
-  appVersion:'mobile-v43.6.6',schemaVersion:2,aggregationVersion:1,
+  appVersion:'mobile-v43.7',schemaVersion:2,aggregationVersion:1,
   storeId:'pangyo2-techno-valley',storeName:'판교2테크노밸리점',
   orderNo:last4(),customerNumber:last4(),phone:mobilePhoneFull(),
   phoneMasked:mobileMaskedPhone(),phoneLast4:last4(),
@@ -2549,7 +2549,7 @@ function buildMobileOrderPayload(){
   recommendationEvents:[],
   createdAt:firebase.firestore.FieldValue.serverTimestamp(),
   createdAtClient:new Date().toISOString(),
-  source:'mobile-kiosk-v43.6.6'
+  source:'mobile-kiosk-v43.7'
  }
 }
 async function submitMobileOrder(){
