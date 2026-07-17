@@ -17,26 +17,30 @@ const PIZZAS = [
 ];
 
 const SIDES = [
-  {id:'meatpasta',name:'미트소스파스타',price:8900,img:'images/meat_sauce_pasta.png',set2:true},
-  {id:'rosepasta',name:'로제소스파스타',price:8900,img:'images/rose_pasta.png',set2:true},
-  {id:'whitepasta',name:'화이트소스파스타',price:8900,img:'images/white_pasta.png',set2:true},
-  {id:'baconsticks',name:'베이컨치즈스틱',price:10900,img:'images/bacon_cheese_sticks.jpg'},
-  {id:'breadsticks',name:'브레드스틱',price:6900,img:'images/bread_sticks.jpg'},
-  {id:'cheesesticks',name:'치즈스틱',price:9900,img:'images/cheese_sticks.jpg'},
-  {id:'strips',name:'치킨스트립',price:9900,img:'images/chicken_strips.jpg'},
   {id:'wings',name:'파파스윙',price:9900,img:'images/wings.jpg'},
+  {id:'strips',name:'치킨스트립',price:9900,img:'images/chicken_strips.jpg'},
+  {id:'cheesesticks',name:'치즈스틱',price:9900,img:'images/cheese_sticks.jpg'},
+  {id:'baconsticks',name:'베이컨치즈스틱',price:10900,img:'images/bacon_cheese_sticks.jpg'},
+  {id:'meatpasta',name:'미트소스파스타',price:8900,img:'images/meat_sauce_pasta.png',set2:true},
+  {id:'whitepasta',name:'화이트소스파스타',price:8900,img:'images/white_pasta.png',set2:true},
+  {id:'rosepasta',name:'로제파스타',price:8900,img:'images/rose_pasta.png',set2:true},
+  {id:'breadsticks',name:'브레드스틱',price:6900,img:'images/bread_sticks.jpg'},
   {id:'corn',name:'파파 콘샐러드',price:2400,img:'images/corn_salad.png'},
   {id:'coleslaw',name:'파파 코울슬로',price:2400,img:'images/coleslaw.png'},
   {id:'brownie',name:'더블 초코칩 브라우니',price:12900,img:'images/brownie.jpg',setExcluded:true},
 ];
 
-const DRINKS = [
-  {id:'coke500',name:'코카콜라 500ml',price:1800,img:'images/coke_500.png',small:true},
-  {id:'cz500',name:'코카콜라 제로 500ml',price:1800,img:'images/coke_zero_500.jpg',small:true},
-  {id:'sprite500',name:'스프라이트 500ml',price:1800,img:'images/sprite_500.png',small:true},
-  {id:'coke1250',name:'코카콜라 1.25L',price:2500,img:'images/coke_1250.png',large:true},
-  {id:'cz1250',name:'코카콜라 제로 1.25L',price:2500,img:'images/coke_zero_1250.png',large:true},
-  {id:'sprite1500',name:'스프라이트 1.5L',price:2500,img:'images/sprite_1500.jpg',large:true},
+const DRINKS=[
+ {id:'coke-500',name:'코카콜라',shortName:'코카콜라',brand:'coke',zero:false,volume:'500mL',price:1800,img:'images/coke_500.png'},
+ {id:'coke-zero-500',name:'코카콜라 제로',shortName:'코카콜라 제로',brand:'coke',zero:true,volume:'500mL',price:1800,img:'images/coke_zero_500.jpg'},
+ {id:'sprite-500',name:'스프라이트',shortName:'스프라이트',brand:'sprite',zero:false,volume:'500mL',price:1800,img:'images/sprite_500.png'},
+ {id:'sprite-zero-500',name:'스프라이트 제로',shortName:'스프라이트 제로',brand:'sprite',zero:true,volume:'500mL',price:1800,img:'images/sprite_zero_500.png'},
+ {id:'coke-125',name:'코카콜라',shortName:'코카콜라',brand:'coke',zero:false,volume:'1.25L',price:2500,img:'images/coke_1250.png'},
+ {id:'coke-zero-15',name:'코카콜라 제로',shortName:'코카콜라 제로',brand:'coke',zero:true,volume:'1.25L',price:2500,img:'images/coke_zero_1250.png'},
+ {id:'sprite-15',name:'스프라이트',shortName:'스프라이트',brand:'sprite',zero:false,volume:'1.5L',price:2500,img:'images/sprite_1500.jpg'},
+ {id:'sprite-zero-15',name:'스프라이트 제로',shortName:'스프라이트 제로',brand:'sprite',zero:true,volume:'1.5L',price:2500,img:'images/sprite_zero_15l.png'},
+ {id:'water-500',name:'생수 500ml',shortName:'생수',brand:'water',volume:'500mL',price:1000},
+ {id:'budweiser-bottle',name:'버드와이저 병맥주',shortName:'버드와이저',brand:'beer',volume:'1병',price:5000}
 ];
 
 const TOPPINGS = [

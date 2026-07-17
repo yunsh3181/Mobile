@@ -1,87 +1,28 @@
-
-const ADMIN_PASSWORD='papa8080';
-const ADMIN_AUTH_KEY='pj_admin_auth_v30';
-function unlockAdmin(){
- const gate=document.getElementById('adminLoginGate');
- if(gate)gate.hidden=true;
- document.body.classList.add('admin-unlocked');
-}
-document.addEventListener('DOMContentLoaded',()=>{
- const form=document.getElementById('adminLoginForm');
- const input=document.getElementById('adminPassword');
- const error=document.getElementById('adminLoginError');
- if(sessionStorage.getItem(ADMIN_AUTH_KEY)==='ok'){unlockAdmin();return}
- if(form)form.addEventListener('submit',e=>{
-   e.preventDefault();
-   if(input.value===ADMIN_PASSWORD){
-     sessionStorage.setItem(ADMIN_AUTH_KEY,'ok');
-     unlockAdmin();
-   }else{
-     error.textContent='비밀번호가 올바르지 않습니다.';
-     input.value='';input.focus();
-   }
- });
-});
-
-
 const zones=[
- {id:'papa',name:'Papa Zone',img:'images/seats/papa_zone.png'},
- {id:'outside',name:'Outside Zone',img:'images/seats/outside_zone.png'},
- {id:'bottle',name:'Bottle Zone',img:'images/seats/bottle_zone.png'},
- {id:'room',name:'Room Zone',img:'images/seats/room_zone.png'}
+ {id:'papa',name:'파파존'}, {id:'outdoor',name:'야외석'},
+ {id:'annex',name:'별관'}, {id:'room',name:'별관룸'}
 ];
 const master=[
- {id:'papa-1',zone:'papa',name:'커플석',capacity:2},{id:'papa-2',zone:'papa',name:'바테이블석',capacity:4},
- {id:'outside-1',zone:'outside',name:'야외석1',capacity:4},{id:'outside-2',zone:'outside',name:'야외석2',capacity:4},{id:'outside-3',zone:'outside',name:'야외석3',capacity:4},{id:'outside-4',zone:'outside',name:'야외석4',capacity:4},
- {id:'bottle-1',zone:'bottle',name:'보틀1',capacity:2},{id:'bottle-2',zone:'bottle',name:'보틀2',capacity:4},{id:'bottle-3',zone:'bottle',name:'보틀3',capacity:4},{id:'bottle-4',zone:'bottle',name:'보틀4',capacity:2},
- {id:'room-1',zone:'room',name:'룸테이블1',capacity:4},{id:'room-2',zone:'room',name:'룸테이블2',capacity:4},{id:'room-3',zone:'room',name:'룸테이블3',capacity:4}
+ {id:'papa-2',zone:'papa',name:'2인석',capacity:2},{id:'papa-bar4',zone:'papa',name:'4인 바테이블',capacity:4},
+ {id:'outdoor-1',zone:'outdoor',name:'야외석 1번',capacity:4},{id:'outdoor-2',zone:'outdoor',name:'야외석 2번',capacity:4},{id:'outdoor-3',zone:'outdoor',name:'야외석 3번',capacity:4},{id:'outdoor-4',zone:'outdoor',name:'야외석 4번',capacity:4},
+ {id:'annex-1',zone:'annex',name:'별관 1번',capacity:2},{id:'annex-2',zone:'annex',name:'별관 2번',capacity:4},{id:'annex-3',zone:'annex',name:'별관 3번',capacity:4},{id:'annex-4',zone:'annex',name:'별관 4번',capacity:2},
+ {id:'room-1',zone:'room',name:'룸테이블 1',capacity:4},{id:'room-2',zone:'room',name:'룸테이블 2',capacity:4},{id:'room-3',zone:'room',name:'룸테이블 3',capacity:4}
 ];
-const names={empty:'빈자리',held:'선택중',occupied:'사용중',cleaning:'정리중',reserved:'예약'};
-let docs={};
-function elapsed(ts){
- if(!ts)return '';
- const ms=typeof ts.toMillis==='function'?ts.toMillis():(ts.seconds?ts.seconds*1000:new Date(ts).getTime());
- if(!ms||Number.isNaN(ms))return '';
- const min=Math.max(0,Math.floor((Date.now()-ms)/60000));
- return min<60?`${min}분`:`${Math.floor(min/60)}시간 ${min%60}분`;
-}
-function statusButton(id,label,status,current){
- return `<button class="${current===status?'active':''}" onclick="setSeat('${id}','${status}')">${label}</button>`;
-}
-function render(){
- const all=master.map(s=>({...s,...(docs[s.id]||{}),status:docs[s.id]?.status||'empty'}));
- const statuses=['empty','held','occupied','cleaning','reserved'];
- document.getElementById('seatSummary').innerHTML=statuses.map(st=>`<span class="${st}"><i></i>${names[st]} <b>${all.filter(s=>s.status===st).length}</b></span>`).join('');
+const statusNames={empty:'빈자리',held:'선택 중',occupied:'사용 중',cleaning:'정리 중',reserved:'예약'};
+let docs={};let waitDocs=[];
+function toDate(value){if(!value)return null;if(typeof value.toDate==='function')return value.toDate();const d=new Date(value);return Number.isNaN(d.getTime())?null:d;}
+function hasReservation(d){return Boolean(d.reservationAt);}
+function reservationLabel(d){const dt=toDate(d.reservationAt);if(!dt)return '';return dt.toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});}
+function seatData(s){const remote=docs[s.id]||{};const displayStatus=hasReservation(remote)&&remote.status==='empty'?'reserved':(remote.status||'empty');return {...s,...remote,status:displayStatus,storedStatus:remote.status||'empty'};}
+function elapsed(ts){const d=toDate(ts);if(!d)return '';const min=Math.max(0,Math.floor((Date.now()-d.getTime())/60000));return min<60?`${min}분`:`${Math.floor(min/60)}시간 ${min%60}분`;}
+async function updateSeat(id,status,extra={}){const s=master.find(x=>x.id===id);if(!s)return;const clear=status==='empty';await db.collection('seats').doc(id).set({status,zone:s.zone,name:s.name,capacity:s.capacity,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),...(status==='cleaning'?{cleaningAt:firebase.firestore.FieldValue.serverTimestamp()}:{}),...(status==='occupied'?{occupiedAt:firebase.firestore.FieldValue.serverTimestamp()}:{}),...(clear?{partySize:null,groupSize:null,groupId:null,groupLabel:null,groupTableCount:null,orderId:null,orderNo:null,heldAt:null,occupiedAt:null,cleaningAt:null}:{}),...extra},{merge:true});}
+function reservationForm(s){const existing=docs[s.id]||{};const dt=toDate(existing.reservationAt);const defaultDate=dt?new Date(dt.getTime()-dt.getTimezoneOffset()*60000).toISOString().slice(0,16):'';const name=prompt(`${s.name} 예약자명`,existing.reservationName||'');if(name===null)return null;const people=prompt('예약 인원',existing.reservationPartySize||Math.min(s.capacity,2));if(people===null)return null;const time=prompt('예약 일시 (예: 2026-07-16 18:30)',defaultDate.replace('T',' '));if(time===null)return null;const phone=prompt('전화번호 (선택)',existing.reservationPhone||'');if(phone===null)return null;const parsed=new Date(time.replace(' ','T'));if(Number.isNaN(parsed.getTime())){alert('예약 일시를 정확히 입력해 주세요.');return null;}return {reservationName:name.trim(),reservationPartySize:Number(people||0),reservationAt:firebase.firestore.Timestamp.fromDate(parsed),reservationPhone:phone.trim()};}
+async function manageSeat(id){const base=master.find(x=>x.id===id),s=seatData(base);if(s.status==='occupied'){await updateSeat(id,'cleaning');return;}if(s.status==='cleaning'){await updateSeat(id,'empty');return;}if(s.status==='held'){if(confirm(`${s.name}의 선택 상태를 해제하시겠습니까?`))await updateSeat(id,'empty');return;}if(s.status==='reserved'){const action=prompt(`${s.name} 예약 관리\n1: 사용 중으로 변경\n2: 예약 수정\n3: 예약 취소`,'1');if(action==='1')await updateSeat(id,'occupied',{reservationName:null,reservationPartySize:null,reservationAt:null,reservationPhone:null});else if(action==='2'){const data=reservationForm(s);if(data)await updateSeat(id,s.storedStatus||'empty',data);}else if(action==='3'&&confirm('예약을 취소하시겠습니까?'))await updateSeat(id,'empty',{reservationName:null,reservationPartySize:null,reservationAt:null,reservationPhone:null});return;}const action=prompt(`${s.name}\n1: 사용 중\n2: 예약 등록`,'1');if(action==='1')await updateSeat(id,'occupied');else if(action==='2'){const data=reservationForm(s);if(data)await updateSeat(id,'empty',data);}}
+async function bulkAction(){const targets=master.map(seatData).filter(s=>['occupied','cleaning','held'].includes(s.status));if(!targets.length)return alert('정리할 테이블이 없습니다.');if(!confirm(`예약 좌석은 유지하고 ${targets.length}개 테이블을 즉시 빈자리로 변경하시겠습니까?`))return;await Promise.all(targets.map(s=>updateSeat(s.id,'empty')));}
+function render(){const all=master.map(seatData),count=st=>all.filter(s=>s.status===st).length;document.getElementById('seatSummary').innerHTML=`<span class="empty">빈자리 ${count('empty')}</span><span class="occupied">사용 중 ${count('occupied')}</span><span class="cleaning">정리 중 ${count('cleaning')}</span><span class="reserved">예약 ${count('reserved')}</span><span class="held">선택 중 ${count('held')}</span><button class="bulk-clean-button start" onclick="bulkAction()">전체 정리</button>`;document.getElementById('seatAdmin').innerHTML=zones.map(z=>`<section class="simple-zone"><h2>${z.name}</h2><div class="simple-seat-grid">${all.filter(s=>s.zone===z.id).map(s=>{const time=s.status==='occupied'?elapsed(s.occupiedAt):s.status==='cleaning'?elapsed(s.cleaningAt):'';const reservation=s.status==='reserved'?`${reservationLabel(s)} · ${s.reservationName||'예약'} · ${s.reservationPartySize||'-'}명`:'';const hint=s.status==='occupied'?'터치하면 정리 중':s.status==='cleaning'?'터치하면 빈자리':s.status==='reserved'?'터치해서 예약 관리':s.status==='held'?'터치해서 선택 해제':'터치해서 사용/예약 설정';const waiting=waitDocs.filter(w=>w.seatId===s.id&&w.status==='waiting').length;return `<button class="simple-seat ${s.status}" onclick="manageSeat('${s.id}')"><strong>${s.name}</strong><span>최대 ${s.capacity}인</span><em>${statusNames[s.status]}</em>${reservation?`<b>${reservation}</b>`:''}${time?`<small>${time}</small>`:''}${waiting?`<b>줄서기 ${waiting}팀</b>`:''}<small>${hint}</small></button>`;}).join('')}</div></section>`).join('');}
+window.manageSeat=manageSeat;window.touchSeat=manageSeat;window.bulkAction=bulkAction;
+firebase.auth().onAuthStateChanged(user=>{if(!user){if(window.top===window)location.replace('../admin/');return;}document.body.classList.add('admin-unlocked')});
+db.collection('seats').onSnapshot(snap=>{docs={};snap.forEach(d=>docs[d.id]=d.data());const badge=document.getElementById('seatConnection');badge.textContent='실시간 연결';badge.className='connection live';render();},e=>{document.getElementById('seatConnection').textContent='연결 오류';alert(e.message);});
 
- document.getElementById('seatAdmin').innerHTML=zones.map(z=>{
-   const seats=all.filter(s=>s.zone===z.id);
-   const time=z.id==='papa'||z.id==='outside'?'11:00~20:00':'11:00~14:00 · 주말 미운영';
-   return `<section class="cad-zone ${z.id}">
-     <header><strong>${z.name}</strong><small>${time}</small></header>
-     ${z.id==='outside'?'<div class="cad-entry">🚪 파파존스 출입구</div>':''}
-     <div class="cad-seat-grid ${z.id}">
-       ${seats.map(s=>{
-         const t=s.status==='occupied'?elapsed(s.occupiedAt):s.status==='held'?elapsed(s.heldAt):'';
-         return `<article class="cad-seat ${s.status}">
-           <div class="cad-table ${z.id==='room'?'wide':''}"></div>
-           <strong>${s.name}</strong>
-           <small>${s.capacity}인</small>
-           <em>${names[s.status]}${t?` · ${t}`:''}</em>
-           <div class="cad-controls">
-             ${statusButton(s.id,'빈','empty',s.status)}
-             ${statusButton(s.id,'사용','occupied',s.status)}
-             ${statusButton(s.id,'정리','cleaning',s.status)}
-             ${statusButton(s.id,'예약','reserved',s.status)}
-           </div>
-         </article>`;
-       }).join('')}
-     </div>
-   </section>`;
- }).join('');
-}
-async function setSeat(id,status){
- const s=master.find(x=>x.id===id);
- await db.collection('seats').doc(id).set({status,zone:s.zone,name:s.name,capacity:s.capacity,orderId:status==='empty'?null:(docs[id]?.orderId||null),orderNo:status==='empty'?null:(docs[id]?.orderNo||null),updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
-}
-window.setSeat=setSeat;
-db.collection('seats').onSnapshot(snap=>{docs={};snap.forEach(d=>docs[d.id]=d.data());document.getElementById('seatConnection').textContent='실시간 연결';document.getElementById('seatConnection').className='connection live';render()},e=>{document.getElementById('seatConnection').textContent='연결 오류';alert(e.message)});
+db.collection('waitlist').onSnapshot(snap=>{waitDocs=snap.docs.map(d=>({id:d.id,...d.data()}));render()});
+setInterval(render,30000);
