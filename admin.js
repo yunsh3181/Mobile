@@ -179,6 +179,7 @@ function render(){
  orderList.innerHTML=filtered.length?filtered.map(order=>`<article class="order-card ${order.status}"><div class="order-head"><span class="channel-badge ${PJCommon.legacyChannel(order)}">${PJCommon.legacyChannel(order)==="mobile"?"모바일":"PC"}</span><div><div class="order-no">#${order.customerNumber||order.orderNo||order.phoneMasked||'-'}</div><small>${formatTime(order.createdAt||order.createdAtClient)}</small></div><span class="status-badge ${order.status}">${statusNames[order.status]||order.status}</span></div><div class="order-meta"><span>${order.orderType==='takeout'?'🥡 포장':'🍽️ 먹고가기'}</span>${order.partySize?`<span>👥 ${order.partySize}명</span>`:''}${orderSeatLabel(order)?`<span>🪑 ${orderSeatLabel(order)}${order.seat?.groupSize?` · ${order.seat.groupSize}명`:''}</span>`:''}${order.pickup?.time?`<span>🕒 오늘 ${order.pickup.time}${order.pickup.isHappyHour?' · 해피아워':''}</span>`:''}${order.phoneMasked?`<span>☎️ ${order.phoneMasked}</span>`:''}${order.payment?.methodName?`<span>💳 ${order.payment.methodName}${order.payment.splitCount>1?` · ${order.payment.splitCount}명 분할`:''}</span>`:''}<span>상품 ${order.itemCount||0}개</span></div><div class="order-items">${(order.items||[]).map(itemHTML).join('')}</div><button class="detail-toggle" onclick="toggleOrderDetail('${order.id}',this)">상세보기</button>${orderDetailsHTML(order)}<div class="order-foot"><div class="order-total"><span>결제금액</span><strong>${money(order.total)}</strong></div><div class="actions">${['payment_pending','new'].includes(order.status)?`<button class="accept" onclick="setStatus('${order.id}','accepted')">접수</button>`:''}${['accepted','paid'].includes(order.status)?`<button class="cook" onclick="setStatus('${order.id}','cooking')">조리 시작</button>`:''}${order.status==='cooking'?`<button class="ready" onclick="setStatus('${order.id}','completed')">완료</button>`:''}${['ready','completed'].includes(order.status)?`<button class="call" onclick="callCustomer('${order.customerNumber||order.orderNo||''}')">📢 고객 호출</button>`:''}${!['cancelled','completed'].includes(order.status)?`<button class="cancel" onclick="setStatus('${order.id}','cancelled')">취소</button>`:''}</div></div></article>`).join(''):'<div class="empty">해당 상태의 주문이 없습니다.</div>';
  const count=s=>orders.filter(o=>s.includes(o.status)).length;
  document.getElementById('newCount').textContent=count(['payment_pending','new']);document.getElementById('cookingCount').textContent=count(['paid','accepted','cooking']);document.getElementById('doneCount').textContent=count(['ready','completed']);
+ const pendingCount=count(['payment_pending','new']);document.title=pendingCount?`🔴 미접수 주문(${pendingCount}) · 관리자`:'파파존스 주문 관리자';
  const today=new Date();today.setHours(0,0,0,0);const sales=orders.filter(o=>{const d=o.createdAt?.toDate?o.createdAt.toDate():new Date(o.createdAtClient||0);return d>=today&&o.status!=='cancelled'}).reduce((s,o)=>s+Number(o.total||0),0);document.getElementById('todaySales').textContent=money(sales);
 }
 async function setStatus(id,status){
@@ -242,7 +243,7 @@ function speakText(text){
  return new Promise(resolve=>{
   if(!soundEnabled||!settings.voice||!('speechSynthesis'in window)){resolve();return}
   const u=new SpeechSynthesisUtterance(text);
-  u.lang='ko-KR';u.rate=1.02;u.pitch=1.12;u.volume=1;
+  u.lang='ko-KR';u.rate=1.08;u.pitch=1.48;u.volume=1;
   const voice=chooseKoreanVoice();if(voice)u.voice=voice;
   u.onend=resolve;u.onerror=resolve;
   window.speechSynthesis.speak(u);
@@ -262,7 +263,7 @@ async function playTripleDing(){
 function orderAnnouncementText(order){
  const pickupMode=order?.pickup?.mode;
  if(pickupMode&&pickupMode!=='now')return '예약 주문이 들어왔습니다.';
- return order?.orderType==='takeout'?'포장 주문이 들어왔습니다.':'다이닝 주문이 들어왔습니다.';
+ return '새로운 주문이 접수되었습니다.';
 }
 function enqueueOrderAnnouncement(order){
  announcementQueue=announcementQueue.then(async()=>{
@@ -285,14 +286,14 @@ function startNewOrderRepeat(){
  if(!soundEnabled||!hasUnacceptedOrders())return;
  newOrderRepeatTimer=setInterval(()=>{
    if(!soundEnabled||!hasUnacceptedOrders()){stopNewOrderRepeat();return}
-   announcementQueue=announcementQueue.then(async()=>{await playTripleDing();await speakText('미접수 주문이 있습니다.');}).catch(()=>{});
- },30000);
+   announcementQueue=announcementQueue.then(async()=>{await playTripleDing();await speakText('미접수 주문이 있습니다. 확인해 주세요.');}).catch(()=>{});
+ },10000);
 }
 
 async function notifyNewOrders(added){
  if(!added.length)return;
  added.forEach(showToast);
- document.title=`(${added.length}) 새 결제대기 주문 · 관리자`;
+ document.title=`🔴 미접수 주문(${unacceptedOrders().length}) · 관리자`;
  try{
   if(soundEnabled){
    await ensureAudio();

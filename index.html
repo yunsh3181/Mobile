@@ -2139,11 +2139,46 @@ function render(){
 }
 function view(){
  if(state.step==='home')return `<section class="darkHero">
-  <div class="heroTop"><div><div class="heroLocation">파파존스 판교2테크노밸리점</div></div><img class="heroLogoDark" src="assets/images/papajohns_red_logo.png" alt="Papa Johns"></div>
+  <div class="heroTop">
+    <div>
+      <div class="heroLocation">파파존스 판교2테크노밸리점</div>
+    </div>
+    <img class="heroLogoDark" src="assets/images/papajohns_red_logo.png" alt="Papa Johns">
+  </div>
+
   <div class="heroHeadline">오늘도 <span class="accent">갓 구운</span> 피자를<br>가장 맛있게 즐겨보세요.</div>
   <div class="heroTagline">Better Ingredients. Better Pizza.</div>
-  <div class="heroVisualChoice"><img src="assets/images/home_dine_takeout.png" alt="먹고가기 또는 포장하기 선택"><button class="heroVisualHit dine" aria-label="먹고가기" onclick="startDineIn()">먹고가기</button><button class="heroVisualHit takeout" aria-label="포장하기" onclick="startTakeout()">포장하기</button></div>
-  <div class="heroPromoStrip"><div class="heroPromo clickable" role="button" tabindex="0" onclick="startHappyHourBanner()"><h3>HAPPY HOUR</h3><strong>16:00~20:00</strong><p>R 사이즈 피자 15,000원</p></div><div class="heroPromo clickable" role="button" tabindex="0" onclick="startTakeoutDiscountBanner()"><h3>TAKE OUT</h3><strong>L/F 포장 20% 할인</strong><p>포장 할인으로 바로 주문</p></div><div class="heroPromo beerAd"><h3>피맥 가능!</h3><strong>하이네켄 생맥주 8,000원</strong><p>버드와이저 병맥주 5,000원</p></div></div>
+
+  <div class="heroChoiceGrid">
+    <button class="heroChoice dinein" onclick="startDineIn()">
+      <div class="eyebrow">DINE IN</div>
+      <h2>먹고가기</h2>
+      <div class="heroDivider"></div>
+      <div class="heroChoiceFeatures">
+        <div class="heroFeature"><span class="heroFeatureIcon">${uiIcon("chair")}</span>편안한 매장 식사</div>
+        <div class="heroFeature"><span class="heroFeatureIcon">${uiIcon("users")}</span>다양한 좌석</div>
+        <div class="heroFeature"><span class="heroFeatureIcon">${uiIcon("set")}</span>세트 메뉴 주문</div>
+      </div>
+    </button>
+
+    <button class="heroChoice" onclick="startTakeout()">
+      <div class="eyebrow">TAKE OUT</div>
+      <h2>포장하기</h2>
+      <div class="heroDivider"></div>
+      <div class="heroChoiceFeatures">
+        <div class="heroFeature"><span class="heroFeatureIcon">${uiIcon("bag")}</span>빠르고 간편한 포장</div>
+        <div class="heroFeature"><span class="heroFeatureIcon">${uiIcon("box")}</span>바로 포장 가능</div>
+        <div class="heroFeature"><span class="heroFeatureIcon">${uiIcon("tag")}</span>할인 혜택</div>
+      </div>
+      <div class="heroBoxVisual">${uiIcon("box")}</div>
+    </button>
+  </div>
+
+  <div class="heroPromoStrip">
+    <div class="heroPromo clickable" role="button" tabindex="0" onclick="startHappyHourBanner()"><h3>HAPPY HOUR</h3><strong>16:00~20:00</strong><p>R 사이즈 피자 15,000원</p></div>
+    <div class="heroPromo clickable" role="button" tabindex="0" onclick="startTakeoutDiscountBanner()"><h3>TAKE OUT</h3><strong>L/F 포장 20% 할인</strong><p>포장 할인으로 바로 주문</p></div>
+    <div class="heroPromo beerAd"><h3>피맥 가능!</h3><strong>하이네켄 생맥주 8,000원</strong><p>버드와이저 병맥주 5,000원</p></div>
+  </div>
 </section>`;
  if(state.step==='type')return shell(`<h1 class="title">어떻게 이용하시나요?</h1><div class="grid two"><button class="card" onclick="startTakeout()"><h2>${uiIcon("bag")} 포장하기</h2></button><button class="card" onclick="startDineIn()"><h2>${uiIcon("dine")} 먹고가기</h2></button></div>`);
 
