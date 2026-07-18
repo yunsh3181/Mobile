@@ -1273,7 +1273,7 @@ button:active:not(:disabled){transform:scale(.98)}
 
 /* ===== v43.6 포장 배너 주문옵션 통합 + 주문확정 강조 ===== */
 .optionSetup{max-width:880px;margin:0 auto}.optionSection{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}.optionSection h2{font-size:18px;margin:0 0 10px}.optionButtons{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.optionButtons.two{grid-template-columns:repeat(2,1fr)}.optionBtn{border:2px solid var(--line);background:#fff;border-radius:12px;padding:13px 8px;font-weight:900;min-height:48px}.optionBtn.active{border-color:var(--r);background:#fff3f3;color:var(--r)}.optionBtn:disabled{opacity:.32;cursor:not-allowed}.optionContinue{width:100%;border:0;border-radius:15px;background:var(--r);color:#fff;padding:17px;font-size:20px;font-weight:900;box-shadow:0 8px 18px #d7192040}.pizzaOptionLine{font-size:12px;font-weight:800;color:#505850;margin:6px 0}.priceBreakMini{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}.priceBreakMini div{display:flex;justify-content:space-between;gap:8px;font-size:12px;margin:3px 0}.priceBreakMini .final{font-size:17px;color:var(--r);font-weight:900;margin-top:7px}.reviewConfirmBtn{display:block;width:100%;margin-top:18px;border:0;border-radius:16px;background:var(--r);color:#fff;padding:19px 14px;font-size:22px;font-weight:900;box-shadow:0 9px 22px #d7192050}.reviewConfirmNote{text-align:center;color:#6f766f;font-size:12px;margin-top:8px}
-.reviewOrderList{display:grid;gap:14px;margin-top:14px}.reviewOrderCard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 5px 14px rgba(18,35,29,.06)}.reviewOrderHead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--line)}.reviewOrderHead h3{margin:0 0 5px;font-size:20px}.reviewOrderHead strong{color:var(--r);white-space:nowrap;font-size:19px}.reviewMeta{font-size:13px;color:#687068;font-weight:800}.reviewSection{padding:10px 0 0}.reviewSection b{display:block;font-size:13px;margin-bottom:5px}.reviewSection ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}.reviewSection li{display:flex;justify-content:space-between;gap:14px;font-size:14px}.reviewSection li span:last-child{font-weight:800;white-space:nowrap}.reviewDiscountBox{margin-top:16px;border-radius:16px;background:#f8faf8;padding:15px}.reviewDiscountBox .line{display:flex;justify-content:space-between;padding:7px 0}.reviewDiscountBox .discountLine{color:var(--r);font-weight:900}.reviewDiscountBox .totalDiscount{border-top:1px dashed var(--line);margin-top:5px;padding-top:11px;color:var(--r);font-weight:900}.reviewDiscountBox .final{border-top:2px solid #222;margin-top:5px;padding-top:13px;font-size:21px;font-weight:1000}.submitError{margin-top:10px;color:var(--r);font-weight:800;text-align:center}.reviewConfirmBtn,.paymentSubmitBtn{touch-action:manipulation;pointer-events:auto;position:relative;z-index:2}.reviewConfirmBtn:active,.paymentSubmitBtn:active{transform:scale(.985)}
+.reviewOrderList{display:grid;gap:14px;margin-top:14px}.reviewOrderCard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 5px 14px rgba(18,35,29,.06)}.reviewOrderHead{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--line)}.reviewOrderHead h3{margin:0 0 5px;font-size:20px}.reviewOrderHead strong{color:var(--r);white-space:nowrap;font-size:19px}.reviewMeta{font-size:13px;color:#687068;font-weight:800}.reviewSection{padding:10px 0 0}.reviewSection b{display:block;font-size:13px;margin-bottom:5px}.reviewSection ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}.reviewSection li{display:flex;justify-content:space-between;gap:14px;font-size:14px}.reviewSection li span:last-child{font-weight:800;white-space:nowrap}.reviewDiscountBox{margin-top:16px;border-radius:16px;background:#f8faf8;padding:15px}.reviewDiscountBox .line{display:flex;justify-content:space-between;padding:7px 0}.reviewDiscountBox .discountLine{color:var(--r);font-weight:900}.reviewDiscountBox .totalDiscount{border-top:1px dashed var(--line);margin-top:5px;padding-top:11px;color:var(--r);font-weight:900}.reviewDiscountBox .final{border-top:2px solid #222;margin-top:5px;padding-top:13px;font-size:21px;font-weight:1000}.submitError{margin-top:10px;color:var(--r);font-weight:800;text-align:center}.reviewConfirmBtn,.paymentSubmitBtn{touch-action:manipulation;pointer-events:auto!important;position:relative;z-index:50;isolation:isolate;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}.paymentSubmitBtn::before,.paymentSubmitBtn::after{pointer-events:none!important}.reviewConfirmBtn:active,.paymentSubmitBtn:active{transform:scale(.985)}
 @media(max-width:560px){.optionSetup{margin:-4px}.optionSection{padding:11px;margin-bottom:9px}.optionSection h2{font-size:16px;margin-bottom:7px}.optionBtn{padding:10px 5px;min-height:42px;font-size:13px}.optionContinue{padding:14px;font-size:18px}.pizzaOptionLine{font-size:11px}.reviewConfirmBtn{padding:17px 12px;font-size:20px}}
 
 /* v43.6 interaction refinements */
@@ -2320,7 +2320,7 @@ function view(){
  if(state.step==='cartReview')return shell(`<div class="cartPage"><h1 class="title">장바구니</h1><p class="sub">세트를 추가로 담거나 주문을 진행해 주세요.</p>${state.cartItems.length?state.cartItems.map((x,i)=>cartItemHtml(x,i)).join(''):'<div class="cartEmpty"><h2>장바구니가 비어 있습니다</h2></div>'}<div class="multiCartTotal"><span>총 결제금액</span><strong>${money(cartTotal())}</strong></div><div class="multiCartButtons"><button class="addSetBtn" onclick="addAnotherSet()">세트 추가</button><button class="addSingleBtn" onclick="addAnotherSingle()">단품 추가</button><button class="orderNowBtn" ${state.cartItems.length?'':'disabled'} onclick="checkoutCart()">주문하기</button></div></div>`);
  if(state.step==='review')return shell(`<h1 class="title">주문 내용 확인</h1><p class="sub">피자 구성, 추가 메뉴, 할인 금액을 확인해 주세요.</p>${reviewOrdersHTML()}${reviewTotalsHTML()}<button type="button" class="reviewConfirmBtn" onclick="confirmReviewOrder(event)">주문 확정</button><div class="reviewConfirmNote">주문 내역과 금액을 확인한 후 눌러주세요.</div>`);
  if(state.step==='phone')return shell(`<div class="phoneStep"><h1 class="title stepTitleIcon">${uiIcon("phone")} 전화번호를 입력해 주세요</h1><p class="sub">010은 고정입니다. 뒤 8자리를 모두 입력해 주세요.</p><div class="summary"><div id="phoneDisplay" class="phoneDisplay">${formatPhone(state.phone)}</div><div class="keypad">${[1,2,3,4,5,6,7,8,9].map(n=>`<button onclick="pressPhone('${n}')">${n}</button>`).join('')}<button onclick="clearPhone()">전체삭제</button><button onclick="pressPhone('0')">0</button><button onclick="backPhone()">⌫</button></div><div id="phoneNotice" class="notice">${validPhone()?`주문번호(전화번호 뒤 4자리): <b>${last4()}</b>`:'전화번호 뒤 8자리를 정확히 입력해 주세요.'}</div><button id="phoneNext" class="next" style="width:100%;padding:18px;border:0;border-radius:14px;font-weight:900" ${validPhone()?'':'disabled'} onclick="goPayment()">결제수단 선택</button></div></div>`);
- if(state.step==='payment'){const total=currentOrderTotal()+cartTotal();return shell(`<h1 class="title">결제수단을 선택해 주세요</h1><p class="sub">카운터에서 선택한 방식으로 결제합니다.</p><div class="summary"><div class="row grand"><span>결제금액</span><strong>${money(total)}</strong></div><div class="paymentGrid">${[['cash','현금'],['card','신용카드'],['meal_ticket','식권대장'],['bizle','비즐식권']].map(x=>`<button class="paymentCard ${state.paymentMethod===x[0]?'active':''}" onclick="selectPayment('${x[0]}')">${x[1]}</button>`).join('')}</div>${isSplitPayment()?splitPaymentHTML(total):''}<button type="button" class="next paymentSubmitBtn" style="width:100%;padding:18px;border:0;border-radius:14px;font-weight:900" ${validPayment()?'':'disabled'} onclick="complete(event)">주문 접수</button><div id="submitError" class="submitError"></div></div>`)};
+ if(state.step==='payment'){const total=currentOrderTotal()+cartTotal();return shell(`<h1 class="title">결제수단을 선택해 주세요</h1><p class="sub">카운터에서 선택한 방식으로 결제합니다.</p><div class="summary"><div class="row grand"><span>결제금액</span><strong>${money(total)}</strong></div><div class="paymentGrid">${[['cash','현금'],['card','신용카드'],['meal_ticket','식권대장'],['bizle','비즐식권']].map(x=>`<button class="paymentCard ${state.paymentMethod===x[0]?'active':''}" onclick="selectPayment('${x[0]}')">${x[1]}</button>`).join('')}</div>${isSplitPayment()?splitPaymentHTML(total):''}<button type="button" id="paymentSubmitBtn" data-action="submit-order" class="next paymentSubmitBtn" style="width:100%;padding:18px;border:0;border-radius:14px;font-weight:900" ${validPayment()?'':'disabled'}>주문 접수</button><div id="submitError" class="submitError"></div></div>`)};
  if(state.step==='done')return shell(`<div class="done"><div class="iconBox" style="margin:0 auto 18px">${uiIcon("check")}</div><h1>주문이 접수되었습니다</h1><p class="doneOrderLabel">주문번호 · 전화번호 뒤 4자리</p><div class="num">${state.orderNo}</div><div class="paymentRequiredBox"><strong>${paymentName(state.paymentMethod)}로 카운터에서 결제해 주세요</strong><span>결제 완료 후 피자 제조가 시작됩니다.</span></div>${state.orderTiming==='reserve'?`<p class="doneReserve">예약시간 ${state.reserveTime}</p>`:''}<p class="doneGuide">주문번호를 확인하시고 카운터로 와 주세요.</p><button class="doneHomeBtn" onclick="reset();render()">처음으로</button></div>`)
 }
 
@@ -2854,7 +2854,7 @@ function buildMobileOrderPayload(){
  const items=[...cartPayload,...currentItems];
  return {
   channel:'mobile',deviceId:localStorage.getItem('pjDeviceId')||'mobile-01',
-  appVersion:'mobile-v43.9.4',schemaVersion:2,aggregationVersion:1,
+  appVersion:'mobile-v43.9.6',schemaVersion:2,aggregationVersion:1,
   storeId:'pangyo2-techno-valley',storeName:'판교2테크노밸리점',
   orderNo:displayOrderNo(),customerNumber:displayOrderNo(),phone:mobilePhoneFull(),
   phoneMasked:mobileMaskedPhone(),phoneLast4:last4(),
@@ -2866,7 +2866,7 @@ function buildMobileOrderPayload(){
   recommendationEvents:[],
   createdAt:firebase.firestore.FieldValue.serverTimestamp(),
   createdAtClient:new Date().toISOString(),
-  source:'mobile-kiosk-v43.9.4'
+  source:'mobile-kiosk-v43.9.6'
  }
 }
 async function submitMobileOrder(){
@@ -2901,7 +2901,7 @@ async function complete(event){
  const errorBox=document.getElementById('submitError');if(errorBox)errorBox.textContent='';
  if(!validPhone()){if(errorBox)errorBox.textContent='전화번호를 다시 확인해 주세요.';return}
  if(!validPayment()){if(errorBox)errorBox.textContent='결제수단을 선택해 주세요.';return}
- const button=document.querySelector('.paymentSubmitBtn');
+ const button=document.getElementById('paymentSubmitBtn')||document.querySelector('.paymentSubmitBtn');
  if(button){button.disabled=true;button.textContent='주문 전송 중...'}
  try{
   state.orderNo=displayOrderNo();
@@ -2914,6 +2914,36 @@ async function complete(event){
   if(errorBox)errorBox.textContent=error.message||'주문 저장에 실패했습니다.';if(button){button.disabled=false;button.textContent='주문 접수'}
  }
 }
+
+/* v43.9.6 주문 접수 버튼 핫픽스
+   - 인라인 onclick 의존 제거
+   - 모바일/PC 공통 위임 클릭 처리
+   - 한 번의 주문만 실행되도록 실행 잠금 */
+let mobileOrderSubmitting=false;
+async function handlePaymentSubmit(event){
+ if(event){event.preventDefault();event.stopPropagation();if(event.stopImmediatePropagation)event.stopImmediatePropagation()}
+ if(mobileOrderSubmitting)return;
+ const button=document.getElementById('paymentSubmitBtn');
+ if(!button||button.disabled)return;
+ mobileOrderSubmitting=true;
+ try{
+  await complete(event);
+ }finally{
+  /* 성공 시 done 화면으로 교체되어 버튼이 사라진다. 실패한 경우에만 다시 허용 */
+  if(state.step==='payment')mobileOrderSubmitting=false;
+ }
+}
+document.addEventListener('click',function(event){
+ const button=event.target.closest('#paymentSubmitBtn,[data-action="submit-order"]');
+ if(!button)return;
+ handlePaymentSubmit(event);
+},true);
+document.addEventListener('keydown',function(event){
+ if((event.key==='Enter'||event.key===' ')&&document.activeElement&&document.activeElement.matches('#paymentSubmitBtn,[data-action="submit-order"]')){
+  handlePaymentSubmit(event);
+ }
+},true);
+
 db.collection('seats').onSnapshot(snap=>{mobileSeatDocs={};snap.forEach(d=>mobileSeatDocs[d.id]=d.data());if(['area','table'].includes(state.step))render()});
 db.collection('waitlist').onSnapshot(snap=>{mobileWaitlist=snap.docs.map(d=>({id:d.id,...d.data()}));if(state.step==='table')render()});
 mobileSeatTimer=setInterval(()=>{if(state.step==='table')render()},30000);
@@ -2947,7 +2977,7 @@ function playUiTick(){
 }
 document.addEventListener('click',e=>{
  const b=e.target.closest('button');
- if(b&&!b.disabled&&!b.closest('.keypad'))playUiTick()
+ if(b&&!b.disabled&&!b.closest('.keypad')&&!b.matches('#paymentSubmitBtn,[data-action="submit-order"]'))playUiTick()
 },{passive:true});
 function preloadMenuImages(){
  const imgs=[...PIZZAS,...SIDES,...DRINKS].map(x=>x.image).filter(Boolean);
@@ -2962,7 +2992,8 @@ window.addEventListener('load',preloadMenuImages);
  let lastTouchEnd=0;
  document.addEventListener('touchend',function(e){
   const now=Date.now();
-  if(now-lastTouchEnd<=300)e.preventDefault();
+  const interactive=e.target.closest('button,a,input,select,textarea,[role="button"]');
+  if(!interactive&&now-lastTouchEnd<=300)e.preventDefault();
   lastTouchEnd=now;
  },{passive:false});
  document.addEventListener('gesturestart',function(e){e.preventDefault()},{passive:false});

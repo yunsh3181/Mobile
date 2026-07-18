@@ -114,3 +114,7 @@ button{font:inherit}.admin-header{position:sticky;top:0;z-index:20;display:flex;
 .detail-grid b{color:#5e6b65}.detail-grid span{text-align:right;font-weight:800}
 .order-detail h4{margin:18px 0 10px}.detail-items .order-item{background:white;border-radius:12px;padding:12px;margin-bottom:8px}
 @media(max-width:620px){.detail-grid{grid-template-columns:1fr}}
+
+/* v43.9.7 admin action hotfix */
+.actions button,.detail-toggle{position:relative;z-index:2;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.actions button:disabled{opacity:.65;cursor:wait}
