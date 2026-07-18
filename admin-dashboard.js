@@ -1,6 +1,7 @@
 
 (function(){
 'use strict';
+const esc=value=>String(value??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','\"':'&quot;'}[ch]));
 const money=n=>Number(n||0).toLocaleString('ko-KR')+'원';
 const fmt=v=>{
  const d=v?.toDate?v.toDate():v?.seconds?new Date(v.seconds*1000):v?new Date(v):null;
@@ -63,7 +64,7 @@ function renderCustomers(){
   ['고객 수',rows.length.toLocaleString()+'명'],['누적 주문',rows.reduce((s,x)=>s+Number(x.orderCount||0),0).toLocaleString()+'건'],
   ['누적 주문금액',money(total)],['평균 고객금액',money(rows.length?total/rows.length:0)]
  ]);
- document.getElementById('customerList').innerHTML=rows.length?rows.map(x=>`<div class="data-row customer"><strong>${x.phoneMasked||'***-'+(x.phoneLast4||'')}</strong><span>${x.orderCount||0}회</span><span>${money(x.totalSpent)}</span><span>평균 ${money(x.averageOrderValue)}</span><span>최근 ${fmt(x.lastOrderAt)}</span></div>`).join(''):'<div class="empty">고객 데이터가 없습니다.</div>';
+ document.getElementById('customerList').innerHTML=rows.length?rows.map(x=>`<div class="data-row customer"><strong>${esc(x.phoneMasked||'***-'+(x.phoneLast4||''))}</strong><span>${x.orderCount||0}회</span><span>${money(x.totalSpent)}</span><span>평균 ${money(x.averageOrderValue)}</span><span>최근 ${fmt(x.lastOrderAt)}</span></div>`).join(''):'<div class="empty">고객 데이터가 없습니다.</div>';
 }
 document.getElementById('customerSearch')?.addEventListener('input',renderCustomers);
 
@@ -76,7 +77,7 @@ async function loadRecommendations(){
   ['전체 수락률',shown?((accepted/shown)*100).toFixed(1)+'%':'0%'],
   ['예상 추가매출',money(rows.reduce((s,x)=>s+Number(x.estimatedRevenueLift||0),0))]
  ]);
- document.getElementById('recommendationList').innerHTML=rows.length?rows.map(x=>`<div class="data-row"><strong>${x.name||x.id}</strong><span>노출 ${x.shown||0} / 수락 ${x.accepted||0} / 거절 ${x.rejected||0}</span><span>${x.shown?((x.accepted||0)/x.shown*100).toFixed(1):0}%</span></div>`).join(''):'<div class="empty">추천 데이터가 없습니다.</div>';
+ document.getElementById('recommendationList').innerHTML=rows.length?rows.map(x=>`<div class="data-row"><strong>${esc(x.name||x.id)}</strong><span>노출 ${x.shown||0} / 수락 ${x.accepted||0} / 거절 ${x.rejected||0}</span><span>${x.shown?((x.accepted||0)/x.shown*100).toFixed(1):0}%</span></div>`).join(''):'<div class="empty">추천 데이터가 없습니다.</div>';
 }
 document.getElementById('refreshSalesStats')?.addEventListener('click',loadSales);
 })();

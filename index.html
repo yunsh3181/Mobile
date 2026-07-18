@@ -2679,7 +2679,7 @@ function myQueueEntries(){let ids=[];try{ids=JSON.parse(localStorage.getItem('pj
 function myQueueHTML(){const rows=myQueueEntries();return rows.length?`<div class="notice"><b>내 줄서기</b>${rows.map(w=>`<div>${w.seatName||w.seatId} · 현재 ${queuePosition(w)}번째 대기 <button class="cancelQueueBtn" onclick="cancelWaitlist('${w.id}')">취소</button></div>`).join('')}</div>`:''}
 function queuePosition(w){return mobileWaitlist.filter(x=>x.seatId===w.seatId&&x.status==='waiting'&&queueMillis(x)<=queueMillis(w)).length}
 function queueMillis(w){const v=w.createdAt||w.createdAtClient;if(v?.toMillis)return v.toMillis();if(v?.seconds)return v.seconds*1000;return new Date(v||0).getTime()||0}
-async function joinWaitlist(seatId){const t=Object.values(DINING_TABLES).flat().find(x=>x.id===seatId);if(!t)return;const raw=prompt('줄서기 연락처를 입력해 주세요. (010 포함 11자리)','010');if(raw===null)return;const phone=raw.replace(/\D/g,'');if(!/^010\d{8}$/.test(phone))return alert('010으로 시작하는 11자리 전화번호를 입력해 주세요.');const party=Number(prompt('이용 인원을 입력해 주세요.',String(state.partySize||2)));if(!party||party<1)return;const ref=await db.collection('waitlist').add({seatId,seatName:t.name,partySize:party,phone,phoneMasked:phone.slice(0,3)+'-****-'+phone.slice(-4),status:'waiting',createdAt:firebase.firestore.FieldValue.serverTimestamp(),createdAtClient:new Date().toISOString()});let ids=[];try{ids=JSON.parse(localStorage.getItem('pj_waitlist_ids')||'[]')}catch(e){}ids.push(ref.id);localStorage.setItem('pj_waitlist_ids',JSON.stringify([...new Set(ids)]));alert(`${t.name} 줄서기가 등록되었습니다.`)}
+async function joinWaitlist(seatId){const t=Object.values(DINING_TABLES).flat().find(x=>x.id===seatId);if(!t)return;const raw=prompt('줄서기 연락처를 입력해 주세요. (010 포함 11자리)','010');if(raw===null)return;const phone=raw.replace(/\D/g,'');if(!/^010\d{8}$/.test(phone))return alert('010으로 시작하는 11자리 전화번호를 입력해 주세요.');const party=Number(prompt('이용 인원을 입력해 주세요.',String(state.partySize||2)));if(!party||party<1)return;const ref=await db.collection('waitlist').add({seatId,seatName:t.name,partySize:Math.min(16,Math.max(1,party)),phoneLast4:phone.slice(-4),phoneMasked:phone.slice(0,3)+'-****-'+phone.slice(-4),status:'waiting',createdAt:firebase.firestore.FieldValue.serverTimestamp(),createdAtClient:new Date().toISOString()});let ids=[];try{ids=JSON.parse(localStorage.getItem('pj_waitlist_ids')||'[]')}catch(e){}ids.push(ref.id);localStorage.setItem('pj_waitlist_ids',JSON.stringify([...new Set(ids)]));alert(`${t.name} 줄서기가 등록되었습니다.`)}
 async function cancelWaitlist(id){if(!confirm('줄서기를 취소하시겠습니까?'))return;await db.collection('waitlist').doc(id).set({status:'cancelled',cancelledAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true})}
 function reserveLimit(){let d=new Date();d.setHours(state.happyReserveOnly?20:21,state.happyReserveOnly?0:20,0,0);return d}function reserveStart(){let d=new Date(Date.now()+30*60000);d.setMinutes(Math.ceil(d.getMinutes()/10)*10,0,0);if(state.happyReserveOnly){let h=new Date();h.setHours(16,0,0,0);if(d<h)d=h}return d}function hasReserveSlots(){return reserveStart()<=reserveLimit()}function reserveWheelData(){let start=reserveStart(),limit=reserveLimit(),hours=[];if(start<=limit){for(let h=start.getHours();h<=limit.getHours();h++){let hh=String(h).padStart(2,'0');if(validMinutesForHour(hh,start).length)hours.push(hh)}}if(!state.reserveHour||!hours.includes(state.reserveHour))state.reserveHour=hours[0]||null;if(state.reserveHour){let valid=validMinutesForHour(state.reserveHour,start);if(!valid.includes(state.reserveMinute))state.reserveMinute=valid[0]||null}return{hours,minutes:state.reserveHour?validMinutesForHour(state.reserveHour,start):[]}}function validMinutesForHour(h,start){let limit=reserveLimit();return ['00','10','20','30','40','50'].filter(m=>{let d=new Date();d.setHours(Number(h),Number(m),0,0);return d>=start&&d<=limit})}function setReserveHour(h){state.reserveHour=h;let mins=validMinutesForHour(h,reserveStart());if(!mins.includes(state.reserveMinute))state.reserveMinute=mins[0]||null;render()}function setReserveMinute(m){state.reserveMinute=m;render()}function validReserveSelection(){if(!state.reserveHour||!state.reserveMinute)return false;let d=new Date();d.setHours(Number(state.reserveHour),Number(state.reserveMinute),0,0);return d>=new Date(Date.now()+30*60000)&&d<=reserveLimit()&&d.getDate()===new Date().getDate()}function confirmReserve(){if(!validReserveSelection())return;state.reserveTime=state.reserveHour+':'+state.reserveMinute;state.step=state.happyReserveOnly?'pizza':'promo';render()}function updatePhoneUI(){
  const display=document.getElementById('phoneDisplay');
@@ -2715,7 +2715,7 @@ function buildMobileOrderPayload(){
  const items=[...cartPayload,...currentItems];
  return {
   channel:'mobile',deviceId:localStorage.getItem('pjDeviceId')||'mobile-01',
-  appVersion:'mobile-v43.8.8',schemaVersion:2,aggregationVersion:1,
+  appVersion:'mobile-v43.9.1-security1',schemaVersion:2,aggregationVersion:1,
   storeId:'pangyo2-techno-valley',storeName:'판교2테크노밸리점',
   orderNo:last4(),customerNumber:last4(),phone:mobilePhoneFull(),
   phoneMasked:mobileMaskedPhone(),phoneLast4:last4(),
@@ -2727,11 +2727,16 @@ function buildMobileOrderPayload(){
   recommendationEvents:[],
   createdAt:firebase.firestore.FieldValue.serverTimestamp(),
   createdAtClient:new Date().toISOString(),
-  source:'mobile-kiosk-v43.8.8'
+  source:'mobile-kiosk-v43.9.1-security1'
  }
 }
 async function submitMobileOrder(){
  const payload=buildMobileOrderPayload();
+ if(!['dinein','takeout'].includes(payload.orderType))throw new Error('이용 방법이 올바르지 않습니다.');
+ if(!Array.isArray(payload.items)||payload.items.length<1||payload.items.length>30)throw new Error('주문 상품 수를 확인해 주세요.');
+ if(!Number.isInteger(payload.itemCount)||payload.itemCount<1||payload.itemCount>100)throw new Error('주문 수량을 확인해 주세요.');
+ if(!Number.isFinite(payload.total)||payload.total<0||payload.total>3000000)throw new Error('주문 금액을 확인해 주세요.');
+ if(!/^010\d{8}$/.test(payload.phone||''))throw new Error('전화번호를 확인해 주세요.');
  const orderRef=db.collection('orders').doc();
  const batch=db.batch();
  batch.set(orderRef,payload);
