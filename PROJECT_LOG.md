@@ -45,3 +45,21 @@ Side + Drink Localization
 
 QA:
 Pending
+
+## Version: v46.0
+Status: Completed
+
+Feature:
+Cart and Order Review Localization
+
+Added:
+cart.*, review.*, orderSummary.*, unit.*, and pizza.* customer-facing localization keys for cart and review flows.
+
+Changed:
+Cart and order review rendering now uses existing PJ_I18N translation helpers and menu-name helpers for customer-visible labels, selected option summaries, item quantities, remove actions, and final totals.
+
+QA:
+Pending
+
+Notes:
+Business logic, price calculations, cart data shape, Firestore order payloads, and screen flow were not changed.

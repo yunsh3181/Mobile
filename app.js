@@ -114,11 +114,11 @@ function basePizzaPrice(){
 }
 function pizzaDisplayName(){
  if(isHalf()){
-  const a=PIZZAS.find(x=>x.id===state.pizzaLeft)?.name||'';
-  const b=PIZZAS.find(x=>x.id===state.pizzaRight)?.name||'';
+  const a=pizzaName(PIZZAS.find(x=>x.id===state.pizzaLeft));
+  const b=pizzaName(PIZZAS.find(x=>x.id===state.pizzaRight));
   return `${a} / ${b}`;
  }
- return PIZZAS.find(x=>x.id===state.pizza)?.name||'';
+ const item=PIZZAS.find(x=>x.id===state.pizza);return item?pizzaName(item):'';
 }
 function upupDiscount(){
  if(state.promo!=='upup')return 0;
@@ -342,7 +342,7 @@ function addCurrentToCart(){
  state.step='cart';
  render();
 }
-function removeCartItem(index){state.cart.splice(index,1);render()}
+function removeCartItem(index){if(!confirm(t('cart.confirmRemove')))return;state.cart.splice(index,1);render()}
 function cartQty(index,d){const item=state.cart[index];item.qty=Math.max(1,Math.min(9,item.qty+d));render()}
 function clearCurrentSelection(){
  state.promo=null;state.set=null;state.dough=null;state.size=null;state.crust=null;state.pizzaMode='single';state.pizza=null;state.pizzaLeft=null;state.pizzaRight=null;state.halfStage='left';
@@ -350,7 +350,7 @@ function clearCurrentSelection(){
 }
 function addMoreMenu(){clearCurrentSelection();state.step='promo';render()}
 async function checkoutCart(){
- if(!state.cart.length)return alert('장바구니가 비어 있습니다.');
+ if(!state.cart.length)return alert(t('cart.empty'));
  const checkoutButton=document.querySelector('.cart-actions .btn.primary');
  if(checkoutButton){checkoutButton.disabled=true;checkoutButton.textContent='주문 전송 중...';}
  state.orderNo=Math.floor(1000+Math.random()*9000);
@@ -541,7 +541,7 @@ function render(){
   return shell(`<h1 class="title">주문 내용을 확인해 주세요</h1><div class="summary"><div class="summary-row"><b>이용방법</b><span>${state.orderType==='takeout'?'포장':'먹고가기'}</span></div>${state.orderType==='takeout'?`<div class="summary-row"><b>픽업 방식</b><span>${state.pickupMode==='now'?'바로 주문 (15~20분)':'예약 주문'}</span></div><div class="summary-row"><b>픽업 예정</b><span>오늘 ${state.pickupTime||'-'}</span></div><div class="summary-row"><b>연락처</b><span>${formatPhone(state.phone)}</span></div>`:`<div class="summary-row"><b>이용 인원</b><span>${state.partySize||'-'}명</span></div>`}${state.orderType==='dinein'?`<div class="summary-row"><b>선택 좌석</b><span>${state.seatName||'-'} · 최대 ${state.seatCapacity||'-'}인</span></div>`:''}<div class="summary-row"><b>혜택</b><span>${state.set?state.set+'인 세트':state.promo==='takeout'?'포장 20%':state.promo==='happyhour'?'해피아워 R 15,000원':state.promo==='upup'?'UP & UP':'일반 주문'}</span></div><div class="summary-row"><b>피자</b><span>${pizzaDisplayName()}${isHalf()?' (하프앤하프)':''} · ${state.dough==='thin'?'씬도우':'수타도우'} · ${state.promo==='upup'?'L 주문 → F 업그레이드':state.size} · ${state.crust}</span></div>${isHalf()?`<div class="summary-row"><b>하프앤하프 추가금</b><span>${money(1000)}</span></div>`:''}<div class="summary-row"><b>추가 토핑</b><span>${Object.entries(state.toppings).filter(x=>x[1]).map(([id,q])=>toppingName(TOPPINGS.find(t=>t.id===id))+' ×'+q).join(', ')||'없음'}</span></div>${state.set?`<div class="summary-row"><b>세트 포함 사이드</b><span>${names(state.includedSides,SIDES)}</span></div><div class="summary-row"><b>세트 포함 음료</b><span>${names(state.includedDrinks,DRINKS)}</span></div>`:''}<div class="summary-row"><b>${state.set?'추가 사이드':'사이드'}</b><span>${names(state.sides,SIDES)}</span></div><div class="summary-row"><b>${state.set?'추가 음료':'음료'}</b><span>${names(state.drinks,DRINKS)}</span></div>${state.set?`<div class="summary-row"><b>세트 기본금액</b><span>${money(state.set===2?24000:state.set===3?33000:42000)}</span></div><div class="summary-row"><b>크러스트 추가금</b><span>${money(crustPrice())}</span></div><div class="summary-row"><b>토핑 추가금</b><span>${money(toppingPrice())}</span></div><div class="summary-row"><b>추가 사이드</b><span>${money(c.sides)}</span></div><div class="summary-row"><b>추가 음료</b><span>${money(c.drinks)}</span></div>`:''}${!state.set?`<div class="summary-row"><b>피자 금액</b><span>${money(c.pizza)}</span></div><div class="summary-row"><b>크러스트 추가금</b><span>${money(c.crust)}</span></div><div class="summary-row"><b>토핑 추가금</b><span>${money(c.topping)}</span></div>`:''}${c.discount?`<div class="summary-row discount"><b>포장 할인</b><span>-${money(c.discount)}</span></div>`:''}${state.promo==='upup'?`<div class="summary-row"><b>L 피자 정상가</b><span>${money(basePizzaPrice())}</span></div><div class="summary-row discount"><b>UP & UP 할인</b><span>-${money(c.upupDiscount)}</span></div><div class="summary-row"><b>무료 혜택</b><span>F 사이즈 업그레이드 + ${state.crust==='오리지널'?'오리지널 크러스트':'크러스트 업그레이드'}</span></div>`:''}<div class="summary-row"><b style="font-size:24px">총 결제금액</b><strong class="price" style="font-size:28px">${money(c.total)}</strong></div></div><div class="notice" style="margin-top:15px">현재 버전은 주문 흐름·가격 계산 확인용입니다. 실제 카드 승인, POS, 영수증 출력은 연결되어 있지 않습니다.</div>`);
  }
  if(state.step==='cart'){
-  return shell(`<section class="cart-screen"><h1 class="title">장바구니</h1><p class="sub">여러 세트와 일반 메뉴를 함께 주문할 수 있습니다.</p>${state.cart.length?`<div class="cart-list">${state.cart.map((item,i)=>`<article class="cart-item">${itemSummary(item)}<div class="cart-item-side"><strong>${money(item.total*item.qty)}</strong><div class="qty cart-qty"><button onclick="cartQty(${i},-1)">−</button><span>${item.qty}</span><button onclick="cartQty(${i},1)">＋</button></div><button class="cart-remove" onclick="removeCartItem(${i})">삭제</button></div></article>`).join('')}</div><div class="cart-total-box"><span>총 결제금액</span><strong>${money(cartTotal())}</strong></div><div class="cart-actions"><button class="btn secondary big-action" onclick="addMoreMenu()">＋ 다른 메뉴 추가</button><button class="btn primary big-action" onclick="checkoutCart()">결제하기</button></div>`:`<div class="empty-cart">장바구니가 비어 있습니다.<button class="btn primary" onclick="addMoreMenu()">메뉴 담기</button></div>`}</section>`);
+  return shell(`<section class="cart-screen"><h1 class="title">${t('cart.title')}</h1><p class="sub">${t('cart.subtitle')}</p>${state.cart.length?`<div class="cart-list">${state.cart.map((item,i)=>`<article class="cart-item">${itemSummary(item)}<div class="cart-item-side"><strong>${money(item.total*item.qty)}</strong><div class="qty cart-qty"><button onclick="cartQty(${i},-1)">−</button><span>${item.qty}</span><button onclick="cartQty(${i},1)">＋</button></div><button class="cart-remove" onclick="removeCartItem(${i})">${t('cart.remove')}</button></div></article>`).join('')}</div><div class="cart-total-box"><span>${t('cart.totalPayment')}</span><strong>${money(cartTotal())}</strong></div><div class="cart-actions"><button class="btn secondary big-action" onclick="addMoreMenu()">${t('cart.addSingle')}</button><button class="btn primary big-action" onclick="checkoutCart()">${t('cart.orderNow')}</button></div>`:`<div class="empty-cart">${t('cart.empty')}<button class="btn primary" onclick="addMoreMenu()">${t('cart.addSingle')}</button></div>`}</section>`);
  }
  if(state.step==='done')return shell(`<div class="complete"><h1>주문이 접수되었습니다</h1><p>주문번호</p><div class="num">${state.orderNo}</div><p>관리자 화면으로 주문이 실시간 전송되었습니다.</p>${state.orderType==='dinein'?`<div class="done-seat">선택 좌석 <strong>${state.seatName||'-'}</strong></div>`:''}<small class="order-id">주문 ID: ${state.orderId||'-'}</small><button class="btn primary" onclick="location.reload()">처음 화면으로</button></div>`);
 }

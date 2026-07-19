@@ -74,6 +74,7 @@ function drinkCategory(item){return t(`drink.${menuOptionId(item)}.category`)}
 function drinkPriceLabel(item,price){return t('drink.priceLabel',{price:price==null?'':price})}
 function drinkGroupName(item){return t(`drink.group.${item&&item.brand?item.brand:'other'}`)}
 function drinkVariant(item){return t(`drink.${menuOptionId(item)}.variant`)}
+function pizzaName(item){const id=menuOptionId(item);const translated=id?t(`pizza.${id}.name`):'';return translated&&translated!==`pizza.${id}.name`?translated:(item&&item.name?item.name:id)}
 function setLanguage(lang,opts={}){
  currentLanguage=SUPPORTED_LANGUAGES.includes(lang)?lang:DEFAULT_LANGUAGE;
  if(opts.persist){try{localStorage.setItem(LANGUAGE_STORAGE_KEY,currentLanguage)}catch(e){}}
@@ -81,4 +82,4 @@ function setLanguage(lang,opts={}){
  document.title=t('meta.title');
 }
 setLanguage(currentLanguage);
-window.PJ_I18N={SUPPORTED_LANGUAGES,DEFAULT_LANGUAGE,LANGUAGE_STORAGE_KEY,I18N,LOGIC_LABEL_KEYS,readInitialLanguage,translationValue,interpolate,t,label,setLanguage,optionKey,doughName,doughDesc,sizeName,sizeDesc,crustName,crustDesc,crustSizeLabel,toppingName,toppingDesc,toppingCategory,toppingPriceLabel,sideName,sideDesc,sideCategory,sidePriceLabel,drinkName,drinkDesc,drinkCategory,drinkPriceLabel,drinkGroupName,drinkVariant};
+window.PJ_I18N={SUPPORTED_LANGUAGES,DEFAULT_LANGUAGE,LANGUAGE_STORAGE_KEY,I18N,LOGIC_LABEL_KEYS,readInitialLanguage,translationValue,interpolate,t,label,setLanguage,optionKey,doughName,doughDesc,sizeName,sizeDesc,crustName,crustDesc,crustSizeLabel,toppingName,toppingDesc,toppingCategory,toppingPriceLabel,sideName,sideDesc,sideCategory,sidePriceLabel,drinkName,drinkDesc,drinkCategory,drinkPriceLabel,drinkGroupName,drinkVariant,pizzaName};
