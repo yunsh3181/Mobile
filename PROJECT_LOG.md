@@ -78,3 +78,19 @@ Scoped Cart and Review text color overrides restore readable typography on white
 
 QA:
 Pending
+
+## Version: v47.0
+Status: Completed
+
+Changed:
+- Review text visibility fix
+- Product name display
+- Set option cart fix
+- Side UX improvement
+- Drink quantity UX
+- Happy Hour improvement
+- Language selection
+
+QA:
+Pending
+

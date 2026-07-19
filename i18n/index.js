@@ -60,19 +60,20 @@ function crustName(value){return t(optionKey('crust.name',value),{value})}
 function crustDesc(value){return t(optionKey('crust.desc',value),{value})}
 function crustSizeLabel(value){return t(optionKey('crust.sizeLabel',value),{value})}
 function menuOptionId(item){return item&&item.i18nId?item.i18nId:item&&item.id?String(item.id):''}
-function toppingName(item){return t(`topping.${menuOptionId(item)}.name`)}
+function toppingName(item){const id=menuOptionId(item);const v=t(`topping.${id}.name`);return v===`topping.${id}.name`?(item&&item.name?item.name:id):v}
 function toppingDesc(item){return t(`topping.${menuOptionId(item)}.desc`)}
 function toppingCategory(item){return t(`topping.${menuOptionId(item)}.category`)}
 function toppingPriceLabel(item,price){return t('topping.priceLabel',{price:price==null?'':price})}
-function sideName(item){return t(`side.${menuOptionId(item)}.name`)}
+function sideName(item){const id=menuOptionId(item);const v=t(`side.${id}.name`);return v===`side.${id}.name`?(item&&item.name?item.name:id):v}
 function sideDesc(item){return t(`side.${menuOptionId(item)}.desc`)}
 function sideCategory(item){return t(`side.${menuOptionId(item)}.category`)}
 function sidePriceLabel(item,price){return t('side.priceLabel',{price:price==null?'':price})}
-function drinkName(item){return t(`drink.${menuOptionId(item)}.name`)}
+function drinkName(item){const id=menuOptionId(item);const v=t(`drink.${id}.name`);return v===`drink.${id}.name`?(item&&item.name?item.name:id):v}
 function drinkDesc(item){return t(`drink.${menuOptionId(item)}.desc`)}
 function drinkCategory(item){return t(`drink.${menuOptionId(item)}.category`)}
 function drinkPriceLabel(item,price){return t('drink.priceLabel',{price:price==null?'':price})}
 function drinkGroupName(item){return t(`drink.group.${item&&item.brand?item.brand:'other'}`)}
+function currentLanguageCode(){return currentLanguage}
 function drinkVariant(item){return t(`drink.${menuOptionId(item)}.variant`)}
 function pizzaName(item){const id=menuOptionId(item);const translated=id?t(`pizza.${id}.name`):'';return translated&&translated!==`pizza.${id}.name`?translated:(item&&item.name?item.name:id)}
 function setLanguage(lang,opts={}){
@@ -82,4 +83,4 @@ function setLanguage(lang,opts={}){
  document.title=t('meta.title');
 }
 setLanguage(currentLanguage);
-window.PJ_I18N={SUPPORTED_LANGUAGES,DEFAULT_LANGUAGE,LANGUAGE_STORAGE_KEY,I18N,LOGIC_LABEL_KEYS,readInitialLanguage,translationValue,interpolate,t,label,setLanguage,optionKey,doughName,doughDesc,sizeName,sizeDesc,crustName,crustDesc,crustSizeLabel,toppingName,toppingDesc,toppingCategory,toppingPriceLabel,sideName,sideDesc,sideCategory,sidePriceLabel,drinkName,drinkDesc,drinkCategory,drinkPriceLabel,drinkGroupName,drinkVariant,pizzaName};
+window.PJ_I18N={SUPPORTED_LANGUAGES,DEFAULT_LANGUAGE,LANGUAGE_STORAGE_KEY,I18N,LOGIC_LABEL_KEYS,readInitialLanguage,translationValue,interpolate,t,label,setLanguage,optionKey,doughName,doughDesc,sizeName,sizeDesc,crustName,crustDesc,crustSizeLabel,toppingName,toppingDesc,toppingCategory,toppingPriceLabel,sideName,sideDesc,sideCategory,sidePriceLabel,drinkName,drinkDesc,drinkCategory,drinkPriceLabel,drinkGroupName,drinkVariant,pizzaName,currentLanguage:currentLanguageCode};
