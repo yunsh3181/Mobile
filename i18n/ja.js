@@ -1,6 +1,6 @@
 window.PJ_I18N_LOCALES=window.PJ_I18N_LOCALES||{};
 window.PJ_I18N_LOCALES.ja={
-    meta:{htmlLang:'ja',title:'パパジョンズ モバイルキオスク v43.9.3'},
+    meta:{htmlLang:'ja',title:'パパジョンズ モバイルキオスク V5'},
     labels:{orderType:{takeout:'お持ち帰り',dinein:'店内飲食'},promo:{normal:'通常注文',takeout:'お持ち帰り20%',happy:'HAPPY HOUR',upup:'UP & UP',set:'セットメニュー'},dough:{original:'オリジナル',thin:'シンクラスト',croissant:'クロワッサン'},crust:{original:'オリジナル',cheeseRoll:'チーズロール',goldRing:'ゴールドリング',thin:'シンクラスト',croissant:'クロワッサン'},size:{R:'レギュラーサイズ',L:'ラージサイズ',F:'ファミリーサイズ'},payment:{cash:'現金',card:'クレジットカード',meal_ticket:'食券デジャン',bizle:'Bizle食券'}},
     home:{location:'パパジョンズ 板橋第2テクノバレー店',headlinePrefix:'今日も',headlineAccent:'焼きたて',headlineSuffix:'ピザをお楽しみください！',tagline:'Better Ingredients. Better Pizza.',dineInTitle:'店内飲食',dineInFeatureMeal:'ゆったり店内でお食事',dineInFeatureSeats:'さまざまな座席',dineInFeatureSet:'セットメニュー注文',takeoutTitle:'お持ち帰り',takeoutFeatureFast:'早くて簡単なお持ち帰り',takeoutFeatureReady:'すぐにお持ち帰り可能',takeoutFeatureBenefit:'割引特典',happyHourDeal:'Rサイズピザ 15,000ウォン',takeoutDeal:'L/F お持ち帰り20%割引',takeoutDealDesc:'お持ち帰り割引で今すぐ注文',beerTitle:'ピザとビールもOK！',beerHeineken:'Heineken 生ビール 8,000ウォン',beerBudweiser:'Budweiser 瓶ビール 5,000ウォン'},
     orderType:{title:'ご利用方法を選択してください'},

@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>파파존스 모바일 키오스크 v43.9.3</title>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>파파존스 모바일 키오스크 kiosk V5</title>
 <style>
 :root{--g:#006b3c;--r:#d71920;--bg:#f3f5f2;--line:#e2e6e2;--ink:#20241f}*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans KR",sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}.app{min-height:100vh;padding-bottom:84px}.head{height:86px;background:var(--g);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:20}.brand{display:flex;gap:14px;align-items:center;min-width:0;overflow:visible;padding:4px 0}.brandLogo{display:block;width:76px;height:62px;max-width:76px;max-height:62px;object-fit:contain;object-position:center;flex:0 0 auto}.brandName{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.heroLogo{display:block;width:94px;height:78px;object-fit:contain;object-position:center;margin:0 auto 18px}.progress{position:sticky;top:86px;z-index:18;background:#fff;border-bottom:1px solid var(--line);padding:10px 18px;display:flex;overflow:auto;gap:8px}.progress span{white-space:nowrap;padding:7px 10px;border-radius:999px;background:#e9ece9;font-size:12px;font-weight:800}.progress .on{background:var(--r);color:#fff}.progress .done{background:var(--g);color:#fff}.stage{padding:24px;max-width:1200px;margin:auto}.title{font-size:36px;margin:0 0 8px}.sub{color:#6f766f;margin:0 0 22px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid.two{grid-template-columns:1fr 1fr}.grid.four{grid-template-columns:repeat(4,1fr)}.card{position:relative;background:#fff;border:2px solid transparent;border-radius:20px;padding:20px;text-align:left;box-shadow:0 6px 16px #1231;cursor:pointer}.card:hover,.card.active{border-color:var(--r)}.card:disabled{opacity:.35;cursor:not-allowed}.badge{position:absolute;right:10px;top:10px;background:var(--r);color:#fff;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:900}.pic{height:130px;border-radius:16px;background:radial-gradient(circle,#f4c26e 0 35%,#c83329 36% 42%,#f5d68b 43% 60%,transparent 61%),linear-gradient(135deg,#eee,#fff);display:grid;place-items:center;font-size:44px;margin-bottom:12px}.imagePic{background:#fff!important;overflow:hidden}.imagePic img{width:100%;height:100%;object-fit:cover}.crustGrid{grid-template-columns:repeat(4,1fr)}.crustCard{display:flex;flex-direction:column;min-height:390px}.crustPic{height:210px;background:#fff;border-radius:16px;overflow:hidden;margin:8px 0 14px}.crustPic img{width:100%;height:100%;object-fit:contain}.sizeTag{display:inline-block;background:var(--r);color:#fff;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:900;margin-left:6px}.price{color:var(--r);font-size:22px;font-weight:900}.muted{color:#747b74;font-size:13px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 13px}.tabs .active{background:var(--g);color:#fff}.qty{display:flex;align-items:center;justify-content:space-between;margin-top:12px}.qty button{width:38px;height:38px;border:1px solid var(--line);background:#fff;border-radius:10px}.summary{background:#fff;border-radius:20px;padding:20px}.row{display:flex;justify-content:space-between;gap:20px;padding:9px 0;border-bottom:1px dashed var(--line)}.grand{font-size:25px;font-weight:900;border-top:2px solid #222;margin-top:10px}.discount{color:var(--r);font-weight:900}.cartbar{position:fixed;left:0;right:0;bottom:0;z-index:40;height:72px;background:#17231d;color:#fff;display:flex;align-items:center;gap:10px;padding:8px 16px;box-shadow:0 -4px 18px #0003}.cartmain{flex:1;min-width:0}.carttitle{font-weight:900}.cartdetail{font-size:12px;color:#d2dad4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cartprice{font-size:20px;font-weight:900;white-space:nowrap}.cartbar button{border:0;border-radius:11px;padding:11px 13px;font-weight:900}.prev{background:#e4e8e4}.next{background:var(--r);color:#fff;transition:opacity .15s,background .15s}.next:disabled{background:#aeb4af!important;color:#eef0ee!important;opacity:.55;cursor:not-allowed;box-shadow:none}.hero{position:relative;min-height:100vh;background:linear-gradient(135deg,#075f39,#183e2e);display:grid;place-items:center;padding-top:110px}.heroBox{background:#fff;padding:36px;border-radius:28px;text-align:center;width:min(850px,90%)}.hero h1{font-size:50px}.start{background:var(--r);color:#fff;border:0;border-radius:18px;padding:20px 70px;font-size:26px;font-weight:900}.backdrop{position:fixed;inset:0;background:#0008;z-index:60;display:grid;place-items:center;padding:18px}.modal{background:#fff;border-radius:22px;padding:24px;width:min(560px,100%);max-height:88vh;overflow:auto}.modalBtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.modalBtns button{border:0;border-radius:13px;padding:15px;font-weight:900}.halfPreview{display:grid;grid-template-columns:1fr 1fr;gap:12px}.preview{border:2px solid var(--g);border-radius:16px;padding:12px;text-align:center}.field{margin:16px 0}.field label{display:block;font-weight:900;margin-bottom:8px}.field input,.field select{width:100%;padding:15px;border:1px solid #bbb;border-radius:12px;font-size:19px}.notice{background:#fff5d9;border:1px solid #e5cf87;border-radius:13px;padding:13px;margin:14px 0}.done{text-align:center;padding:70px 20px}.wheelWrap{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;max-width:520px;margin:20px auto}.wheelCol{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px}.wheelCol label{display:block;font-weight:900;text-align:center;margin-bottom:8px}.wheelCol select{width:100%;height:210px;border:0;font-size:25px;text-align:center;background:#fff}.wheelSep{font-size:32px;font-weight:900}.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:420px;margin:18px auto}.keypad button{padding:18px;border:1px solid var(--line);background:#fff;border-radius:14px;font-size:24px;font-weight:900}.phoneDisplay{font-size:30px;letter-spacing:2px;text-align:center;background:#f7f8f7;border:2px solid var(--line);border-radius:16px;padding:18px}.disabledReason{font-size:12px;color:var(--r);font-weight:800;margin-top:8px}.done .num{font-size:58px;color:var(--r);font-weight:900}.doneOrderLabel{margin:10px 0 2px;color:#6d746d;font-weight:800}.paymentRequiredBox{max-width:720px;margin:28px auto 18px;padding:28px 24px;border:3px solid var(--r);border-radius:24px;background:#fff3f3;box-shadow:0 12px 30px rgba(215,25,32,.13)}.paymentRequiredBox strong{display:block;color:var(--r);font-size:34px;line-height:1.25;margin-bottom:12px}.paymentRequiredBox span{display:block;color:#252925;font-size:26px;line-height:1.35;font-weight:1000}.doneGuide,.doneReserve{font-size:18px;font-weight:800;color:#525a52}.doneHomeBtn{margin-top:24px;min-width:260px;border:0;border-radius:18px;padding:18px 28px;background:var(--g);color:#fff;font-size:22px;font-weight:1000}.doneHomeBtn:active{transform:none}@media(max-width:560px){.paymentRequiredBox{padding:22px 16px}.paymentRequiredBox strong{font-size:27px}.paymentRequiredBox span{font-size:21px}.doneHomeBtn{width:100%;min-width:0}}@media(max-width:800px){.grid,.grid.four,.crustGrid{grid-template-columns:repeat(2,1fr)}.title{font-size:28px}}@media(max-width:560px){.head{height:70px;padding:0 12px}.brandLogo{display:block;width:76px;height:62px;max-width:76px;max-height:62px;object-fit:contain;object-position:center;flex:0 0 auto}.brandName{display:none}.heroLogo{display:block;width:94px;height:78px;object-fit:contain;object-position:center;margin:0 auto 18px}.progress{top:70px}.grid,.grid.two,.grid.four,.halfPreview{grid-template-columns:1fr}.stage{padding:16px}.hero h1{font-size:34px}.start{width:100%;padding:18px}.cartdetail{display:none}.cartbar{padding:7px 9px}.cartbar button{padding:10px 9px}}
 
@@ -2193,13 +2193,18 @@ function progress(){
   {label:'혜택',steps:['promo','setChoice']},
   {label:'피자',steps:['size','mode','pizzaOptions','pizza','crust','topping']},
   {label:'사이드',steps:['side']},
-  {label:'음료',steps:['drink']},
+  {label:'음료·곁들이',steps:['drink','accompaniment']},
   {label:'장바구니·결제',steps:['cartReview','review','phone','payment']}
  ];
  let i=Math.max(0,groups.findIndex(g=>g.steps.includes(state.step)));
  return `<div class="progress">${groups.map((g,n)=>`<span class="${n<i?'done':n===i?'on':''}">${n<i?uiIcon('check','iconTiny'):''}${g.label}</span>`).join('')}</div>`
 }
 function shell(c){return `<div class="head"><div class="brand"><img class="brandLogo" src="assets/images/papajohns_red_logo.png" alt="Papa Johns"><b class="brandName">${SETTINGS.STORE_NAME}</b></div><button class="langTopBtn" onclick="openLanguageSelect()">🌐 ${currentLanguageLabel()}</button></div>${progress()}<div class="stage">${c}</div>`}
+function toppingVisual(name){
+ const n=String(name||'');
+ const icon=n.includes('치즈')?'🧀':n.includes('페퍼로니')?'🍕':n.includes('베이컨')||n.includes('햄')?'🥓':n.includes('버섯')?'🍄':n.includes('올리브')?'🫒':n.includes('양파')?'🧅':n.includes('피망')||n.includes('할라페뇨')?'🫑':n.includes('토마토')?'🍅':n.includes('옥수수')?'🌽':n.includes('파인애플')?'🍍':n.includes('감자')?'🥔':n.includes('닭')||n.includes('치킨')?'🍗':'🥩';
+ return `<div class="v4ToppingVisual" aria-hidden="true">${icon}</div>`
+}
 let lastRenderedStep=null;
 function applyAdaptiveCardSizing(){
  document.querySelectorAll('.grid,.areaGrid,.tableGrid,.darkBenefitGrid,.darkSetGrid,.optionGrid,.menuGrid').forEach(grid=>{
@@ -2232,12 +2237,14 @@ function render(){
 function view(){
  if(state.step==='language')return languageView();
  if(state.step==='home')return `<section class="darkHero">
-  <button class="heroLangBtn" onclick="openLanguageSelect()">🌐 ${currentLanguageLabel()}</button>
   <div class="heroTop">
     <div>
       <div class="heroLocation">${t('home.location')}</div>
     </div>
-    <img class="heroLogoDark" src="assets/images/papajohns_red_logo.png" alt="Papa Johns">
+    <div class="heroBrandActions">
+      <button class="heroLangBtn" onclick="openLanguageSelect()">🌐 ${currentLanguageLabel()}</button>
+      <img class="heroLogoDark" src="assets/images/papajohns_red_logo.png" alt="Papa Johns">
+    </div>
   </div>
 
   <div class="heroHeadline">${t('home.headlinePrefix')}<span class="accent">${t('home.headlineAccent')}</span>${t('home.headlineSuffix')}</div>
@@ -2275,7 +2282,7 @@ function view(){
 </section>`;
  if(state.step==='type')return shell(`<h1 class="title">${t('orderType.title')}</h1><div class="grid two"><button class="card" onclick="startTakeout()"><h2>${uiIcon("bag")} ${label('orderType','takeout')}</h2></button><button class="card" onclick="startDineIn()"><h2>${uiIcon("dine")} ${label('orderType','dinein')}</h2></button></div>`);
 
- if(state.step==='timing')return shell(`<h1 class="title">${t('pickup.title')}</h1><p class="sub">${t('pickup.subtitle')}</p><div class="grid two"><button class="card" onclick="chooseTakeoutTiming('now')"><h2>${uiIcon("clock")} ${t('pickup.now')}</h2><p>${t('pickup.nowDesc')}</p></button><button class="card" ${hasReserveSlots()?'':'disabled'} onclick="chooseTakeoutTiming('reserve')"><h2>${uiIcon("calendar")} ${t('pickup.reserve')}</h2><p>${hasReserveSlots()?t('pickup.reserveDesc'):t('pickup.closed')}</p></button></div>`);
+ if(state.step==='timing')return shell(`<h1 class="title">${t('pickup.title')}</h1><p class="sub">${t('pickup.subtitle')}</p><div class="grid two timingChoiceGrid"><button class="card" onclick="chooseTakeoutTiming('now')"><h2>${uiIcon("clock")} ${t('pickup.now')}</h2><p>${t('pickup.nowDesc')}</p></button><button class="card" ${hasReserveSlots()?'':'disabled'} onclick="chooseTakeoutTiming('reserve')"><h2>${uiIcon("calendar")} ${t('pickup.reserve')}</h2><p>${hasReserveSlots()?t('pickup.reserveDesc'):t('pickup.closed')}</p></button></div>`);
  if(state.step==='reserve'){const wheel=reserveWheelData();return shell(`<h1 class="title">${t('pickup.reserveTitle')}</h1><p class="sub">${t('pickup.reserveGuide')}</p>${wheel.hours.length?`<div class="summary reservePickerWheel"><div class="row"><b>${t('pickup.hour')}</b><div class="optionButtons reserveWheel">${wheel.hours.map(h=>`<button class="optionBtn ${state.reserveHour===h?'active':''}" onclick="setReserveHour('${h}')">${h}${t('pickup.hourUnit')}</button>`).join('')}</div></div><div class="row"><b>${t('pickup.minute')}</b><div class="optionButtons reserveWheel">${wheel.minutes.map(m=>`<button class="optionBtn ${state.reserveMinute===m?'active':''}" onclick="setReserveMinute('${m}')">${m}${t('pickup.minuteUnit')}</button>`).join('')}</div></div><div class="notice">${t('pickup.selectedTime')}: <b>${state.reserveHour||'--'}:${state.reserveMinute||'--'}</b></div><button class="next" style="width:100%;padding:18px;border:0;border-radius:14px;font-weight:900" ${validReserveSelection()?'':'disabled'} onclick="confirmReserve()">${t('pickup.confirm')}</button></div>`:`<div class="summary"><h2>${t('pickup.noAvailableTime')}</h2><p>${t('pickup.chooseNow')}</p><button class="next" style="width:100%;padding:18px;border:0;border-radius:14px;font-weight:900" onclick="state.step='timing';render()">${t('pickup.changeTime')}</button></div>`}`)};
 
  if(state.step==='party'){const areas=getDiningAreas();const roomOk=state.partySize>=6;const outdoorOnly=state.partySize>=13;return shell(`<h1 class="title">${t('party.title')}</h1><p class="sub">${t('party.guide')}</p>
@@ -2321,7 +2328,7 @@ function view(){
  {n:2,key:'two',price:24000,photos:['assets/images/menu_image_017.png','assets/images/menu_image_007.png','assets/images/menu_image_001.png'],itemKeys:['pizza','pasta','cola'],recommend:true},
  {n:3,key:'three',price:33000,photos:['assets/images/menu_image_017.png','assets/images/menu_image_005.jpg','assets/images/menu_image_029.png'],itemKeys:['pizza','sideOne','cola']},
  {n:4,key:'four',price:42000,photos:['assets/images/menu_image_017.png','assets/images/menu_image_005.jpg','assets/images/menu_image_007.png','assets/images/menu_image_029.png'],itemKeys:['pizza','chicken','pasta','cola'],best:true}
- ];return shell(`<div class="darkSetPage"><h1 class="darkSetTitle">${t('benefit.setChoice.title')}</h1><div class="darkSetSub">${t('benefit.setChoice.subtitle')}</div><div class="darkSetGrid">${sets.map(s=>`<button class="darkSetCard ${s.best?'best':''} ${s.recommend?'recommend':''}" onclick="chooseSet(${s.n})"><span class="darkSetBadge">${t(`benefit.setChoice.card.${s.key}.badge`)}</span>${s.best?`<div class="bestRibbon">${t('benefit.best')}</div>`:''}<div class="darkSetContents">${s.photos.map((ph,i)=>{const label=t(`benefit.setChoice.item.${s.itemKeys[i]}`);return `<div class="darkSetItem"><div class="darkSetPhoto"><img src="${assetImageUrl(ph)}" alt="${label}"></div><div class="darkSetItemLabel">${label}</div></div>`}).join('')}</div><h2>${t(`benefit.setChoice.card.${s.key}.title`)}</h2><div class="darkSetSize">${t(`benefit.setChoice.card.${s.key}.size`)}</div><div class="darkSetDesc">${t(`benefit.setChoice.card.${s.key}.desc`)}</div><div class="darkSetPrice">${money(s.price)}</div><span class="darkSetSelect">${t('benefit.setChoice.select')}</span></button>`).join('')}</div><div class="darkSetNote">${t('benefit.setChoice.note')}</div></div>`)};
+ ];return shell(`<div class="darkSetPage"><h1 class="darkSetTitle">${t('benefit.setChoice.title')}</h1><div class="darkSetSub">${t('benefit.setChoice.subtitle')}</div><div class="darkSetGrid">${sets.map(s=>`<button class="darkSetCard set-${s.n} ${s.best?'best':''} ${s.recommend?'recommend':''}" onclick="chooseSet(${s.n})"><span class="darkSetBadge">${t(`benefit.setChoice.card.${s.key}.badge`)}</span>${s.best?`<div class="bestRibbon">${t('benefit.best')}</div>`:''}<div class="darkSetContents items-${s.photos.length}">${s.photos.map((ph,i)=>{const label=t(`benefit.setChoice.item.${s.itemKeys[i]}`);return `<div class="darkSetItem setItem-${i+1}"><div class="darkSetPhoto"><img src="${assetImageUrl(ph)}" alt="${label}"></div><div class="darkSetItemLabel">${label}</div></div>`}).join('')}</div><h2>${t(`benefit.setChoice.card.${s.key}.title`)}</h2><div class="darkSetSize">${t(`benefit.setChoice.card.${s.key}.size`)}</div><div class="darkSetDesc">${t(`benefit.setChoice.card.${s.key}.desc`)}</div><div class="darkSetPrice">${money(s.price)}</div><span class="darkSetSelect">${t('benefit.setChoice.select')}</span></button>`).join('')}</div><div class="darkSetNote">${t('benefit.setChoice.note')}</div></div>`)};
 
  if(state.step==='pizzaOptions'){normalizeBannerOptions();return shell(`<div class="optionSetup"><h1 class="title">포장 피자 옵션 선택</h1><p class="sub">한판 구성과 사이즈·도우·크러스트를 한 화면에서 선택하세요.</p>
  <section class="optionSection"><h2>1. 피자 구성</h2><div class="optionButtons two"><button class="optionBtn ${state.mode==='single'?'active':''}" onclick="setBannerOption('mode','single')">한판</button><button class="optionBtn ${state.mode==='half'?'active':''}" onclick="setBannerOption('mode','half')">하프앤하프 · +${money(SETTINGS.HALF_EXTRA)}</button></div></section>
@@ -2330,15 +2337,16 @@ function view(){
  <section class="optionSection"><h2>4. 크러스트 타입</h2><div class="optionButtons">${availableCrusts(state.dough,state.size).map(v=>`<button class="optionBtn ${state.crust===v?'active':''}" onclick="setBannerOption('crust','${v}')">${v}${bannerOptionFee(v)>0?` · +${money(bannerOptionFee(v))}`:''}</button>`).join('')}</div></section>
  <button class="optionContinue" onclick="confirmBannerOptions()">피자 선택하기 →</button></div>`)};
  if(state.step==='size'){const guides={R:{name:'레귤러',inch:'9인치',people:'1~2인용'},L:{name:'라지',inch:'12인치',people:'2~3인용'},F:{name:'패밀리',inch:'14인치',people:'3~4인용'}};return shell(`<h1 class="title">사이즈 선택</h1><p class="sub">피자 지름과 권장 인원을 확인한 뒤 선택해 주세요.</p><div class="grid sizeGuideGrid">${(state.promo==='normal'?[null]:[]).map(()=>`<button class="card sizeGuideCard noPizzaCard" onclick="skipPizzaSelection()"><div class="sizeCode">—</div><h2>${t('pizza.noPizzaTitle')}</h2><strong>${t('pizza.noPizzaStrong')}</strong><p>${t('pizza.noPizzaDesc')}</p></button>`).join('')}${['R','L','F'].map(code=>{const g=guides[code];return `<button class="card sizeGuideCard" onclick="state.size='${code}';state.step='mode';render()"><div class="sizeCode">${code}</div><h2>${g.name}</h2><strong>${g.inch}</strong><p>${g.people}</p>${state.promo==='takeout'?`<div class="sizePromo">${code==='R'?'포장 할인 불가':'20% 할인'}</div>`:''}</button>`}).join('')}</div><div class="sizeGuideNote">※ 권장 인원은 식사량과 함께 주문하는 메뉴에 따라 달라질 수 있습니다.</div>`)};
- if(state.step==='mode'){const setMode=!!state.set;const halfDisabled=state.size==='R';if(setMode){const crusts=CRUSTS.filter(c=>c[state.size]!=null&&c.hidden!==true&&!['씬','크루아상'].includes(c.name));return shell(`<div class="setOptionCombined"><h1 class="title">${state.set}인 세트 피자 구성</h1><div class="setOptionSummary"><b>선택 요약</b><span>✓ ${state.mode==='half'?'하프앤하프':'한판'}</span><span>✓ ${state.crust||'오리지널'}</span></div><section class="optionSection"><h2>1. 한판 / 하프앤하프 선택</h2><div class="optionButtons two"><button class="optionBtn ${state.mode==='single'?'active':''}" onclick="setSetOption('mode','single')">한판</button><button class="optionBtn ${state.mode==='half'?'active':''}" ${halfDisabled?'disabled':''} onclick="setSetOption('mode','half')">하프앤하프 · +${money(SETTINGS.HALF_EXTRA)}</button></div>${halfDisabled?'<div class="disabledReason">레귤러 사이즈는 하프앤하프 선택 불가</div>':''}</section><section class="optionSection"><h2>2. 크러스트 선택</h2><div class="setCrustGrid">${crusts.map(c=>`<button class="setCrustCard ${state.crust===c.name?'active':''}" onclick="setSetOption('crust','${c.name}')">${state.crust===c.name?'<span class="crustCheck">✓</span>':''}<b>${c.name}</b><span class="crustDesc">${c.desc||'크러스트 설명'}</span><span class="crustPrice">${c[state.size]?'+ '+money(c[state.size]):'추가금 없음'}</span></button>`).join('')}</div></section><button class="optionContinue" onclick="confirmSetOptions()">피자 선택하기 →</button></div>`)}return shell(`<h1 class="title">피자 구성 선택</h1><p class="sub">한 판 또는 하프앤하프를 선택해 주세요.</p><div class="grid two"><button class="card" onclick="selectPizzaMode('single')"><h2>한 판</h2><p>한 가지 피자로 주문</p></button><button class="card" ${halfDisabled?'disabled':''} onclick="selectPizzaMode('half')"><h2>하프앤하프</h2><p>+1,000원</p>${halfDisabled?'<div class="disabledReason">레귤러 사이즈는 하프앤하프 선택 불가</div>':''}</button></div>`)};
+ if(state.step==='mode'){const setMode=!!state.set;const halfDisabled=state.size==='R';if(setMode){const crusts=CRUSTS.filter(c=>c[state.size]!=null&&c.hidden!==true&&!['씬','크루아상'].includes(c.name));return shell(`<div class="setOptionCombined"><h1 class="title">${state.set}인 세트 피자 구성</h1><div class="setOptionSummary"><b>선택 요약</b><span>✓ ${state.mode==='half'?'하프앤하프':'한판'}</span><span>✓ ${state.crust||'오리지널'}</span></div><section class="optionSection"><h2>1. 한판 / 하프앤하프 선택</h2><div class="optionButtons two modeOptionButtons"><button class="optionBtn ${state.mode==='single'?'active':''}" onclick="setSetOption('mode','single')">한판</button><button class="optionBtn ${state.mode==='half'?'active':''}" ${halfDisabled?'disabled':''} onclick="setSetOption('mode','half')">하프앤하프 · +${money(SETTINGS.HALF_EXTRA)}</button></div>${halfDisabled?'<div class="disabledReason">레귤러 사이즈는 하프앤하프 선택 불가</div>':''}</section><section class="optionSection"><h2>2. 크러스트 선택</h2><div class="setCrustGrid">${crusts.map(c=>`<button class="setCrustCard ${state.crust===c.name?'active':''}" onclick="setSetOption('crust','${c.name}')">${state.crust===c.name?'<span class="crustCheck">✓</span>':''}<b>${c.name}</b><span class="crustDesc">${c.desc||'크러스트 설명'}</span><span class="crustPrice">${c[state.size]?'+ '+money(c[state.size]):'추가금 없음'}</span></button>`).join('')}</div></section><button class="optionContinue" onclick="confirmSetOptions()">피자 선택하기 →</button></div>`)}return shell(`<h1 class="title">피자 구성 선택</h1><p class="sub">한 판 또는 하프앤하프를 선택해 주세요.</p><div class="grid two modeChoiceGrid"><button class="card modeChoiceCard" onclick="selectPizzaMode('single')"><h2>한판</h2><p>한 가지 피자로 주문</p></button><button class="card modeChoiceCard" ${halfDisabled?'disabled':''} onclick="selectPizzaMode('half')"><h2>하프앤하프</h2><p>+1,000원</p>${halfDisabled?'<div class="disabledReason">레귤러 사이즈는 하프앤하프 선택 불가</div>':''}</button></div>`)};
  if(state.step==='pizza'){if(state.set&&state.cat==='THIN')state.cat='ALL';let list=PIZZAS.filter(p=>(state.cat==='ALL'||p.cat===state.cat)&&p[state.size]!=null);if(state.mode==='half'){list=list.filter(p=>halfFirstEligible(p.id));if(state.left)list=list.filter(p=>halfAllowed(state.left,p.id));}if(state.set)list=list.filter(p=>p.cat!=='THIN');if(state.bannerTakeout&&state.dough!=='씬도우')list=list.filter(p=>p.cat!=='THIN');if(state.promo==='upup')list=list.filter(p=>p.id!=='P011');const quickSizes=state.bannerTakeout?`<div class="notice"><b>${state.mode==='half'?'하프앤하프':'한판'} · ${state.size} · ${state.dough} · ${state.crust}</b><br><button class="tabs" style="display:inline-block;margin:8px 0 0" onclick="state.step='pizzaOptions';state.left=null;state.right=null;render()">옵션 변경</button></div>`:'';return shell(`${state.mode==='half'&&state.left?`<div class="halfPreview"><div class="preview">${itemPic(po(state.left))}<b>${po(state.left).name}</b></div><div class="preview"><div class="pic">?</div><b>두 번째 피자 선택</b></div></div>`:''}${quickSizes}<h1 class="title">${state.mode==='half'?(state.left?'두 번째 피자 선택':'첫 번째 피자 선택'):'피자 선택'}</h1><div class="tabs">${(state.set?['ALL','BEST','SPECIALTY','CLASSIC']:['ALL','BEST','SPECIALTY','CLASSIC','THIN']).map(c=>`<button class="${state.cat===c?'active':''}" onclick="state.cat='${c}';render()">${c}</button>`).join('')}</div><div class="grid">${list.map(p=>{const blocked=false;const happy=state.promo==='happy';const normal=p[state.size];const happyDiscount=happy?Math.max(0,normal-15000):0;const priceHtml=happy?`<div class="muted" style="text-decoration:line-through;margin-top:6px">정상금액 ${money(normal)}</div><div class="discount" style="margin-top:5px">할인금액 −${money(happyDiscount)}</div><div class="price" style="margin-top:6px">할인 후 ${money(15000)}</div>`:(state.bannerTakeout?bannerPizzaPriceHtml(p):`<div class="price">${money(normal)}</div>`);return `<button class="card" ${blocked?'disabled':''} onclick="pickPizza('${p.id}')">${itemPic(p)}<h3>${p.name}</h3>${priceHtml}${blocked?`<div class="disabledReason">선택한 피자와 하프앤하프 불가</div>`:''}</button>`}).join('')}</div>`)};
  if(state.step==='crust'){let list=state.promo==='upup'?CRUSTS.filter(c=>['골드링','치즈롤','크루아상'].includes(c.name)):CRUSTS.filter(c=>c[state.size]!=null&&c.hidden!==true);if(state.set)list=list.filter(c=>!['씬','크루아상'].includes(c.name));return shell(`<h1 class="title">크러스트를 선택해 주세요</h1><p class="sub">이미지 없이 이름·설명·추가금만 간결하게 표시합니다.</p><div class="crustTextGrid">${list.map(c=>`<button class="crustTextCard ${state.crust===c.name?'active':''}" onclick="selectCrust('${c.name}')">${state.crust===c.name?'<span class="crustCheck">✓</span>':''}<h2>${c.name}${c.sizeLabel?` <span class="sizeTag">${c.sizeLabel}</span>`:''}</h2><p>${c.desc||'크러스트 설명'}</p><div class="price">${state.promo==='upup'?'무료':c[state.size]?'+ '+money(c[state.size]):'추가금 없음'}</div>${state.promo==='upup'&&c.name==='크루아상'?'<p class="disabledReason">UP&UP 선택 시 라지 사이즈로 제공</p>':''}</button>`).join('')}</div>`)};
- if(state.step==='topping'){if(!state.toppingChoice)return shell(`<h1 class="title">토핑을 추가하시겠어요?</h1><div class="grid two"><button class="card skipCard" onclick="skipTopping()"><h2>다음</h2><p>토핑 없이 사이드 선택으로 이동</p></button><button class="card" onclick="state.toppingChoice='add';render()"><h2>토핑 추가하기</h2><p>같은 종류 최대 2개, 총 5개까지</p></button></div>`);return shell(`<h1 class="title">토핑 선택</h1><div class="notice">같은 종류 최대 2개, 총 5개까지 선택 가능합니다. 현재 ${sum(state.toppings)}/5개</div><div class="grid"><button class="card skipCard" onclick="finishTopping()"><h2>다음</h2><p>선택한 토핑으로 계속하기</p></button>${TOPPINGS.map(t=>{let q=state.toppings[t.id]||0;return `<div class="card ${q?'active':''}" onclick="toppingQty('${t.id}',1)">${q?`<span class="badge">${q}개 선택</span>`:''}<h3>${t.name}</h3><div class="price">+${money(t.price[state.size])}</div><div class="qty"><button onclick="event.stopPropagation();toppingQty('${t.id}',-1)">−</button><b>${q}</b><button onclick="event.stopPropagation();toppingQty('${t.id}',1)">＋</button></div></div>`}).join('')}</div>`)};
- if(state.step==='side'){if(state.finalAddMode==='side')return shell(`<h1 class="title">추가 사이드 선택</h1><div class="finalAddBanner">아래 메뉴는 유료 추가 주문입니다.</div><div class="grid"><button class="card skipCard" onclick="skipSide()"><h2>${t('nav.next')}</h2><p>추가 없이 주문 확인으로 이동</p></button>${SIDES.map(x=>qcard(x,'extraSides')).join('')}</div>`);if(state.set){const need=state.set===4?2:1;const complete=sum(state.setSides)===need;return shell(`<h1 class="title">세트 포함 사이드 선택 ${complete?'<span class="setCompleteBadge">기본 선택 완료 ✓</span>':''}</h1><div class="notice">${need}개 선택 · 같은 메뉴 중복 가능 (${sum(state.setSides)}/${need})</div><div class="grid">${SIDES.filter(x=>state.set===2?x.set2:x.set).map(x=>setSideCard(x,need)).join('')}</div>${state.setSideExtraMode?`<div class="extraModeBanner">아래 메뉴는 세트 기본 구성이 아닌 유료 추가 주문입니다.</div><h2>추가 사이드 선택</h2><div class="grid"><button class="card skipCard" onclick="skipSideExtra()"><h2>${t('nav.next')}</h2><p>추가 없이 음료 선택으로 이동</p></button>${SIDES.filter(x=>!state.setSides[x.id]).map(x=>qcard(x,'extraSides')).join('')}</div>`:''}`)}return shell(`<h1 class="title">사이드 선택</h1><div class="smartRecommend">${uiIcon("spark")} 피자와 함께 치킨스트립·치즈스틱을 많이 선택합니다.</div><div class="grid"><button class="card skipCard" onclick="skipSide()"><h2>${t('nav.next')}</h2><p>사이드 없이 음료 선택으로 이동</p></button>${SIDES.map(x=>qcard(x,'extraSides')).join('')}</div>`)};
- if(state.step==='drink'){if(state.finalAddMode==='drink')return shell(`<h1 class="title">추가 음료 선택</h1><div class="finalAddBanner">아래 음료와 소스는 유료 추가 주문입니다.</div><div class="grid four"><button class="card skipCard" onclick="skipDrink()"><h2>${t('nav.next')}</h2><p>추가 없이 주문 확인으로 이동</p></button>${drinkGroups().map(g=>drinkGroupCard(g)).join('')}</div>${standaloneDrinkCards()}<h2 style="margin-top:28px">소스·피클 추가</h2><div class="grid four">${SAUCES.map(x=>qcard(x,'extraDrinks')).join('')}</div>`);if(state.set){let provided=state.set===2?DRINKS.filter(x=>x.small):DRINKS.filter(x=>x.large);return shell(`<h1 class="title">세트 포함 음료 선택 ${state.setDrink?'<span class="setCompleteBadge">기본 선택 완료 ✓</span>':''}</h1><div class="grid four">${provided.map(x=>setDrinkCard(x)).join('')}</div>${state.setDrinkExtraMode?`<div class="extraModeBanner">아래 음료와 소스는 세트 기본 구성이 아닌 유료 추가 주문입니다.</div><h2>추가 음료 구매</h2><p class="sub">음료 종류와 용량을 선택해 주세요.</p><div class="grid four"><button class="card skipCard" onclick="skipDrinkExtra()"><h2>${t('nav.next')}</h2><p>추가 없이 주문 확인으로 이동</p></button>${drinkGroups().map(g=>drinkGroupCard(g)).join('')}</div>${standaloneDrinkCards()}<h2 style="margin-top:28px">소스·피클 추가</h2><div class="grid four">${SAUCES.map(x=>qcard(x,'extraDrinks')).join('')}</div>`:''}`)}return shell(`<h1 class="title">음료 선택</h1><div class="smartRecommend">${uiIcon("spark")} 달지 않은 음료를 원하시면 제로콜라·스프라이트 제로를 추천합니다.</div><p class="sub">음료 종류를 고른 뒤 카드 안에서 용량과 수량을 선택해 주세요.</p><div class="grid four"><button class="card skipCard" onclick="skipDrink()"><h2>${t('nav.next')}</h2><p>음료 없이 주문 확인으로 이동</p></button>${drinkGroups().map(g=>drinkGroupCard(g)).join('')}</div>${standaloneDrinkCards()}`)};
+ if(state.step==='topping'){if(!state.toppingChoice)return shell(`<h1 class="title">토핑을 추가하시겠어요?</h1><div class="grid two toppingDecisionGrid"><button class="card skipCard toppingDecisionCard" onclick="skipTopping()"><h2>다음</h2><p>토핑 없이 사이드로</p></button><button class="card toppingDecisionCard toppingAddCard" onclick="state.toppingChoice='add';render()"><h2>토핑추가</h2><p>원하는 토핑 선택 · 최대 5개</p></button></div>`);return shell(`<h1 class="title">토핑 선택</h1><div class="notice">같은 종류 최대 2개, 총 5개까지 선택 가능합니다. 현재 ${sum(state.toppings)}/5개</div><div class="grid"><button class="card skipCard" onclick="finishTopping()"><h2>다음</h2><p>선택한 토핑으로 계속하기</p></button>${TOPPINGS.map(t=>{let q=state.toppings[t.id]||0;return `<div class="card v4ToppingCard ${q?'active':''}" onclick="toppingQty('${t.id}',1)">${q?`<span class="badge">${q}개 선택</span>`:''}${toppingVisual(t.name)}<h3>${t.name}</h3><div class="price">+${money(t.price[state.size])}</div><div class="qty"><button onclick="event.stopPropagation();toppingQty('${t.id}',-1)">−</button><b>${q}</b><button onclick="event.stopPropagation();toppingQty('${t.id}',1)">＋</button></div></div>`}).join('')}</div>`)};
+ if(state.step==='side'){if(state.finalAddMode==='side')return shell(`<h1 class="title">추가 사이드 선택</h1><div class="finalAddBanner">아래 메뉴는 유료 추가 주문입니다.</div><div class="grid"><button class="card skipCard" onclick="skipSide()"><h2>${t('nav.next')}</h2><p>추가 없이 주문 확인으로 이동</p></button>${SIDES.map(x=>qcard(x,'extraSides')).join('')}</div>`);if(state.set){const need=state.set===4?2:1;const complete=sum(state.setSides)===need;if(state.setSideExtraMode)return shell(`<h1 class="title">추가 사이드 선택</h1><div class="extraModeBanner">기본 사이드 ${sum(state.setSides)}개 선택 완료 · 아래는 유료 추가 메뉴입니다.</div><div class="grid"><button class="card skipCard" onclick="skipSideExtra()"><h2>${t('nav.next')}</h2><p>선택을 마치고 음료로</p></button>${SIDES.filter(x=>!state.setSides[x.id]).map(x=>qcard(x,'extraSides')).join('')}</div>`);return shell(`<h1 class="title">세트 포함 사이드 선택 ${complete?'<span class="setCompleteBadge">기본 선택 완료 ✓</span>':''}</h1><div class="notice">${need}개 선택 · 같은 메뉴 중복 가능 (${sum(state.setSides)}/${need})</div><div class="grid">${SIDES.filter(x=>state.set===2?x.set2:x.set).map(x=>setSideCard(x,need)).join('')}</div>${complete?`<button class="next setSideContinue" onclick="continueSetSide()">${t('nav.next')}</button>`:''}`)}return shell(`<h1 class="title">사이드 선택</h1><div class="smartRecommend">${uiIcon("spark")} 피자와 함께 치킨스트립·치즈스틱을 많이 선택합니다.</div><div class="grid"><button class="card skipCard" onclick="skipSide()"><h2>${t('nav.next')}</h2><p>사이드 없이 음료 선택으로 이동</p></button>${SIDES.map(x=>qcard(x,'extraSides')).join('')}</div>`)};
+ if(state.step==='drink'){if(state.finalAddMode==='drink')return shell(`<h1 class="title">추가 음료 선택</h1><div class="finalAddBanner">아래 음료는 유료 추가 주문입니다.</div><div class="grid four drinkTextGrid v3DrinkGrid"><button class="card skipCard" onclick="skipDrink()"><h2>${t('nav.next')}</h2><p>선택을 마치고 다음으로</p></button>${drinkGroups().map(g=>drinkGroupCard(g)).join('')}</div>${standaloneDrinkCards()}`);if(state.set){let provided=state.set===2?DRINKS.filter(x=>x.small):DRINKS.filter(x=>x.large);return shell(`<h1 class="title">세트 포함 음료 선택 ${state.setDrink?'<span class="setCompleteBadge">기본 선택 완료 ✓</span>':''}</h1><div class="grid four drinkTextGrid">${provided.map(x=>setDrinkCard(x)).join('')}</div>${state.setDrinkExtraMode?`<div class="extraModeBanner">아래 음료는 세트 기본 구성이 아닌 유료 추가 주문입니다.</div><h2>추가 음료 구매</h2><p class="sub">음료 종류와 용량을 선택해 주세요.</p><div class="grid four drinkTextGrid v3DrinkGrid"><button class="card skipCard" onclick="skipDrinkExtra()"><h2>${t('nav.next')}</h2><p>선택을 마치고 다음으로</p></button>${drinkGroups().map(g=>drinkGroupCard(g)).join('')}</div>${standaloneDrinkCards()}`:''}`)}return shell(`<h1 class="title">음료 선택</h1><div class="smartRecommend">${uiIcon("spark")} 달지 않은 음료를 원하시면 제로콜라·스프라이트 제로를 추천합니다.</div><p class="sub">음료명과 용량·가격을 확인한 뒤 수량을 선택해 주세요.</p><div class="grid four drinkTextGrid v3DrinkGrid"><button class="card skipCard" onclick="skipDrink()"><h2>${t('nav.next')}</h2><p>선택을 마치고 다음으로</p></button>${drinkGroups().map(g=>drinkGroupCard(g)).join('')}</div>${standaloneDrinkCards()}`)};
+ if(state.step==='accompaniment')return shell(`<h1 class="title">곁들이 추가</h1><div class="smartRecommend">${uiIcon("spark")} 포장 주문에 필요한 피클과 소스를 추가해 보세요.</div><p class="sub">선택하지 않아도 다음 단계로 진행할 수 있습니다.</p><div class="grid four accompanimentGrid"><button class="card skipCard" onclick="finishAccompaniment()"><h2>${t('nav.next')}</h2><p>선택을 마치고 주문 확인으로</p></button>${SAUCES.map(x=>textQtyCard(x,'extraDrinks')).join('')}</div>`);
  if(state.step==='cartReview')return shell(`<div class="cartPage"><h1 class="title">${t('cart.title')}</h1><p class="sub">${t('cart.subtitle')}</p>${state.cartItems.length?state.cartItems.map((x,i)=>cartItemHtml(x,i)).join(''):`<div class="cartEmpty"><h2>${t('cart.empty')}</h2></div>`}<div class="multiCartTotal"><span>${t('cart.totalPayment')}</span><strong>${money(cartTotal())}</strong></div><div class="multiCartButtons"><button class="addSetBtn" onclick="addAnotherSet()">${t('cart.addSet')}</button><button class="addSingleBtn" onclick="addAnotherSingle()">${t('cart.addSingle')}</button><button class="orderNowBtn" ${state.cartItems.length?'':'disabled'} onclick="checkoutCart()">${t('cart.orderNow')}</button></div></div>`);
  if(state.step==='review')return shell(`<h1 class="title">${t('review.title')}</h1><p class="sub">${t('review.subtitle')}</p>${reviewOrdersHTML()}${reviewTotalsHTML()}<button type="button" class="reviewConfirmBtn" onclick="confirmReviewOrder(event)">${t('review.confirmOrder')}</button><div class="reviewConfirmNote">${t('review.confirmNote')}</div>`);
- if(state.step==='phone')return shell(`<div class="phoneStep"><h1 class="title stepTitleIcon">${uiIcon("phone")} ${t('phone.title')}</h1><p class="sub">${t('phone.subtitle')}</p><div class="summary"><div id="phoneDisplay" class="phoneDisplay">${formatPhone(state.phone)}</div><div class="keypad">${[1,2,3,4,5,6,7,8,9].map(n=>`<button onclick="pressPhone('${n}')">${n}</button>`).join('')}<button onclick="clearPhone()">${t('phone.clear')}</button><button onclick="pressPhone('0')">0</button><button onclick="backPhone()">⌫</button></div><div id="phoneNotice" class="notice">${phoneNoticeHTML()}</div><button id="phoneNext" class="next" style="width:100%;padding:18px;border:0;border-radius:14px;font-weight:900" ${validPhone()?'':'disabled'} onclick="goPayment()">${t('phone.next')}</button></div></div>`);
+ if(state.step==='phone')return shell(`<div class="phoneStep"><h1 class="title stepTitleIcon">${uiIcon("phone")} ${t('phone.title')}</h1><p class="sub">${t('phone.subtitle')}</p><div class="summary"><div id="phoneDisplay" class="phoneDisplay ${validPhone()?'isComplete':'isIncomplete'}">${formatPhone(state.phone)}</div><div class="keypad">${[1,2,3,4,5,6,7,8,9].map(n=>`<button onclick="pressPhone('${n}')">${n}</button>`).join('')}<button onclick="clearPhone()">${t('phone.clear')}</button><button onclick="pressPhone('0')">0</button><button onclick="backPhone()">⌫</button></div><div id="phoneNotice" class="notice ${validPhone()?'isComplete':'isIncomplete'}">${phoneNoticeHTML()}</div><button id="phoneNext" class="next" style="width:100%;padding:18px;border:0;border-radius:14px;font-weight:900" ${validPhone()?'':'disabled'} onclick="goPayment()">${t('phone.next')}</button></div></div>`);
  if(state.step==='payment'){const total=currentOrderTotal()+cartTotal();return shell(`<h1 class="title">결제수단을 선택해 주세요</h1><p class="sub">카운터에서 선택한 방식으로 결제합니다.</p><div class="summary"><div class="row grand"><span>결제금액</span><strong>${money(total)}</strong></div><div class="paymentGrid">${[['cash','현금'],['card','신용카드'],['meal_ticket','식권대장'],['bizle','비즐식권']].map(x=>`<button class="paymentCard ${state.paymentMethod===x[0]?'active':''}" onclick="selectPayment('${x[0]}')">${x[1]}</button>`).join('')}</div>${isSplitPayment()?splitPaymentHTML(total):''}<button type="button" id="paymentSubmitBtn" data-action="submit-order" class="next paymentSubmitBtn" style="width:100%;padding:18px;border:0;border-radius:14px;font-weight:900" ${validPayment()?'':'disabled'}>주문 접수</button><div id="submitError" class="submitError"></div></div>`)};
  if(state.step==='done')return shell(`<div class="done"><div class="iconBox" style="margin:0 auto 18px">${uiIcon("check")}</div><h1>${t('done.title')}</h1><p class="doneOrderLabel">${t('done.orderLabel')}</p><div class="num">${state.orderNo}</div><div class="paymentRequiredBox"><strong>${t('done.paymentRequired',{payment:paymentName(state.paymentMethod)})}</strong><span>${t('done.paymentGuide')}</span></div>${state.orderTiming==='reserve'?`<p class="doneReserve">${t('done.reserveTime',{time:state.reserveTime})}</p>`:''}<p class="doneGuide">${t('done.guide')}</p><button class="doneHomeBtn" onclick="reset();render()">${t('done.home')}</button></div>`)
 }
@@ -2607,12 +2615,16 @@ function skipTopping(){state.toppingChoice='skip';state.toppings={};state.step='
 function finishTopping(){state.step='side';render()}
 function continueAfterSide(){if(needsDisposables()&&state.disposables===null){state.modal='disposables';render();return}state.step='drink';render()}
 function skipSide(){if(state.finalAddMode==='side'){state.finalAddMode=null;state.step='review';render();return}continueAfterSide()}
-function skipSideExtra(){state.setSideExtraMode=false;state.step='drink';render()}
+function continueSetSide(){if(!setSideBaseComplete())return;if(!state.setSidePrompted){maybePromptSetSideExtra();return}continueAfterSide()}
+function skipSideExtra(){state.setSideExtraMode=false;continueAfterSide()}
 function continueAfterDrink(){if(state.set){addCurrentOrderToCart();return}if(maybePromptBetterBenefit())return;openFinalUpsell()}
-function skipDrink(){if(state.finalAddMode==='drink'){state.finalAddMode=null;state.step='review';render();return}continueAfterDrink()}
-function skipDrinkExtra(){state.setDrinkExtraMode=false;continueAfterDrink()}
-function qcard(x,key){let q=state[key][x.id]||0;return `<div class="card ${q?'active':''}" onclick="qty('${key}','${x.id}',1,9,99)">${q?`<span class="badge">${q}개</span>`:''}${itemPic(x,'🍽️')}<h3>${optionDisplayName(x,key==='extraDrinks'?[...DRINKS,...SAUCES]:SIDES)}</h3><div class="price">${money(x.price)}</div><div class="qty"><button onclick="event.stopPropagation();qty('${key}','${x.id}',-1,9,99)">−</button><b>${q}</b><button onclick="event.stopPropagation();qty('${key}','${x.id}',1,9,99)">＋</button></div></div>`}
-function setSideCard(x,need){let q=state.setSides[x.id]||0;return `<div class="card ${q?'active':''}" onclick="qty('setSides','${x.id}',1,2,${need})">${q?`<span class="badge">${q}개</span>`:''}${itemPic(x,'🍽️')}<h3>${sideName(x)}</h3><div class="price">세트 포함</div><div class="qty"><button onclick="event.stopPropagation();qty('setSides','${x.id}',-1,2,${need})">−</button><b>${q}</b><button ${sum(state.setSides)>=need?'disabled':''} onclick="event.stopPropagation();qty('setSides','${x.id}',1,2,${need})">＋</button></div></div>`}
+function routeAfterDrink(){if(state.orderType==='takeout'){state.step='accompaniment';render();return}if(state.finalAddMode==='drink'){state.finalAddMode=null;state.step='review';render();return}continueAfterDrink()}
+function skipDrink(){routeAfterDrink()}
+function skipDrinkExtra(){state.setDrinkExtraMode=false;routeAfterDrink()}
+function finishAccompaniment(){if(state.finalAddMode==='drink'){state.finalAddMode=null;state.step='review';render();return}continueAfterDrink()}
+function qcard(x,key){let q=state[key][x.id]||0;return `<div class="card ${q?'active':''}" onclick="qty('${key}','${x.id}',1,9,99)">${q?`<span class="badge">${q}개</span>`:''}${itemPic(x,'🍽️')}<h3>${optionDisplayName(x,key==='extraDrinks'?[...DRINKS,...SAUCES]:SIDES)}</h3><div class="price">${money(x.price)}</div><small class="v5TapAddHint">카드 터치 시 1개 추가</small><div class="qty"><button aria-label="${optionDisplayName(x,SIDES)} 수량 줄이기" onclick="event.stopPropagation();qty('${key}','${x.id}',-1,9,99)">−</button><b>${q}</b></div></div>`}
+function textQtyCard(x,key){let q=state[key][x.id]||0;return `<div class="card textQtyCard ${q?'active':''}" onclick="qty('${key}','${x.id}',1,9,99)">${q?`<span class="badge">${q}개</span>`:''}<h3>${optionDisplayName(x,[...DRINKS,...SAUCES])}</h3><div class="price">${money(x.price)}</div><small class="v5TapAddHint">카드 터치 시 1개 추가</small><div class="qty"><button aria-label="${optionDisplayName(x,[...DRINKS,...SAUCES])} 수량 줄이기" onclick="event.stopPropagation();qty('${key}','${x.id}',-1,9,99)">−</button><b>${q}</b></div></div>`}
+function setSideCard(x,need){let q=state.setSides[x.id]||0;return `<div class="card ${q?'active':''}" onclick="qty('setSides','${x.id}',1,2,${need})">${q?`<span class="badge">${q}개</span>`:''}${itemPic(x,'🍽️')}<h3>${sideName(x)}</h3><div class="price">세트 포함</div><small class="v5TapAddHint">카드 터치 시 1개 선택</small><div class="qty"><button aria-label="${sideName(x)} 수량 줄이기" onclick="event.stopPropagation();qty('setSides','${x.id}',-1,2,${need})">−</button><b>${q}</b></div></div>`}
 function drinkGroups(){return [
  {key:'coke',name:'코카-콜라',small:'D001',large:'D002'},
  {key:'cokeZero',name:'코카-콜라 제로',small:'D003',large:'D004'},
@@ -2620,14 +2632,20 @@ function drinkGroups(){return [
  {key:'spriteZero',name:'스프라이트 제로',small:'D007',large:'D008'}
 ]}
 function standaloneDrinks(){return DRINKS.filter(x=>['D011','D012'].includes(x.id))}
-function standaloneDrinkCards(){return `<h2 class="drinkSinglesTitle">${t('drink.singleTitle')}</h2><div class="grid four">${standaloneDrinks().map(x=>qcard(x,'extraDrinks')).join('')}</div>`}
-function drinkGroupCard(g){let a=DRINKS.find(x=>x.id===g.small),b=DRINKS.find(x=>x.id===g.large),qa=state.extraDrinks[a.id]||0,qb=state.extraDrinks[b.id]||0,total=qa+qb;return `<div class="card ${total?'active':''}" onclick="qty('extraDrinks','${a.id}',1,9,99)">${total?`<span class="badge">${total}개</span>`:''}${itemPic(a,'🥤')}<h3>${t(`drink.group.${g.key}`)}</h3><div class="muted">카드 터치 시 500ml 수량 증가</div><div class="row"><span>${a.name.replace(g.name,'').trim()} · ${money(a.price)}</span><span class="qty"><button onclick="event.stopPropagation();qty('extraDrinks','${a.id}',-1,9,99)">−</button><b>${qa}</b><button onclick="event.stopPropagation();qty('extraDrinks','${a.id}',1,9,99)">＋</button></span></div><div class="row"><span>${b.name.replace(g.name,'').trim()} · ${money(b.price)}</span><span class="qty"><button onclick="event.stopPropagation();qty('extraDrinks','${b.id}',-1,9,99)">−</button><b>${qb}</b><button onclick="event.stopPropagation();qty('extraDrinks','${b.id}',1,9,99)">＋</button></span></div></div>`}
-function setDrinkCard(x){return `<button class="card ${state.setDrink===x.id?'active':''}" onclick="chooseSetDrink('${x.id}')">${state.setDrink===x.id?'<span class="badge">선택됨</span>':''}${itemPic(x,'🥤')}<h3>${x.name}</h3><div class="price">세트 포함</div></button>`}
+function standaloneDrinkCards(){const list=standaloneDrinks();return list.length?`<h2 class="drinkSinglesTitle">${t('drink.singleTitle')}</h2><div class="grid four drinkTextGrid">${list.map(x=>textQtyCard(x,'extraDrinks')).join('')}</div>`:''}
+function drinkGroupCard(g){
+ let a=DRINKS.find(x=>x.id===g.small),b=DRINKS.find(x=>x.id===g.large),qa=state.extraDrinks[a.id]||0,qb=state.extraDrinks[b.id]||0,total=qa+qb;
+ const family=g.key.startsWith('coke')?'cola':'sprite',variant=g.key.toLowerCase().includes('zero')?'zero':'regular';
+ const control=(item,q)=>`<div class="v3DrinkRow"><button type="button" aria-label="${item.name} 수량 줄이기" onclick="event.stopPropagation();qty('extraDrinks','${item.id}',-1,9,99)">−</button><span class="v3DrinkVolume"><strong>${item.small?'500ml':family==='cola'?'1.25L':'1.5L'}</strong><small>${money(item.price)}</small><em>수량 ${q}</em></span></div>`;
+ const largeLabel=family==='cola'?'1.25L':'1.5L';
+ return `<div class="v3DrinkCard ${family} ${variant} ${total?'active':''}" role="group" aria-label="${t(`drink.group.${g.key}`)} 추가 음료 · 카드 터치 시 ${largeLabel} 증가" onclick="qty('extraDrinks','${b.id}',1,9,99)">${total?`<span class="v3DrinkCount">총 ${total}개</span>`:''}<span class="v5DrinkTapHint">카드 터치 · ${largeLabel} +1</span><span class="srOnly">${t(`drink.group.${g.key}`)} · 카드 터치 시 ${largeLabel} 수량 증가</span><div class="v3DrinkControls">${control(a,qa)}${control(b,qb)}</div></div>`
+}
+function setDrinkCard(x){return `<button class="card drinkTextCard setDrinkTextCard ${state.setDrink===x.id?'active':''}" onclick="chooseSetDrink('${x.id}')">${state.setDrink===x.id?'<span class="badge">선택됨</span>':''}<h3>${x.name}</h3><div class="price">세트 포함</div></button>`}
 
 function qty(key,id,d,maxEach,maxTotal){let o=state[key],n=Math.max(0,Math.min(maxEach,(o[id]||0)+d));if(d>0&&sum(o)>=maxTotal)return;if(n)o[id]=n;else delete o[id];render();if(key==='setSides')setTimeout(maybePromptSetSideExtra,120)}function toppingQty(id,d){let q=state.toppings[id]||0,total=sum(state.toppings);if(d>0&&q>=2){state.modal='toppingLimitEach';render();return}if(d>0&&total>=5){state.modal='toppingLimitTotal';render();return}let n=Math.max(0,q+d);if(n)state.toppings[id]=n;else delete state.toppings[id];render()}
 function pizzaBase(){let a=po(state.left)?.[state.promo==='upup'?'L':state.size]||0;if(state.mode==='half'){let b=po(state.right)?.[state.promo==='upup'?'L':state.size]||0;return (a+b)/2}return a}
 function crustFee(){if(state.promo==='upup')return 0;if(state.bannerTakeout&&state.dough==='크루아상')return state.size==='L'?6000:0;return CRUSTS.find(c=>c.name===(state.crust||'오리지널'))?.[state.size]||0}
-function topFee(){return Object.entries(state.toppings).reduce((s,[id,q])=>s+(TOPPINGS.find(x=>x.id===id)?.price[effectiveSize()]||0)*q,0)}function sideFee(){return Object.entries(state.extraSides).reduce((s,[id,q])=>s+(SIDES.find(x=>x.id===id)?.price||0)*q,0)}function drinkFee(){return Object.entries(state.extraDrinks).reduce((s,[id,q])=>s+(DRINKS.find(x=>x.id===id)?.price||0)*q,0)}
+function topFee(){return Object.entries(state.toppings).reduce((s,[id,q])=>s+(TOPPINGS.find(x=>x.id===id)?.price[effectiveSize()]||0)*q,0)}function sideFee(){return Object.entries(state.extraSides).reduce((s,[id,q])=>s+(SIDES.find(x=>x.id===id)?.price||0)*q,0)}function drinkFee(){const items=[...DRINKS,...SAUCES];return Object.entries(state.extraDrinks).reduce((s,[id,q])=>s+(items.find(x=>x.id===id)?.price||0)*q,0)}
 function masterName(id,master){const item=master.find(x=>x.id===id)||{};if(master===PIZZAS)return pizzaName(item);return item.name||id}
 function optionDisplayName(item,master){if(!item)return '';if(master===TOPPINGS)return toppingName(item);if(master===SIDES)return sideName(item);if(master===DRINKS)return drinkName(item);return item.name||item.id||''}
 function mapLines(map,master,priceResolver){return Object.entries(map||{}).filter(([,q])=>Number(q)>0).map(([id,q])=>{const item=master.find(x=>x.id===id)||{};const unit=priceResolver?priceResolver(item):Number(item.price||0);return {name:optionDisplayName(item,master)||id,qty:Number(q),amount:unit*Number(q)}})}
@@ -2673,7 +2691,7 @@ function nextStep(){
  }else if(state.step==='review')state.step='phone';
  render()
 }
-function prevStep(){const m={party:'home',area:'party',table:'area',timing:'home',reserve:'timing',promo:state.orderType==='dinein'?'table':'timing',setChoice:'promo',size:'promo',mode:(state.set?'setChoice':'size'),pizzaOptions:'timing',pizza:state.promo==='happy'?'promo':(state.bannerTakeout?'pizzaOptions':(state.set===2?'setChoice':'mode')),crust:'pizza',topping:state.promo==='happy'?'pizza':((state.size==='R'||po(state.left)?.cat==='THIN')?'pizza':'crust'),side:(state.left?'topping':'promo'),drink:'side',cartReview:'drink',review:'drink',phone:(state.cartItems.length?'cartReview':'review'),payment:'phone'};state.step=m[state.step]||'home';render()}
+function prevStep(){const m={party:'home',area:'party',table:'area',timing:'home',reserve:'timing',promo:state.orderType==='dinein'?'table':'timing',setChoice:'promo',size:'promo',mode:(state.set?'setChoice':'size'),pizzaOptions:'timing',pizza:state.promo==='happy'?'promo':(state.bannerTakeout?'pizzaOptions':(state.set===2?'setChoice':'mode')),crust:'pizza',topping:state.promo==='happy'?'pizza':((state.size==='R'||po(state.left)?.cat==='THIN')?'pizza':'crust'),side:(state.left?'topping':'promo'),drink:'side',accompaniment:'drink',cartReview:(state.orderType==='takeout'?'accompaniment':'drink'),review:(state.orderType==='takeout'?'accompaniment':'drink'),phone:(state.cartItems.length?'cartReview':'review'),payment:'phone'};state.step=m[state.step]||'home';render()}
 function bar(){if(['home','done','cartReview'].includes(state.step))return '';let cur=state.left?(state.mode==='half'&&state.right?pizzaName(po(state.left))+' / '+pizzaName(po(state.right)):pizzaName(po(state.left))):(currentHasItems()?t('cart.additionalOrder'):t('cart.notSelected'));let timing=state.orderType==='takeout'?(state.orderTiming==='reserve'?t('pickup.reserve')+' '+(state.reserveTime||t('cart.reservationTimeMissing')):t('pickup.now')):t('labels.orderType.dinein');let opts=[eventLabel(),timing,state.left?customerSizeLabel(effectiveSize()):'',customerDoughLabel(state.dough),customerCrustLabel(state.crust),sum(state.toppings)?t('cart.toppingCount',{count:sum(state.toppings)}):'',sum(state.extraSides)?t('cart.sideCount',{count:sum(state.extraSides)}):'',sum(state.extraDrinks)?t('cart.drinkCount',{count:sum(state.extraDrinks)}):''].filter(Boolean).join(' · ');return `<div class="cartbar"><div class="cartmain"><div class="carttitle">${cur}</div><div class="cartdetail">${opts}</div></div><span class="cartprice">${currentHasItems()?money(price().total):''}</span><button class="prev" onclick="reset();render()">${t('nav.home')}</button>${state.step!=='type'?`<button class="prev" onclick="prevStep()">${t('nav.previous')}</button>`:''}${canNext()?`<button class="next" onclick="nextStep()">${t('nav.next')}</button>`:''}</div>`}
 
 function setSideNeed(){return state.set===4?2:1}
@@ -2696,14 +2714,13 @@ function chooseSetSideExtra(yes){
  state.modal=null;
  state.setSideExtraMode=!!yes;
  if(yes){render();return}
- state.step='drink';
- render()
+ continueAfterSide()
 }
 function chooseSetDrinkExtra(yes){
  state.modal=null;
  state.setDrinkExtraMode=!!yes;
  if(yes){render();return}
- continueAfterDrink()
+ routeAfterDrink()
 }
 function chooseSetDrink(id){
  state.setDrink=id;
@@ -2833,13 +2850,13 @@ if(state.modal==='setSideUpsell')return `<div class="backdrop"><div class="upsel
 if(state.modal==='setDrinkUpsell')return `<div class="backdrop"><div class="upsellModal">
  <div class="upsellIcon">${uiIcon("drink")}</div>
  <h2>음료를 추가 주문하시겠습니까?</h2>
- <p>세트 기본 음료 선택이 완료되었습니다.<br>추가 음료와 소스는 별도 금액으로 결제됩니다.</p>
+ <p>세트 기본 음료 선택이 완료되었습니다.<br>추가 음료는 별도 금액으로 결제됩니다.</p>
  <div class="upsellActions">
   <button class="upsellNo" onclick="chooseSetDrinkExtra(false)">추가 안 함</button>
   <button class="upsellYes" onclick="chooseSetDrinkExtra(true)">추가 메뉴 선택</button>
  </div>
 </div></div>`;
-if(!state.modal)return '';if(state.modal==='halfConfirm')return `<div class="backdrop"><div class="modal"><h2>하프앤하프 선택 확인</h2><div class="halfPreview"><div class="preview">${itemPic(po(state.left))}<b>${po(state.left).name}</b></div><div class="preview">${itemPic(po(state.right))}<b>${po(state.right).name}</b></div></div><div class="notice">선택하신 두 가지 피자로 하프앤하프를 구성합니다.</div><div class="modalBtns"><button class="prev" onclick="redoHalf()">다시 선택하기</button><button class="next" onclick="confirmHalf()">계속하기</button></div></div></div>`;if(state.modal==='croissantNotice')return `<div class="backdrop"><div class="modal"><h2>크루아상 크러스트 안내</h2><div class="notice">UP&UP에서 크루아상 선택 시 해당 피자는 <b>라지 사이즈</b>로 제공됩니다.</div><div class="modalBtns" style="grid-template-columns:1fr"><button class="next" onclick="confirmCroissant()">확인하고 계속하기</button></div></div></div>`;if(state.modal==='disposables')return `<div class="backdrop"><div class="modal"><h2>일회용품이 필요하신가요?</h2><div class="notice">포크·스푼 등 일회용품 제공 여부를 선택해 주세요.</div><div class="modalBtns"><button class="prev" onclick="chooseDisposables(false)">필요하지 않아요</button><button class="next" onclick="chooseDisposables(true)">필요해요</button></div></div></div>`;if(state.modal==='toppingLimitEach')return `<div class="backdrop"><div class="modal"><h2>추가 토핑 안내</h2><div class="notice">같은 종류의 토핑은 최대 <b>2개</b>까지 추가할 수 있습니다.</div><div class="modalBtns" style="grid-template-columns:1fr"><button class="next" onclick="state.modal=null;render()">확인</button></div></div></div>`;if(state.modal==='toppingLimitTotal')return `<div class="backdrop"><div class="modal"><h2>추가 토핑 안내</h2><div class="notice">추가 토핑은 피자 한 판당 총 <b>5개</b>까지 선택할 수 있습니다.<br>토핑 한 종류당 최대 2개까지 가능합니다.</div><div class="modalBtns" style="grid-template-columns:1fr"><button class="next" onclick="state.modal=null;render()">확인</button></div></div></div>`;return ''}
+if(!state.modal)return '';if(state.modal==='halfConfirm')return `<div class="backdrop"><div class="modal"><h2>하프앤하프 선택 확인</h2><div class="halfPreview"><div class="preview">${itemPic(po(state.left))}<b>${po(state.left).name}</b></div><div class="preview">${itemPic(po(state.right))}<b>${po(state.right).name}</b></div></div><div class="notice">선택하신 두 가지 피자로 하프앤하프를 구성합니다.</div><div class="modalBtns"><button class="prev" onclick="redoHalf()">다시 선택하기</button><button class="next" onclick="confirmHalf()">계속하기</button></div></div></div>`;if(state.modal==='croissantNotice')return `<div class="backdrop"><div class="modal"><h2>크루아상 크러스트 안내</h2><div class="notice">UP&UP에서 크루아상 선택 시 해당 피자는 <b>라지 사이즈</b>로 제공됩니다.</div><div class="modalBtns" style="grid-template-columns:1fr"><button class="next" onclick="confirmCroissant()">확인하고 계속하기</button></div></div></div>`;if(state.modal==='disposables')return `<div class="backdrop"><div class="modal disposablesModal"><h2>일회용품이 필요하신가요?</h2><div class="notice">포크·스푼 등 일회용품 제공 여부를 선택해 주세요.</div><div class="modalBtns"><button class="prev" onclick="chooseDisposables(false)">필요하지 않아요</button><button class="next" onclick="chooseDisposables(true)">필요해요</button></div></div></div>`;if(state.modal==='toppingLimitEach')return `<div class="backdrop"><div class="modal"><h2>추가 토핑 안내</h2><div class="notice">같은 종류의 토핑은 최대 <b>2개</b>까지 추가할 수 있습니다.</div><div class="modalBtns" style="grid-template-columns:1fr"><button class="next" onclick="state.modal=null;render()">확인</button></div></div></div>`;if(state.modal==='toppingLimitTotal')return `<div class="backdrop"><div class="modal"><h2>추가 토핑 안내</h2><div class="notice">추가 토핑은 피자 한 판당 총 <b>5개</b>까지 선택할 수 있습니다.<br>토핑 한 종류당 최대 2개까지 가능합니다.</div><div class="modalBtns" style="grid-template-columns:1fr"><button class="next" onclick="state.modal=null;render()">확인</button></div></div></div>`;return ''}
 function goPayment(){if(!validPhone())return;state.paymentMethod=null;state.splitCount=Math.max(1,state.partySize||1);state.step='payment';render()}
 function selectPayment(method){const wasSplit=isSplitPayment();state.paymentMethod=method;if(isSplitPayment()&&!wasSplit)state.splitCount=Math.max(1,Math.min(20,Number(state.partySize)||1));if(!isSplitPayment())state.splitCount=1;render()}
 function isSplitPayment(){return ['meal_ticket','bizle'].includes(state.paymentMethod)}
@@ -2858,9 +2875,12 @@ function reserveLimit(){let d=new Date();d.setHours(state.happyReserveOnly?20:21
  const display=document.getElementById('phoneDisplay');
  const notice=document.getElementById('phoneNotice');
  const next=document.getElementById('phoneNext');
+ const complete=validPhone();
  if(display)display.textContent=formatPhone(state.phone);
  if(notice)notice.innerHTML=phoneNoticeHTML();
- if(next)next.disabled=!validPhone();
+ if(display){display.classList.toggle('isComplete',complete);display.classList.toggle('isIncomplete',!complete)}
+ if(notice){notice.classList.toggle('isComplete',complete);notice.classList.toggle('isIncomplete',!complete)}
+ if(next)next.disabled=!complete;
 }
 function pressPhone(n){if(state.phone.length<8){state.phone+=n;updatePhoneUI()}}function backPhone(){state.phone=state.phone.slice(0,-1);updatePhoneUI()}function clearPhone(){state.phone='';updatePhoneUI()}function formatPhone(v){let x=v.replace(/\D/g,'').slice(0,8);return '010-'+(x.slice(0,4).padEnd(4,'•'))+'-'+(x.slice(4,8).padEnd(4,'•'))}function validPhone(){return /^\d{8}$/.test(state.phone)}function last4(){return state.phone.slice(-4)}function orderPrefix(){return state.orderType==='takeout'?'P':'D'}function displayOrderNo(){return orderPrefix()+last4()}
 function mobilePhoneFull(){return '010'+state.phone}
@@ -3270,5 +3290,1083 @@ body[data-step="review"] .reviewDiscountBox span,
 body[data-step="review"] .reviewDiscountBox strong{
   color:inherit;
 }
-@media(max-width:760px){.languageGrid{grid-template-columns:1fr}.heroLangBtn{right:14px;top:12px}.languageScreen h1{font-size:30px}}
+/* kiosk V1 · iPhone portrait UI refinements */
+.heroBrandActions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  min-width:0;
+}
+.heroBrandActions .heroLangBtn{
+  position:static;
+  inset:auto;
+  flex:0 0 auto;
+  z-index:auto;
+}
+.darkBenefitNote{
+  position:relative;
+  border:3px solid #f2c230;
+  background:linear-gradient(135deg,#fff6bf,#ffd84f);
+  color:#17342a;
+  font-size:21px;
+  line-height:1.5;
+  font-weight:1000;
+  box-shadow:0 10px 28px rgba(242,194,48,.25);
+}
+.darkBenefitNote::before{
+  content:'UP & UP EVENT';
+  display:inline-block;
+  margin-right:12px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#c8102e;
+  color:#fff;
+  font-size:12px;
+  letter-spacing:.35px;
+  vertical-align:2px;
+}
+
+@media(max-width:760px){
+  .languageGrid{grid-template-columns:1fr}
+  .languageScreen h1{font-size:30px}
+
+  /* Existing mobile sections are 70% wide: 84% is an exact 20% increase. */
+  .heroChoiceGrid,
+  .heroPromoStrip{
+    width:84%!important;
+  }
+  /* Original choice cards are square: 4/5 makes height exactly 50% larger
+     while their width grows by 20%. */
+  .heroChoice{
+    aspect-ratio:4/5!important;
+  }
+  .heroPromo{
+    aspect-ratio:1/1!important;
+  }
+
+  .heroTop{align-items:center!important}
+  .heroBrandActions{gap:6px}
+  .heroBrandActions .heroLangBtn{
+    max-width:94px;
+    min-height:40px;
+    padding:8px 9px;
+    font-size:11px;
+    line-height:1.15;
+    white-space:nowrap;
+  }
+
+  body[data-step="timing"] .grid.two .card{
+    min-height:172px!important;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    border-width:3px!important;
+  }
+  body[data-step="timing"] .grid.two .card:first-child{
+    border-color:#d71920!important;
+    background:linear-gradient(145deg,#fff,#ffe6e7)!important;
+  }
+  body[data-step="timing"] .grid.two .card:nth-child(2){
+    border-color:#087348!important;
+    background:linear-gradient(145deg,#fff,#e2f5ea)!important;
+  }
+  body[data-step="timing"] .grid.two .card h2{
+    font-size:22.1px!important;
+    line-height:1.15!important;
+    margin:0 0 10px!important;
+  }
+  body[data-step="timing"] .grid.two .card:first-child h2{color:#c8102e!important}
+  body[data-step="timing"] .grid.two .card:nth-child(2) h2{color:#087348!important}
+  body[data-step="timing"] .grid.two .card h2 .uiIcon{
+    display:block;
+    width:42px!important;
+    height:42px!important;
+    margin:0 auto 9px;
+  }
+  body[data-step="timing"] .grid.two .card p{
+    margin:0;
+    font-size:11px;
+    line-height:1.35;
+  }
+
+  .normalOrderGuide{
+    max-width:100%;
+    margin-top:6px;
+    font-size:8.5px;
+    line-height:1.2;
+    letter-spacing:-.25px;
+    white-space:normal;
+    word-break:keep-all;
+  }
+  .darkBenefitNote{
+    margin-top:14px;
+    padding:12px 11px;
+    border-width:2px;
+    border-radius:14px;
+    font-size:12.5px;
+    line-height:1.45;
+    text-align:left;
+  }
+  .darkBenefitNote::before{
+    display:block;
+    width:max-content;
+    margin:0 0 7px;
+    padding:4px 8px;
+    font-size:10px;
+  }
+}
+
+/* kiosk V2 · mobile readability and order-flow refinements */
+.next:not(:disabled),
+.partyNext:not(:disabled),
+.optionContinue:not(:disabled),
+.skipCard{
+  background:linear-gradient(135deg,#ffe76a,#f5c928)!important;
+  border-color:#e1b617!important;
+  color:#17342a!important;
+  font-weight:1000!important;
+  box-shadow:0 8px 20px rgba(225,182,23,.28)!important;
+}
+.next:disabled,
+.partyNext:disabled,
+.optionContinue:disabled{
+  background:#aeb4af!important;
+  color:#eef0ee!important;
+  box-shadow:none!important;
+}
+.setSideContinue{
+  display:block;
+  width:100%;
+  min-height:64px;
+  margin:14px 0 0;
+  border:0;
+  border-radius:16px;
+}
+.drinkTextCard,
+.textQtyCard{
+  display:flex!important;
+  flex-direction:column;
+  justify-content:center;
+  min-height:210px;
+  text-align:center!important;
+}
+.drinkTextCard h3,
+.textQtyCard h3{
+  font-size:24px;
+  line-height:1.2;
+  word-break:keep-all;
+}
+.drinkTextCard .row{
+  align-items:center;
+  font-weight:900;
+}
+
+@media(max-width:560px){
+  .darkSetCard{
+    aspect-ratio:4/5!important;
+    min-height:210px!important;
+    height:auto!important;
+    justify-content:flex-start!important;
+    padding:22px 7px 8px!important;
+  }
+  .darkSetContents{
+    max-height:none!important;
+    min-height:0!important;
+    margin:10px 0 5px!important;
+    padding:5px 3px!important;
+    gap:3px!important;
+  }
+  .darkSetContents.items-3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .darkSetContents.items-4{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  .darkSetItem:nth-child(n+3){display:flex!important}
+  .darkSetPhoto{height:40px!important;border-radius:7px!important}
+  .darkSetPhoto img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center!important;
+    padding:1px!important;
+    transform:none!important;
+  }
+  .darkSetItemLabel{
+    display:block!important;
+    min-height:1.2em;
+    font-size:7.5px!important;
+    line-height:1.1!important;
+    white-space:nowrap;
+  }
+  .darkSetCard h2{font-size:19px!important;margin:3px 0 1px!important}
+  .darkSetSize{font-size:10px!important}
+  .darkSetDesc{
+    font-size:9px!important;
+    line-height:1.2!important;
+    margin:2px 0!important;
+    -webkit-line-clamp:2!important;
+  }
+  .darkSetPrice{font-size:17px!important;margin:4px 0 0!important}
+
+  .toppingDecisionCard{
+    min-height:156px!important;
+    display:flex!important;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center!important;
+  }
+  .toppingDecisionCard h2{
+    font-size:clamp(27px,8vw,34px)!important;
+    line-height:1!important;
+    margin:0 0 13px!important;
+  }
+  .toppingDecisionCard p{
+    margin:0!important;
+    font-size:11px!important;
+    line-height:1.3!important;
+    word-break:keep-all;
+  }
+
+  .next:not(:disabled),
+  .partyNext:not(:disabled),
+  .optionContinue:not(:disabled),
+  .setSideContinue{
+    font-size:clamp(20px,6vw,28px)!important;
+    line-height:1!important;
+  }
+  .skipCard h2{
+    color:#17342a!important;
+    font-size:clamp(24px,7vw,31px)!important;
+    line-height:1!important;
+    margin:0 0 10px!important;
+  }
+  .skipCard p{color:#435248!important;font-weight:900!important}
+
+  .drinkTextGrid,
+  .accompanimentGrid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:8px!important;
+  }
+  .drinkTextCard,
+  .textQtyCard{
+    min-height:150px!important;
+    padding:13px 8px!important;
+    border-radius:16px!important;
+  }
+  .drinkTextCard h3,
+  .textQtyCard h3{
+    margin:0 0 9px!important;
+    font-size:18px!important;
+    line-height:1.2!important;
+  }
+  .drinkTextCard .muted{font-size:9px!important;margin-bottom:5px}
+  .drinkTextCard .row{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) 82px!important;
+    gap:4px!important;
+    font-size:10px!important;
+    text-align:left;
+  }
+  .drinkTextCard .row .qty{margin:0!important}
+  .textQtyCard .price{font-size:17px!important;margin-bottom:7px}
+}
+
+/* kiosk V3 · approved beverage artwork + live quantity controls */
+.srOnly{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.modeChoiceGrid{align-items:stretch}
+.modeChoiceCard{
+  min-height:190px!important;
+  display:flex!important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:18px 8px!important;
+  text-align:center!important;
+}
+.modeChoiceCard h2{
+  margin:0 0 15px!important;
+  font-size:clamp(32px,5.2vw,52px)!important;
+  line-height:1!important;
+  letter-spacing:-2.2px;
+  white-space:nowrap;
+}
+.modeChoiceCard p{margin:0!important;font-size:17px!important;font-weight:900}
+.modeOptionButtons .optionBtn{
+  min-height:96px;
+  font-size:clamp(25px,3.5vw,38px)!important;
+  line-height:1.08;
+  letter-spacing:-1.5px;
+}
+.v3DrinkGrid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:16px!important;
+}
+.grid.v3DrinkGrid.adaptiveCards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.v3DrinkGrid .skipCard{
+  grid-column:1/-1;
+  min-height:96px!important;
+}
+.v3DrinkCard{
+  position:relative;
+  width:100%;
+  aspect-ratio:945/583;
+  overflow:hidden;
+  border-radius:clamp(15px,3vw,27px);
+  background-repeat:no-repeat;
+  background-size:108.36% 263.46%;
+  cursor:pointer;
+  box-shadow:0 9px 24px rgba(19,38,28,.14);
+  isolation:isolate;
+  transition:transform .15s ease,box-shadow .15s ease,outline-color .15s ease;
+}
+.v3DrinkCard:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(19,38,28,.2)}
+.v3DrinkCard.active{outline:5px solid #f5c928;outline-offset:-5px}
+.v3DrinkCard.cola{background-image:url('assets/images/v3-cola-cards.png')}
+.v3DrinkCard.sprite{background-image:url('assets/images/v3-sprite-cards.png')}
+.v3DrinkCard.regular{background-position:50% 18.05%}
+.v3DrinkCard.zero{background-position:50% 83.65%}
+.v3DrinkControls{
+  position:absolute;
+  z-index:3;
+  left:54.7%;
+  top:18.1%;
+  width:43.2%;
+  height:63.2%;
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:12%;
+}
+.v3DrinkRow{
+  min-width:0;
+  display:grid;
+  grid-template-columns:27% 46% 27%;
+  align-items:stretch;
+  overflow:hidden;
+  border-radius:clamp(9px,1.6vw,18px);
+  background:#fffaf0;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+.v3DrinkRow button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:0;
+  padding:0;
+  border:0;
+  border-radius:clamp(8px,1.5vw,16px);
+  color:#fffaf0;
+  font-size:clamp(22px,4vw,43px);
+  font-weight:1000;
+  line-height:1;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.v3DrinkCard.cola .v3DrinkRow button{background:#d70f18}
+.v3DrinkCard.cola.zero .v3DrinkRow button{background:#9e1015}
+.v3DrinkCard.sprite .v3DrinkRow button{background:#00953f}
+.v3DrinkCard.sprite.zero .v3DrinkRow button{background:#005d35}
+.v3DrinkRow button:active{filter:brightness(.82);transform:scale(.96)}
+.v3DrinkVolume{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#17342a;
+  text-align:center;
+  font-style:normal;
+}
+.v3DrinkVolume strong{font-size:clamp(12px,2.5vw,24px);line-height:1;font-weight:1000;white-space:nowrap}
+.v3DrinkVolume small{margin-top:3px;font-size:clamp(7px,1.35vw,12px);line-height:1;font-weight:900;white-space:nowrap}
+.v3DrinkVolume em{
+  margin-top:3px;
+  padding:2px 5px;
+  border-radius:999px;
+  background:#17342a;
+  color:#fff;
+  font-size:clamp(7px,1.25vw,11px);
+  line-height:1;
+  font-weight:1000;
+  font-style:normal;
+  white-space:nowrap;
+}
+.v3DrinkCount{
+  position:absolute;
+  z-index:5;
+  top:3%;
+  right:3%;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#f5c928;
+  color:#17342a;
+  box-shadow:0 3px 8px rgba(0,0,0,.18);
+  font-size:clamp(9px,1.5vw,14px);
+  font-weight:1000;
+}
+
+@media(max-width:560px){
+  .modeChoiceGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .modeChoiceCard{min-height:166px!important;padding:13px 4px!important}
+  .modeChoiceCard h2{font-size:clamp(30px,8vw,36px)!important;letter-spacing:-2.5px}
+  .modeChoiceCard p{font-size:12px!important}
+  .modeOptionButtons .optionBtn{min-height:82px;font-size:clamp(22px,6.2vw,29px)!important}
+  .v3DrinkGrid,
+  .grid.v3DrinkGrid.adaptiveCards{grid-template-columns:1fr!important;gap:12px!important}
+  .v3DrinkGrid .skipCard{min-height:82px!important}
+  .v3DrinkCard{border-radius:19px;box-shadow:0 7px 18px rgba(19,38,28,.16)}
+  .v3DrinkControls{left:54.5%;top:18%;width:43.4%;height:63.5%}
+  .v3DrinkRow{border-radius:11px}
+  .v3DrinkRow button{font-size:28px;border-radius:10px}
+  .v3DrinkVolume strong{font-size:15px}
+  .v3DrinkVolume small{font-size:8px}
+  .v3DrinkVolume em{font-size:8px;padding:2px 4px}
+}
+
+/* kiosk V4 · approved full-card visual refresh (logic unchanged) */
+:root{
+  --v4-green:#063f2c;
+  --v4-green-2:#0d5b3d;
+  --v4-cream:#fbf4e8;
+  --v4-card:#fffdf8;
+  --v4-red:#e2262f;
+  --v4-orange:#f15a24;
+  --v4-yellow:#ffd21c;
+  --v4-line:#e7ddcf;
+  --v4-ink:#123d2c;
+}
+html,body{background:var(--v4-cream)!important}
+.app{padding-bottom:108px!important;background:linear-gradient(180deg,#fffaf1 0%,#f8efe2 100%)!important}
+.head{
+  height:80px!important;
+  padding:8px 22px!important;
+  background:linear-gradient(110deg,#043523,var(--v4-green) 58%,#0b5137)!important;
+  border-bottom:1px solid rgba(255,255,255,.15)!important;
+  box-shadow:0 6px 18px rgba(6,63,44,.22)!important;
+}
+.brandLogo{
+  width:118px!important;
+  height:58px!important;
+  max-width:118px!important;
+  max-height:58px!important;
+  padding:5px 7px!important;
+  border-radius:12px!important;
+  background:rgba(255,255,255,.98)!important;
+  object-fit:contain!important;
+}
+.brandName{color:#fff!important;font-size:15px!important;font-weight:900!important}
+.langTopBtn{
+  min-height:48px!important;
+  padding:9px 14px!important;
+  border:1px solid rgba(255,255,255,.5)!important;
+  border-radius:13px!important;
+  background:rgba(255,255,255,.12)!important;
+  color:#fff!important;
+  font-weight:1000!important;
+}
+.progress{
+  top:80px!important;
+  padding:11px 16px!important;
+  gap:8px!important;
+  background:rgba(255,253,248,.97)!important;
+  border-bottom:1px solid var(--v4-line)!important;
+  box-shadow:0 4px 12px rgba(39,34,27,.06)!important;
+}
+.progress span{
+  padding:8px 12px!important;
+  border:1px solid #ded6ca!important;
+  border-radius:999px!important;
+  background:#fffdf8!important;
+  color:#7b746b!important;
+  font-size:12px!important;
+  font-weight:1000!important;
+}
+.progress span.done{background:#eef6f0!important;border-color:#b9d7c5!important;color:var(--v4-green)!important}
+.progress span.on{background:var(--v4-green)!important;border-color:var(--v4-green)!important;color:#fff!important}
+.stage{max-width:1080px!important;padding:30px 24px 38px!important}
+.title,
+.darkBenefitTitle,
+.darkSetTitle{
+  color:var(--v4-ink)!important;
+  font-size:clamp(30px,4.2vw,45px)!important;
+  line-height:1.08!important;
+  letter-spacing:-1.6px!important;
+  font-weight:1000!important;
+}
+.sub,.darkBenefitSub,.darkSetSub{color:#686259!important;font-size:16px!important;font-weight:800!important}
+.card{
+  border:1px solid var(--v4-line)!important;
+  border-radius:22px!important;
+  background:var(--v4-card)!important;
+  box-shadow:0 7px 18px rgba(61,47,29,.10)!important;
+  color:#24211d!important;
+  overflow:hidden;
+  transition:transform .14s ease,box-shadow .14s ease,border-color .14s ease!important;
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(61,47,29,.15)!important}
+.card.active{
+  border:4px solid var(--v4-red)!important;
+  box-shadow:0 10px 24px rgba(226,38,47,.18)!important;
+}
+.card.active::after{
+  content:'✓';
+  position:absolute;
+  z-index:8;
+  top:9px;
+  left:9px;
+  width:33px;
+  height:33px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--v4-red);
+  color:#fff;
+  font-size:21px;
+  font-weight:1000;
+  box-shadow:0 3px 8px rgba(0,0,0,.18);
+}
+.badge{z-index:9!important;background:var(--v4-red)!important}
+.price{color:#e4332b!important;font-weight:1000!important}
+.imagePic{
+  background:#fff!important;
+  border:1px solid #eee4d8!important;
+  border-radius:16px!important;
+}
+.imagePic img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:4px!important;
+  transform:none!important;
+}
+.qty{
+  display:grid!important;
+  grid-template-columns:48px minmax(42px,1fr) 48px!important;
+  align-items:center!important;
+  gap:8px!important;
+}
+.qty button{
+  width:48px!important;
+  height:48px!important;
+  border:0!important;
+  border-radius:50%!important;
+  background:var(--v4-green)!important;
+  color:#fff!important;
+  font-size:30px!important;
+  font-weight:1000!important;
+  line-height:1!important;
+  box-shadow:0 4px 10px rgba(6,63,44,.18)!important;
+}
+.qty b{
+  display:grid;
+  min-height:46px;
+  place-items:center;
+  border:1px solid #ded5c8;
+  border-radius:11px;
+  background:#fff;
+  font-size:23px;
+  color:var(--v4-ink);
+}
+.skipCard{
+  grid-column:1/-1!important;
+  min-height:100px!important;
+  border-color:#e2b914!important;
+  background:linear-gradient(135deg,#ffe970,#ffd21c)!important;
+  color:var(--v4-ink)!important;
+}
+.skipCard h2{color:var(--v4-ink)!important}
+.smartRecommend,.notice,.finalAddBanner,.extraModeBanner{
+  border:1px solid #d7e4da!important;
+  border-radius:15px!important;
+  background:#f2f8f3!important;
+  color:#244c39!important;
+  box-shadow:none!important;
+}
+.tabs button{border-color:#dcd3c7!important;background:#fffdf8!important;color:#625c54!important;font-weight:1000!important}
+.tabs button.active{background:var(--v4-green)!important;border-color:var(--v4-green)!important;color:#fff!important}
+
+/* home: existing approved dine-in / take-out artwork */
+.darkHero{
+  min-height:100vh!important;
+  padding:24px clamp(16px,4vw,44px) 44px!important;
+  background:
+    radial-gradient(circle at 12% 6%,rgba(226,38,47,.07),transparent 28%),
+    linear-gradient(180deg,#fffaf1,#f4eadc)!important;
+  color:var(--v4-ink)!important;
+}
+.heroTop{max-width:1080px!important;margin:0 auto 18px!important}
+.heroBrandActions{gap:10px!important}
+.heroLogoDark{
+  width:126px!important;
+  height:64px!important;
+  padding:6px 9px!important;
+  border-radius:13px!important;
+  background:#fff!important;
+  object-fit:contain!important;
+}
+.heroLocation,.heroHeadline,.heroTagline{color:var(--v4-ink)!important}
+.heroHeadline{max-width:1080px!important;margin-left:auto!important;margin-right:auto!important;font-size:clamp(30px,5vw,52px)!important}
+.heroTagline{max-width:1080px!important;margin-left:auto!important;margin-right:auto!important;color:#6d655c!important}
+.heroChoiceGrid{
+  max-width:1080px!important;
+  margin:24px auto!important;
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:18px!important;
+}
+.heroChoice,
+.heroChoice.dinein{
+  min-height:0!important;
+  aspect-ratio:1.56/1!important;
+  padding:22px 20px!important;
+  overflow:hidden!important;
+  border:2px solid rgba(6,63,44,.2)!important;
+  border-radius:27px!important;
+  background-color:#fbf5eb!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  box-shadow:0 13px 30px rgba(61,47,29,.16)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:flex-start!important;
+  text-align:left!important;
+}
+.heroChoiceGrid .heroChoice:nth-child(1){
+  background-image:url('assets/images/home_dine_johns_favorite_v4.png')!important;
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+}
+.heroChoiceGrid .heroChoice:nth-child(2){
+  background-image:url('assets/images/home_takeout_paperbag_v4.png')!important;
+  background-size:cover!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  border-color:rgba(6,63,44,.2)!important;
+}
+.heroChoice::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,251,245,.98) 0%,rgba(255,251,245,.88) 38%,rgba(255,251,245,.18) 57%,transparent 68%);
+}
+.heroChoice>*{
+  opacity:1!important;
+  position:relative;
+  z-index:2;
+  width:43%;
+  box-sizing:border-box;
+}
+.heroChoice .eyebrow{font-size:11px!important;letter-spacing:1.5px!important;color:#68766d!important}
+.heroChoice h2{margin:5px 0 8px!important;font-size:31px!important;line-height:1.05!important;color:var(--v4-green)!important}
+.heroChoice .heroDivider{display:block!important;width:38%!important;height:2px!important;margin:0 0 8px!important;background:rgba(6,63,44,.2)!important}
+.heroChoice .heroChoiceFeatures{display:flex!important;flex-direction:column!important;gap:5px!important}
+.heroChoice .heroFeature{display:flex!important;align-items:center!important;gap:5px!important;font-size:11px!important;line-height:1.15!important;color:#33483e!important}
+.heroChoice .heroFeatureIcon{display:inline-flex!important;flex:0 0 auto!important}
+.heroChoice .heroFeatureIcon .uiIcon{width:17px!important;height:17px!important}
+.heroPromoStrip{
+  max-width:1080px!important;
+  margin:0 auto!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:10px!important;
+}
+.heroPromo{
+  aspect-ratio:auto!important;
+  min-height:128px!important;
+  padding:15px 12px!important;
+  border:1px solid var(--v4-line)!important;
+  border-radius:18px!important;
+  background:#fffdf8!important;
+  color:var(--v4-ink)!important;
+  box-shadow:0 6px 15px rgba(61,47,29,.08)!important;
+}
+
+/* benefits and set cards */
+.darkBenefitPage,.darkSetPage{background:transparent!important;color:var(--v4-ink)!important}
+.darkBenefitGrid,.darkSetGrid{gap:15px!important}
+.darkBenefitCard,
+.darkSetCard{
+  border:1px solid var(--v4-line)!important;
+  border-radius:22px!important;
+  background:#fffdf8!important;
+  color:var(--v4-ink)!important;
+  box-shadow:0 7px 18px rgba(61,47,29,.10)!important;
+}
+.darkBenefitCard h2,.darkBenefitCard p,.darkSetCard h2,.darkSetDesc,.darkSetSize{color:var(--v4-ink)!important}
+.darkBenefitIcon{
+  width:58px!important;
+  height:58px!important;
+  border-radius:50%!important;
+  background:#eef6f0!important;
+  color:var(--v4-green)!important;
+}
+.darkBenefitPill,.darkSetBadge,.darkSetSelect{
+  background:var(--v4-green)!important;
+  color:#fff!important;
+}
+.darkBenefitCard.best,.darkSetCard.best{border:3px solid var(--v4-red)!important}
+.bestRibbon{background:var(--v4-red)!important}
+.darkSetPhoto{background:#fff!important;border:1px solid #eee4d8!important}
+.darkSetPhoto img{object-fit:contain!important;padding:2px!important}
+
+/* pizza, topping and side product cards */
+body[data-step="pizza"] .grid.adaptiveCards,
+body[data-step="topping"] .grid.adaptiveCards,
+body[data-step="side"] .grid.adaptiveCards{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:15px!important;
+}
+body[data-step="pizza"] .card,
+body[data-step="side"] .card,
+.v4ToppingCard{
+  padding:12px!important;
+  text-align:center!important;
+}
+body[data-step="pizza"] .card .imagePic{height:clamp(150px,24vw,245px)!important;margin-bottom:11px!important}
+body[data-step="side"] .card .imagePic{height:clamp(125px,20vw,205px)!important;margin-bottom:10px!important}
+body[data-step="pizza"] .card h3,
+body[data-step="side"] .card h3,
+.v4ToppingCard h3{
+  margin:5px 0 6px!important;
+  color:var(--v4-ink)!important;
+  font-size:clamp(18px,2.4vw,27px)!important;
+  line-height:1.15!important;
+  font-weight:1000!important;
+  word-break:keep-all;
+}
+.v4ToppingVisual{
+  display:grid;
+  width:100%;
+  min-height:128px;
+  place-items:center;
+  margin-bottom:9px;
+  border:1px solid #eee4d8;
+  border-radius:16px;
+  background:linear-gradient(145deg,#fff,#f8efe3);
+  font-size:70px;
+}
+.crustTextCard,.setCrustCard,.optionSection,.summary{
+  border-color:var(--v4-line)!important;
+  background:#fffdf8!important;
+  box-shadow:0 7px 18px rgba(61,47,29,.08)!important;
+}
+.crustTextCard.active,.setCrustCard.active,.optionBtn.active,.paymentCard.active{
+  border-color:var(--v4-red)!important;
+  background:#fff4f3!important;
+  color:var(--v4-red)!important;
+}
+
+/* fixed order bar and actions */
+.cartbar{
+  height:92px!important;
+  padding:10px 14px!important;
+  gap:9px!important;
+  background:linear-gradient(110deg,#073825,var(--v4-green-2))!important;
+  border-top:1px solid rgba(255,255,255,.16)!important;
+  box-shadow:0 -7px 22px rgba(6,44,30,.25)!important;
+}
+.carttitle{font-size:15px!important;font-weight:1000!important}
+.cartprice{font-size:21px!important}
+.cartbar button{min-height:54px!important;padding:10px 15px!important;border-radius:13px!important;font-size:17px!important}
+.cartbar .prev{background:linear-gradient(135deg,#ff7236,var(--v4-orange))!important;color:#fff!important}
+.cartbar .next{background:linear-gradient(135deg,#ffe66d,var(--v4-yellow))!important;color:var(--v4-ink)!important}
+.next:not(:disabled),.partyNext:not(:disabled),.optionContinue:not(:disabled),.setSideContinue{
+  background:linear-gradient(135deg,#ffe66d,var(--v4-yellow))!important;
+  border-color:#d5ad0b!important;
+  color:var(--v4-ink)!important;
+}
+
+@media(max-width:560px){
+  .app{padding-bottom:102px!important}
+  .head{height:72px!important;padding:6px 10px!important}
+  .brandLogo{width:92px!important;height:56px!important}
+  .brandName{display:none!important}
+  .langTopBtn{min-height:44px!important;padding:8px 10px!important;font-size:13px!important}
+  .progress{top:72px!important;padding:8px 9px!important;gap:6px!important}
+  .progress span{padding:6px 9px!important;font-size:10px!important}
+  .stage{padding:20px 10px 30px!important}
+  .title,.darkBenefitTitle,.darkSetTitle{font-size:31px!important}
+  .heroHeadline{
+    width:100%!important;
+    max-width:100%!important;
+    font-size:27px!important;
+    line-height:1.18!important;
+    white-space:normal!important;
+    word-break:keep-all!important;
+    text-wrap:balance;
+  }
+  .sub,.darkBenefitSub,.darkSetSub{font-size:13px!important;margin-bottom:15px!important}
+  .heroChoiceGrid{grid-template-columns:1fr!important;gap:12px!important;margin:16px auto!important}
+  .heroChoice,.heroChoice.dinein{border-radius:20px!important;padding:15px 13px!important}
+  .heroChoice h2{font-size:27px!important;margin:4px 0 7px!important}
+  .heroChoice .eyebrow{font-size:9px!important}
+  .heroChoice .heroDivider,
+  .heroChoice .heroChoiceFeatures{display:none!important}
+  .heroPromoStrip{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
+  .heroPromo{min-height:104px!important;padding:9px 5px!important}
+  .darkBenefitGrid,.darkSetGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px!important}
+  .darkBenefitCard,.darkSetCard{padding:13px 8px!important;border-radius:16px!important}
+  body[data-step="pizza"] .grid.adaptiveCards,
+  body[data-step="topping"] .grid.adaptiveCards,
+  body[data-step="side"] .grid.adaptiveCards{gap:9px!important}
+  body[data-step="pizza"] .card,
+  body[data-step="side"] .card,
+  .v4ToppingCard{padding:8px!important;border-radius:16px!important}
+  body[data-step="pizza"] .card .imagePic{height:118px!important;border-radius:12px!important}
+  body[data-step="side"] .card .imagePic{height:103px!important;border-radius:12px!important}
+  body[data-step="pizza"] .card h3,
+  body[data-step="side"] .card h3,
+  .v4ToppingCard h3{font-size:16px!important}
+  body[data-step="pizza"] .card .price,
+  body[data-step="side"] .card .price,
+  .v4ToppingCard .price{font-size:17px!important}
+  .v4ToppingVisual{min-height:100px;border-radius:12px;font-size:55px}
+  .qty{grid-template-columns:42px minmax(34px,1fr) 42px!important;gap:5px!important}
+  .qty button{width:42px!important;height:42px!important;font-size:26px!important}
+  .qty b{min-height:40px;font-size:20px}
+  .cartbar{height:86px!important;padding:8px!important}
+  .cartmain{max-width:38%!important}
+  .carttitle{font-size:12px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cartprice{font-size:16px!important}
+  .cartbar button{min-height:50px!important;padding:8px 10px!important;font-size:14px!important}
+}
+
+/* kiosk V5 · approved mobile layout and tap-to-add controls */
+.darkHero{
+  background:
+    radial-gradient(circle at 14% 5%,rgba(255,255,255,.08),transparent 27%),
+    linear-gradient(180deg,#063f30 0%,#013226 55%,#00271d 100%)!important;
+  color:#fff!important;
+}
+.heroLocation,
+.heroHeadline,
+.heroTagline{color:#fff!important}
+.heroHeadline .accent{color:#ff6c63!important}
+.heroTagline{color:#dbe9e2!important}
+.heroLocation{
+  border:1px solid rgba(255,255,255,.24)!important;
+  background:rgba(255,255,255,.12)!important;
+}
+.heroPromo,
+.heroPromo.clickable,
+.heroPromo.beerAd{
+  border:1px solid #8d9290!important;
+  background:linear-gradient(145deg,#737977,#5f6563)!important;
+  color:#fff!important;
+  box-shadow:0 8px 18px rgba(0,0,0,.2)!important;
+}
+.heroPromo h3,
+.heroPromo strong,
+.heroPromo p,
+.heroPromo.clickable::after{
+  color:#fff!important;
+  font-weight:1000!important;
+}
+.heroPromo h3{font-size:20px!important}
+.heroPromo strong{font-size:21px!important}
+.heroPromo p{font-size:15px!important;line-height:1.35!important}
+.heroPromo.clickable::after{font-size:13px!important}
+
+body[data-step="timing"] .timingChoiceGrid{
+  grid-template-columns:1fr!important;
+  gap:18px!important;
+  max-width:860px;
+  margin:0 auto;
+}
+body[data-step="timing"] .timingChoiceGrid .card{
+  width:100%!important;
+  min-height:300px!important;
+  padding:28px 24px!important;
+}
+body[data-step="timing"] .timingChoiceGrid .card h2{
+  font-size:40px!important;
+  line-height:1.1!important;
+}
+body[data-step="timing"] .timingChoiceGrid .card h2 .uiIcon{
+  width:68px!important;
+  height:68px!important;
+}
+body[data-step="timing"] .timingChoiceGrid .card p{
+  font-size:17px!important;
+  line-height:1.45!important;
+  font-weight:900!important;
+}
+
+.darkSetGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.darkSetGrid .set-4{grid-column:1/-1!important}
+
+body[data-step="side"] .qty,
+body[data-step="accompaniment"] .qty{
+  grid-template-columns:52px minmax(44px,1fr)!important;
+}
+body[data-step="side"] .qty button,
+body[data-step="accompaniment"] .qty button,
+.v3DrinkRow button{
+  color:#fff!important;
+}
+.v5TapAddHint{
+  display:block;
+  margin-top:7px;
+  color:#53645b;
+  font-size:11px;
+  line-height:1.25;
+  font-weight:1000;
+}
+.v3DrinkRow{grid-template-columns:34% 66%!important}
+.v5DrinkTapHint{
+  position:absolute;
+  z-index:6;
+  left:4%;
+  bottom:4%;
+  padding:5px 8px;
+  border-radius:999px;
+  background:rgba(0,35,24,.82);
+  color:#fff;
+  font-size:10px;
+  line-height:1;
+  font-weight:1000;
+  box-shadow:0 2px 7px rgba(0,0,0,.2);
+}
+
+.disposablesModal h2{
+  font-size:30px!important;
+  line-height:1.2!important;
+  font-weight:1000!important;
+}
+.disposablesModal .notice,
+.disposablesModal .modalBtns button{
+  font-size:19px!important;
+  line-height:1.35!important;
+  font-weight:1000!important;
+}
+.disposablesModal .modalBtns button{min-height:72px!important}
+
+.phoneDisplay,
+#phoneNotice{font-weight:1000!important}
+.phoneDisplay.isIncomplete,
+#phoneNotice.isIncomplete{
+  border:3px solid #d71920!important;
+  background:#fff0f1!important;
+  color:#b70f17!important;
+}
+.phoneDisplay.isComplete,
+#phoneNotice.isComplete{
+  border:3px solid #087348!important;
+  background:#e7f6ed!important;
+  color:#075f39!important;
+}
+
+@media(max-width:560px){
+  .heroPromo{min-height:116px!important;padding:12px 7px!important}
+  .heroPromo h3{font-size:15px!important;line-height:1.1!important}
+  .heroPromo strong{font-size:15px!important;line-height:1.2!important}
+  .heroPromo p{font-size:11px!important;line-height:1.3!important}
+  .heroPromo.clickable::after{font-size:10px!important;margin-top:7px!important}
+
+  body[data-step="timing"] .timingChoiceGrid{gap:16px!important}
+  body[data-step="timing"] .timingChoiceGrid .card{
+    min-height:300px!important;
+    padding:24px 18px!important;
+    border-radius:24px!important;
+  }
+  body[data-step="timing"] .timingChoiceGrid .card h2{
+    font-size:37px!important;
+    margin-bottom:18px!important;
+  }
+  body[data-step="timing"] .timingChoiceGrid .card h2 .uiIcon{
+    width:64px!important;
+    height:64px!important;
+    margin-bottom:14px!important;
+  }
+  body[data-step="timing"] .timingChoiceGrid .card p{font-size:16px!important}
+
+  .darkSetGrid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:9px!important;
+  }
+  .darkSetGrid .set-2,
+  .darkSetGrid .set-3{
+    min-height:390px!important;
+    aspect-ratio:auto!important;
+    padding:24px 7px 10px!important;
+  }
+  .darkSetGrid .set-4{
+    grid-column:1/-1!important;
+    min-height:330px!important;
+    aspect-ratio:auto!important;
+    padding:25px 10px 11px!important;
+  }
+  .set-2 .darkSetContents.items-3,
+  .set-3 .darkSetContents.items-3{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:6px!important;
+    max-height:none!important;
+    margin:14px 0 7px!important;
+    padding:6px!important;
+  }
+  .set-2 .darkSetContents .setItem-1,
+  .set-3 .darkSetContents .setItem-1{grid-column:1/-1!important}
+  .set-2 .darkSetPhoto,
+  .set-3 .darkSetPhoto{height:60px!important}
+  .set-2 .setItem-1 .darkSetPhoto,
+  .set-3 .setItem-1 .darkSetPhoto{height:90px!important}
+  .set-2 .darkSetItem,
+  .set-3 .darkSetItem{display:flex!important}
+  .set-2 .darkSetItemLabel,
+  .set-3 .darkSetItemLabel{font-size:8px!important}
+
+  .set-4 .darkSetContents.items-4{
+    display:grid!important;
+    grid-template-columns:1.35fr 1fr!important;
+    grid-template-rows:repeat(3,54px)!important;
+    gap:5px 7px!important;
+    min-height:180px!important;
+    max-height:none!important;
+    margin:14px 0 7px!important;
+    padding:7px!important;
+  }
+  .set-4 .darkSetContents .setItem-1{
+    grid-column:1!important;
+    grid-row:1/4!important;
+    display:flex!important;
+  }
+  .set-4 .setItem-1 .darkSetPhoto{height:150px!important}
+  .set-4 .darkSetItem:not(.setItem-1){
+    display:grid!important;
+    grid-template-columns:54px minmax(0,1fr)!important;
+    align-items:center!important;
+    gap:5px!important;
+  }
+  .set-4 .darkSetItem:not(.setItem-1) .darkSetPhoto{height:50px!important}
+  .set-4 .darkSetItemLabel{
+    display:block!important;
+    font-size:8.5px!important;
+    white-space:normal!important;
+  }
+  .darkSetCard h2{font-size:21px!important}
+  .darkSetPrice{font-size:19px!important}
+
+  .v5TapAddHint{font-size:9px;margin-top:5px}
+  .v3DrinkRow{grid-template-columns:36% 64%!important}
+  .v5DrinkTapHint{font-size:9px;padding:4px 6px}
+  .disposablesModal h2{font-size:26px!important}
+  .disposablesModal .notice,
+  .disposablesModal .modalBtns button{font-size:17px!important}
+  .phoneDisplay{font-size:31px!important}
+  #phoneNotice{font-size:16px!important;line-height:1.4!important}
+}
 </style>

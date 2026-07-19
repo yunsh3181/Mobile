@@ -1,6 +1,6 @@
 window.PJ_I18N_LOCALES=window.PJ_I18N_LOCALES||{};
 window.PJ_I18N_LOCALES.zh={
-    meta:{htmlLang:'zh',title:'Papa John\'s 移动自助点餐 v43.9.3'},
+    meta:{htmlLang:'zh',title:'Papa John\'s 移动自助点餐 V5'},
     labels:{orderType:{takeout:'外带',dinein:'堂食'},promo:{normal:'普通点餐',takeout:'外带20%',happy:'HAPPY HOUR',upup:'UP & UP',set:'套餐'},dough:{original:'原味饼底',thin:'薄脆饼底',croissant:'可颂饼边'},crust:{original:'原味',cheeseRoll:'芝士卷边',goldRing:'金薯芝士圈',thin:'薄脆饼底',croissant:'可颂饼边'},size:{R:'普通尺寸',L:'大尺寸',F:'家庭尺寸'},payment:{cash:'现金',card:'信用卡',meal_ticket:'餐券大将',bizle:'Bizle餐券'}},
     home:{location:'Papa John\'s 板桥第二科技谷店',headlinePrefix:'今天也来享用',headlineAccent:'新鲜现烤',headlineSuffix:'披萨吧！',tagline:'Better Ingredients. Better Pizza.',dineInTitle:'堂食',dineInFeatureMeal:'舒适店内用餐',dineInFeatureSeats:'多种座位',dineInFeatureSet:'套餐点餐',takeoutTitle:'外带',takeoutFeatureFast:'快速便捷外带',takeoutFeatureReady:'可快速取餐',takeoutFeatureBenefit:'优惠折扣',happyHourDeal:'R尺寸披萨 15,000韩元',takeoutDeal:'L/F 外带8折',takeoutDealDesc:'使用外带折扣立即点餐',beerTitle:'可享披萨配啤酒！',beerHeineken:'Heineken 生啤 8,000韩元',beerBudweiser:'Budweiser 瓶装啤酒 5,000韩元'},
     orderType:{title:'请选择用餐方式'},
