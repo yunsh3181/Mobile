@@ -3188,4 +3188,46 @@ body[data-step="drink"] .imagePic img{
 }
 body[data-step="drink"] .imagePic{display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}
 .reviewOrderHead h3{line-height:1.35;word-break:keep-all}
+
+/* v46.0.1 Cart/Review text visibility hotfix */
+.cartPage,
+.cartOrderCard,
+.cartEmpty{
+  color:var(--pj-ink);
+}
+.cartPage .title{
+  color:#fff;
+}
+.cartPage .sub{
+  color:#d7e3dc;
+}
+.cartOrderName{
+  color:var(--pj-ink);
+}
+.cartOrderDesc,
+.cartEmpty h2{
+  color:var(--pj-muted);
+}
+.cartOrderActions button{
+  color:var(--pj-ink);
+}
+.cartOrderActions .remove{
+  color:var(--pj-red);
+}
+.reviewOrderCard,
+.reviewDiscountBox{
+  color:var(--pj-ink);
+}
+.reviewMeta,
+.reviewSection li,
+.reviewConfirmNote{
+  color:var(--pj-muted);
+}
+.reviewOrderHead strong,
+.reviewSection li span:last-child,
+.reviewDiscountBox .discountLine,
+.reviewDiscountBox .totalDiscount,
+.reviewDiscountBox .final{
+  color:var(--pj-red);
+}
 </style>
