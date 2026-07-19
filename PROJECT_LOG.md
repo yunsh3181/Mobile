@@ -63,3 +63,34 @@ Pending
 
 Notes:
 Business logic, price calculations, cart data shape, Firestore order payloads, and screen flow were not changed.
+
+## Version: v46.0.1
+Status: Completed
+
+Type:
+Hotfix
+
+Issue:
+Cart text invisible on white background
+
+Changed:
+Scoped Cart and Review text color overrides restore readable typography on white panels without changing order logic, pricing, payloads, Firestore, screen flow, or localization keys.
+
+QA:
+Pending
+
+## Version: v47.0
+Status: Completed
+
+Changed:
+- Review text visibility fix
+- Product name display
+- Set option cart fix
+- Side UX improvement
+- Drink quantity UX
+- Happy Hour improvement
+- Language selection
+
+QA:
+Pending
+
