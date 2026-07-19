@@ -8,7 +8,7 @@
 .card{background:#fff;border:2px solid transparent;border-radius:20px;padding:14px;box-shadow:0 6px 22px rgba(0,0,0,.07);cursor:pointer;transition:.15s;position:relative;min-height:190px}.card:hover{transform:translateY(-2px)}.card.selected{border-color:var(--red);box-shadow:0 0 0 3px rgba(200,16,46,.12)}.card.disabled{opacity:.35;pointer-events:none}.card img{width:100%;height:145px;object-fit:contain;border-radius:14px;background:#fff}.card h3{margin:9px 0 5px;font-size:20px}.card p{margin:0;color:var(--muted)}.price{font-weight:900;color:var(--red);font-size:19px}.badge{position:absolute;top:12px;left:12px;background:var(--yellow);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900}
 .choice{min-height:120px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.choice strong{font-size:26px}.choice span{color:var(--muted);margin-top:8px}
 .btn{border:0;border-radius:16px;padding:17px 26px;font-weight:900;font-size:20px;cursor:pointer}.btn.primary{background:var(--red);color:white;min-width:210px}.btn.secondary{background:#ece8e1}.btn.ghost{background:white;border:1px solid var(--line)}.btn:disabled{opacity:.35;cursor:not-allowed}.total{margin-left:auto;font-size:16px}.total strong{display:block;font-size:27px;color:var(--red)}
-.hero{height:100%;display:grid;grid-template-columns:1.05fr .95fr;background:white}.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:70px}.hero-copy h1{font-size:68px;line-height:.95;margin:0;color:var(--red)}.hero-copy p{font-size:23px;color:var(--green)}.hero-img{background:url('images/super_papas.jpg') center/cover no-repeat;position:relative}.hero-img:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,transparent 35%)}
+.hero{height:100%;display:grid;grid-template-columns:1.05fr .95fr;background:white}.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:70px}.hero-copy h1{font-size:68px;line-height:.95;margin:0;color:var(--red)}.hero-copy p{font-size:23px;color:var(--green)}.hero-img{background:url('assets/images/super_papas.jpg') center/cover no-repeat;position:relative}.hero-img:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,transparent 35%)}
 .tabs{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:white;padding:10px 16px;border-radius:999px;font-weight:800}.tab.active{background:var(--green);color:white}
 .qty{display:flex;align-items:center;gap:10px;margin-top:9px}.qty button{width:38px;height:38px;border:0;border-radius:50%;font-size:22px}.summary{background:white;border-radius:20px;padding:20px}.summary-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}.discount{color:var(--red);font-weight:800}.notice{background:#fff3cd;border:1px solid #ffe28a;padding:14px;border-radius:14px;margin-bottom:15px}.complete{text-align:center;padding-top:70px}.complete .num{font-size:110px;font-weight:900;color:var(--red)}
 @media(max-width:900px){.grid,.grid.four{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero-img{display:none}.hero-copy{padding:36px}.hero-copy h1{font-size:48px}.main{padding-left:15px;padding-right:15px}.footer{padding:12px 15px}.card img{height:120px}}
@@ -375,7 +375,7 @@ html,body{background:#f4f7f4}
 /* v24: home image + seat selection */
 .hero-v24{position:relative;min-height:100vh;background:
  linear-gradient(135deg,rgba(0,91,43,.90),rgba(0,122,61,.66)),
- url('images/seats/outside_zone.png') center/cover no-repeat;display:grid;place-items:center}
+ url('assets/images/seats/outside_zone.png') center/cover no-repeat;display:grid;place-items:center}
 .hero-v24 .hero-overlay{position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.12),transparent 48%)}
 .hero-v24 .hero-copy{position:relative;z-index:1;text-align:center;color:#fff;max-width:640px;padding:34px}
 .hero-logo{width:min(420px,78vw);max-height:150px;object-fit:contain;filter:brightness(0) invert(1);margin-bottom:10px}
@@ -538,9 +538,9 @@ html,body{background:#f4f7f4}
 .hero-v30{
  background:
  linear-gradient(180deg,rgba(0,25,12,.30),rgba(0,48,24,.64)),
- url('images/home_background_v31q.jpg') center/cover no-repeat!important;
+ url('assets/images/home_background_v31q.jpg') center/cover no-repeat!important;
 }
-.hero-logo{content:url('images/home_logo_v31q.png')}
+.hero-logo{content:url('assets/images/home_logo_v31q.png')}
 .pickup-screen-v31q,.reservation-time-screen{max-width:900px;margin:0 auto}
 .reserve-card{border-color:#d71920}
 .reserve-card em{background:#fff0f1;color:#b4161c}
@@ -678,12 +678,12 @@ html,body{background:#f4f7f4}
 .hero-v32{
   background:
     linear-gradient(180deg,rgba(0,25,12,.32),rgba(0,48,24,.64)),
-    url('images/home_background_v33.jpg') center/cover no-repeat!important;
+    url('assets/images/home_background_v33.jpg') center/cover no-repeat!important;
 }
 .hero-v32 .hero-logo,
 .hero-logo,
 .brand-lockup img{
-  content:url('images/home_logo_v33.png')!important;
+  content:url('assets/images/home_logo_v33.png')!important;
   filter:none!important;
   object-fit:contain!important;
 }
@@ -1138,7 +1138,7 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .build-badge{position:fixed;right:5px;bottom:3px;z-index:90;font-size:8px;opacity:.35;pointer-events:none}
 
 /* Home */
-.mobile-hero{height:100dvh;position:relative;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.62)),url('images/home_background_v33.jpg') center/cover no-repeat;display:flex;align-items:flex-end;justify-content:center;padding:36px 22px calc(46px + var(--m-safe-bottom));text-align:center}
+.mobile-hero{height:100dvh;position:relative;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.62)),url('assets/images/home_background_v33.jpg') center/cover no-repeat;display:flex;align-items:flex-end;justify-content:center;padding:36px 22px calc(46px + var(--m-safe-bottom));text-align:center}
 .mobile-hero .hero-overlay{display:none}.mobile-hero .hero-copy{width:100%;padding:0;display:flex;align-items:center;gap:10px;color:#fff}.mobile-hero .hero-logo{width:min(230px,72vw);height:auto;filter:drop-shadow(0 4px 8px rgba(0,0,0,.28))}.mobile-hero h2{font-size:24px;margin:0}.mobile-hero p{font-size:15px;margin:0 0 8px;color:#fff}.mobile-hero .hero-order{width:100%;height:58px;border-radius:18px;font-size:20px;box-shadow:0 10px 24px rgba(215,25,32,.35)}.mobile-hero small{font-size:11px;opacity:.8}
 
 /* First two steps */

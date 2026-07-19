@@ -164,10 +164,10 @@ function calc(){
 
 
 const SEAT_ZONES=[
- {id:'papa',name:'Papa Zone',img:'images/seats/papa_zone.png',desc:'파파존스 매장 좌석'},
- {id:'outside',name:'Outside Zone',img:'images/seats/outside_zone.png',desc:'야외 테라스 좌석'},
- {id:'bottle',name:'Bottle Zone',img:'images/seats/bottle_zone.png',desc:'조용하고 편안한 실내 좌석'},
- {id:'room',name:'Room Zone',img:'images/seats/room_zone.png',desc:'프라이빗룸 좌석'}
+ {id:'papa',name:'Papa Zone',img:'assets/images/seats/papa_zone.png',desc:'파파존스 매장 좌석'},
+ {id:'outside',name:'Outside Zone',img:'assets/images/seats/outside_zone.png',desc:'야외 테라스 좌석'},
+ {id:'bottle',name:'Bottle Zone',img:'assets/images/seats/bottle_zone.png',desc:'조용하고 편안한 실내 좌석'},
+ {id:'room',name:'Room Zone',img:'assets/images/seats/room_zone.png',desc:'프라이빗룸 좌석'}
 ];
 const SEAT_MASTER=[
  {id:'papa-1',zone:'papa',name:'커플석',label:'Papa 1',capacity:2},
@@ -404,7 +404,7 @@ function shell(content,opts={}){
  app.innerHTML=`<div class="shell mobile-shell step-${state.step}">${indicator}<header class="mobile-header"><button class="header-home" onclick="goHome()" aria-label="처음으로">PAPA JOHN'S</button><div class="store-name">판교2테크노밸리점</div><div class="progress">${labels[state.step]||'주문'}</div></header><main class="main mobile-main">${content}</main>${footer}</div>`;
 }
 function render(){
- if(state.step==='home'){app.innerHTML=`<div class="hero mobile-hero"><div class="hero-overlay"></div><div class="hero-copy"><img class="hero-logo" src="images/home_logo_v33.png" alt="PAPA JOHNS"><h2>판교2테크노밸리점</h2><p>더 좋은 재료, 더 좋은 피자</p><button class="btn primary hero-order" onclick="state.step='type';render()">주문하기</button><small>모바일 주문 시스템</small></div></div>`;return}
+ if(state.step==='home'){app.innerHTML=`<div class="hero mobile-hero"><div class="hero-overlay"></div><div class="hero-copy"><img class="hero-logo" src="assets/images/home_logo_v33.png" alt="PAPA JOHNS"><h2>판교2테크노밸리점</h2><p>더 좋은 재료, 더 좋은 피자</p><button class="btn primary hero-order" onclick="state.step='type';render()">주문하기</button><small>모바일 주문 시스템</small></div></div>`;return}
  if(state.step==='type')return shell(`<section class="service-select"><h1 class="title">어떻게 이용하시나요?</h1><p class="sub">아래 주문 방식을 터치해 주세요.</p><div class="service-grid"><button type="button" class="service-card ${state.orderType==='takeout'?'selected':''}" onclick="selectOrderType('takeout')"><span class="service-icon" aria-hidden="true">🥡</span><strong>포장하기</strong><span class="service-desc">매장에서 포장해 가기</span><span class="service-benefit">L/F 피자 20% 할인 선택 가능</span></button><button type="button" class="service-card ${state.orderType==='dinein'?'selected':''}" onclick="selectOrderType('dinein')"><span class="service-icon" aria-hidden="true">🍽️</span><strong>먹고가기</strong><span class="service-desc">매장에서 바로 즐기기</span><span class="service-benefit">세트 · UP & UP 이용 가능</span></button></div></section>`,{auto:true});
 
  if(state.step==='partySize'){
@@ -489,7 +489,7 @@ function render(){
  }
  if(state.step==='setChoice')return shell(`<section class="set-select"><h1 class="title">세트메뉴를 선택해 주세요</h1><p class="sub">인원에 맞는 세트를 터치하면 바로 다음 단계로 이동합니다.</p><div class="set-grid">${[2,3,4].map(n=>{const meta=n===2?{icon:'👫',badge:'가볍고 알찬 구성',size:'R 사이즈',price:24000,copy:'피자 1판 + 파스타 1개 + 500ml 음료 1개',cls:'set-two'}:n===3?{icon:'👨‍👩‍👦',badge:'가장 인기',size:'L 사이즈',price:33000,copy:'피자 1판 + 사이드 1개 + 대용량 음료 1개',cls:'set-three'}:{icon:'👨‍👩‍👧‍👦',badge:'가성비 최고',size:'F 사이즈',price:42000,copy:'피자 1판 + 사이드 2개 + 대용량 음료 1개',cls:'set-four'};return `<button type="button" class="set-card ${meta.cls}" onclick="selectSet(${n})"><span class="set-card-badge">${meta.badge}</span><span class="set-card-icon" aria-hidden="true">${meta.icon}</span><strong>${n}인 세트</strong><span class="set-size">${meta.size} 전용</span><span class="set-copy">${meta.copy}</span><span class="set-price">${money(meta.price)}</span><span class="set-action">선택하기 →</span></button>`}).join('')}</div><div class="notice set-notice">세트메뉴는 수타도우 전용이며, 선택한 세트에 맞춰 사이즈가 자동 적용됩니다.</div></section>`,{auto:true});
  if(state.step==='pizzaMode')return shell(`<section class="topping-choice"><h1 class="title">피자 구성을 선택해 주세요</h1><p class="sub">하프앤하프는 L/F 사이즈에서만 가능하며 추가금 1,000원이 발생합니다.</p><div class="topping-choice-grid"><button type="button" class="topping-choice-card add" onclick="selectPizzaMode('single')"><span class="choice-icon">🍕</span><strong>한 판</strong><span>한 가지 피자로 주문합니다</span></button><button type="button" class="topping-choice-card skip" onclick="selectPizzaMode('half')"><span class="choice-icon">◐</span><strong>하프앤하프</strong><span>두 가지 피자 반반 +1,000원</span></button></div></section>`,{auto:true});
- if(state.step==='dough')return shell(`<section class="crust-select"><h1 class="title">도우 타입을 선택해 주세요</h1><p class="sub">사진이 있는 큰 카드를 터치하면 바로 다음 단계로 이동합니다.</p><div class="dough-card-grid"><button type="button" class="crust-image-card ${state.dough==='hand'?'selected':''}" onclick="selectDough('hand')"><img src="images/crust/original.jpg" alt="수타도우 오리지널"><span class="crust-card-body"><strong>수타도우</strong><span>쫄깃하고 고소한 기본 도우</span><em>R · L · F 선택 가능</em></span></button><button type="button" class="crust-image-card ${state.dough==='thin'?'selected':''} ${state.promo==='upup'?'disabled':''}" onclick="selectDough('thin')"><img src="images/crust/thin.jpg" alt="씬도우"><span class="crust-card-body"><strong>씬도우</strong><span>바삭한 식감, 더욱 풍부한 토핑</span><em>${state.promo==='upup'?'UP & UP 적용 불가':'F 사이즈 전용 · 모든 피자 가능'}</em></span></button></div></section>`,{auto:true});
+ if(state.step==='dough')return shell(`<section class="crust-select"><h1 class="title">도우 타입을 선택해 주세요</h1><p class="sub">사진이 있는 큰 카드를 터치하면 바로 다음 단계로 이동합니다.</p><div class="dough-card-grid"><button type="button" class="crust-image-card ${state.dough==='hand'?'selected':''}" onclick="selectDough('hand')"><img src="assets/images/crust/original.jpg" alt="수타도우 오리지널"><span class="crust-card-body"><strong>수타도우</strong><span>쫄깃하고 고소한 기본 도우</span><em>R · L · F 선택 가능</em></span></button><button type="button" class="crust-image-card ${state.dough==='thin'?'selected':''} ${state.promo==='upup'?'disabled':''}" onclick="selectDough('thin')"><img src="assets/images/crust/thin.jpg" alt="씬도우"><span class="crust-card-body"><strong>씬도우</strong><span>바삭한 식감, 더욱 풍부한 토핑</span><em>${state.promo==='upup'?'UP & UP 적용 불가':'F 사이즈 전용 · 모든 피자 가능'}</em></span></button></div></section>`,{auto:true});
  if(state.step==='size'){
   const fixed=state.dough==='thin'||state.promo==='upup'||state.set;
   return shell(`<h1 class="title">사이즈를 선택해 주세요</h1><div class="grid"><div class="card choice ${state.size==='R'?'selected':''} ${fixed||state.dough==='thin'||isHalf()?'disabled':''}" onclick="selectSize('R')"><strong>R 레귤러</strong><span>23cm · 1~2인</span></div><div class="card choice ${state.size==='L'?'selected':''} ${(fixed&&state.promo!=='upup')?'disabled':''}" onclick="selectSize('L')"><strong>L 라지</strong><span>${state.promo==='upup'?'선택 필수 · F로 무료 업그레이드':'31cm · 2~3인'}</span></div><div class="card choice ${state.size==='F'?'selected':''} ${state.promo==='upup'||state.set?'disabled':''}" onclick="selectSize('F')"><strong>F 패밀리</strong><span>36cm · 3~4인</span></div></div>${fixed?'<div class="notice">선택한 도우 또는 프로모션에 따라 사이즈가 자동 지정되었습니다.</div>':''}`,{auto:true});
@@ -497,9 +497,9 @@ function render(){
  if(state.step==='crust'){
   let opts=state.set&&state.set>=3?['오리지널','치즈롤','골드링']:state.promo==='upup'?['치즈롤','골드링']:state.dough==='thin'?['오리지널','골드링']:state.size==='R'?['오리지널']:['오리지널','치즈롤','골드링'];
   const crustMeta={
-   '오리지널':{img:'images/crust/original.jpg',desc:'쫄깃하고 고소한 기본에 충실한 맛'},
-   '골드링':{img:'images/crust/gold_ring.jpg',desc:'달콤한 고구마 무스와 스트링 치즈의 만남'},
-   '치즈롤':{img:'images/crust/cheese_roll.jpg',desc:'도우 속 스트링 치즈와 체다 치즈의 풍미'}
+   '오리지널':{img:'assets/images/crust/original.jpg',desc:'쫄깃하고 고소한 기본에 충실한 맛'},
+   '골드링':{img:'assets/images/crust/gold_ring.jpg',desc:'달콤한 고구마 무스와 스트링 치즈의 만남'},
+   '치즈롤':{img:'assets/images/crust/cheese_roll.jpg',desc:'도우 속 스트링 치즈와 체다 치즈의 풍미'}
   };
   return shell(`<section class="crust-select"><h1 class="title">크러스트를 선택해 주세요</h1>${state.promo==='upup'?'<p class="sub">UP & UP 혜택으로 치즈롤 또는 골드링을 무료로 선택할 수 있습니다.</p>':state.set?`<p class="sub">${state.set}인 세트 기본금액에 선택한 크러스트 추가금이 더해집니다.</p>`:'<p class="sub">사진을 확인한 뒤 원하는 크러스트를 터치해 주세요.</p>'}<div class="crust-card-grid ${opts.length===2?'two':''}">${opts.map(x=>{const m=crustMeta[x];const price=state.promo==='upup'?'무료 업그레이드':x==='오리지널'?'추가금 없음':`+${money(crustOptionPrice(x))}`;return `<button type="button" class="crust-image-card ${state.crust===x?'selected':''}" onclick="selectCrust('${x}')"><img src="${m.img}" alt="${x}"><span class="crust-card-body"><strong>${x}</strong><span>${m.desc}</span><em>${price}</em></span></button>`}).join('')}</div></section>`,{auto:true});
  }

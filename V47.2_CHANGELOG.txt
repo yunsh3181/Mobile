@@ -1,0 +1,7 @@
+v47.2 Image Asset Structure Cleanup
+
+- Consolidated all root-level image assets into assets/images/.
+- Updated active root UI references in index.html, app.js, data.js, style.css, and common-data.js.
+- Removed duplicate root-level image files.
+- Preserved image filenames to avoid changing menu/image mapping semantics.
+- Kept source-name mapping JSON unchanged because it records filename mappings, not runtime URLs.
