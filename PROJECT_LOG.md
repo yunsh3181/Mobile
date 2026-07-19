@@ -44,3 +44,15 @@ crust.*
 
 QA:
 Pending
+
+## Version: v44.9
+Status: Completed
+
+Feature:
+Topping Localization
+
+Added:
+topping.*
+
+QA:
+Pending
