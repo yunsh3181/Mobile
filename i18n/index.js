@@ -47,6 +47,33 @@ function label(group,value,fallback=value){
  const key=LOGIC_LABEL_KEYS[group]?.[value];
  return key?t(`labels.${key}`):fallback;
 }
+
+function optionKey(prefix,value){
+ const slug=String(value||'').replace(/[^A-Za-z0-9]+/g,'_').replace(/^_+|_+$/g,'').toLowerCase();
+ return `${prefix}.${slug}`;
+}
+function doughName(value){return t(optionKey('dough.name',value),{value})}
+function doughDesc(value){return t(optionKey('dough.desc',value),{value})}
+function sizeName(value){return t(optionKey('size.name',value),{value})}
+function sizeDesc(value){return t(optionKey('size.desc',value),{value})}
+function crustName(value){return t(optionKey('crust.name',value),{value})}
+function crustDesc(value){return t(optionKey('crust.desc',value),{value})}
+function crustSizeLabel(value){return t(optionKey('crust.sizeLabel',value),{value})}
+function menuOptionId(item){return item&&item.i18nId?item.i18nId:item&&item.id?String(item.id):''}
+function toppingName(item){return t(`topping.${menuOptionId(item)}.name`)}
+function toppingDesc(item){return t(`topping.${menuOptionId(item)}.desc`)}
+function toppingCategory(item){return t(`topping.${menuOptionId(item)}.category`)}
+function toppingPriceLabel(item,price){return t('topping.priceLabel',{price:price==null?'':price})}
+function sideName(item){return t(`side.${menuOptionId(item)}.name`)}
+function sideDesc(item){return t(`side.${menuOptionId(item)}.desc`)}
+function sideCategory(item){return t(`side.${menuOptionId(item)}.category`)}
+function sidePriceLabel(item,price){return t('side.priceLabel',{price:price==null?'':price})}
+function drinkName(item){return t(`drink.${menuOptionId(item)}.name`)}
+function drinkDesc(item){return t(`drink.${menuOptionId(item)}.desc`)}
+function drinkCategory(item){return t(`drink.${menuOptionId(item)}.category`)}
+function drinkPriceLabel(item,price){return t('drink.priceLabel',{price:price==null?'':price})}
+function drinkGroupName(item){return t(`drink.group.${item&&item.brand?item.brand:'other'}`)}
+function drinkVariant(item){return t(`drink.${menuOptionId(item)}.variant`)}
 function setLanguage(lang,opts={}){
  currentLanguage=SUPPORTED_LANGUAGES.includes(lang)?lang:DEFAULT_LANGUAGE;
  if(opts.persist){try{localStorage.setItem(LANGUAGE_STORAGE_KEY,currentLanguage)}catch(e){}}
@@ -54,4 +81,4 @@ function setLanguage(lang,opts={}){
  document.title=t('meta.title');
 }
 setLanguage(currentLanguage);
-window.PJ_I18N={SUPPORTED_LANGUAGES,DEFAULT_LANGUAGE,LANGUAGE_STORAGE_KEY,I18N,LOGIC_LABEL_KEYS,readInitialLanguage,translationValue,interpolate,t,label,setLanguage};
+window.PJ_I18N={SUPPORTED_LANGUAGES,DEFAULT_LANGUAGE,LANGUAGE_STORAGE_KEY,I18N,LOGIC_LABEL_KEYS,readInitialLanguage,translationValue,interpolate,t,label,setLanguage,optionKey,doughName,doughDesc,sizeName,sizeDesc,crustName,crustDesc,crustSizeLabel,toppingName,toppingDesc,toppingCategory,toppingPriceLabel,sideName,sideDesc,sideCategory,sidePriceLabel,drinkName,drinkDesc,drinkCategory,drinkPriceLabel,drinkGroupName,drinkVariant};

@@ -18,3 +18,30 @@ benefit.* namespace
 
 QA:
 Pending
+
+## Version: v44.8
+Status: Completed
+
+Feature:
+Dough + Size + Crust Localization
+
+QA:
+Pending
+
+## Version: v44.9
+Status: Completed
+
+Feature:
+Topping Localization
+
+QA:
+Pending
+
+## Version: v45.0
+Status: Completed
+
+Feature:
+Side + Drink Localization
+
+QA:
+Pending
