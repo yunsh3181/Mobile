@@ -1,6 +1,6 @@
 window.PJ_I18N_LOCALES=window.PJ_I18N_LOCALES||{};
 window.PJ_I18N_LOCALES.vi={
-    meta:{htmlLang:'vi',title:'Kiosk di động Papa John\'s V5'},
+    meta:{htmlLang:'vi',title:'Kiosk di động Papa John\'s V8'},
     labels:{orderType:{takeout:'Mang đi',dinein:'Ăn tại chỗ'},promo:{normal:'Đặt thường',takeout:'Mang đi giảm 20%',happy:'HAPPY HOUR',upup:'UP & UP',set:'Set menu'},dough:{original:'Đế nguyên bản',thin:'Đế mỏng',croissant:'Viền croissant'},crust:{original:'Nguyên bản',cheeseRoll:'Viền cuộn phô mai',goldRing:'Gold Ring',thin:'Đế mỏng',croissant:'Viền croissant'},size:{R:'Cỡ Regular',L:'Cỡ Large',F:'Cỡ Family'},payment:{cash:'Tiền mặt',card:'Thẻ tín dụng',meal_ticket:'Meal Ticket',bizle:'Bizle Meal Ticket'}},
     home:{location:'Papa John\'s Pangyo 2 Techno Valley',headlinePrefix:'Hôm nay hãy thưởng thức pizza ',headlineAccent:'mới nướng',headlineSuffix:'!',tagline:'Better Ingredients. Better Pizza.',dineInTitle:'Ăn tại chỗ',dineInFeatureMeal:'Dùng bữa thoải mái tại cửa hàng',dineInFeatureSeats:'Nhiều lựa chọn chỗ ngồi',dineInFeatureSet:'Đặt set menu',takeoutTitle:'Mang đi',takeoutFeatureFast:'Mang đi nhanh và tiện',takeoutFeatureReady:'Có thể nhận nhanh',takeoutFeatureBenefit:'Ưu đãi giảm giá',happyHourDeal:'Pizza cỡ R 15,000 won',takeoutDeal:'L/F mang đi giảm 20%',takeoutDealDesc:'Đặt ngay với ưu đãi mang đi',beerTitle:'Có pizza & bia!',beerHeineken:'Bia tươi Heineken 8,000 won',beerBudweiser:'Bia chai Budweiser 5,000 won'},
     orderType:{title:'Bạn muốn dùng như thế nào?'},

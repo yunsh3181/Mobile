@@ -1,6 +1,6 @@
 window.PJ_I18N_LOCALES=window.PJ_I18N_LOCALES||{};
 window.PJ_I18N_LOCALES.en={
-    meta:{htmlLang:'en',title:'Papa John\'s Mobile Kiosk V5'},
+    meta:{htmlLang:'en',title:'Papa John\'s Mobile Kiosk V8'},
     labels:{orderType:{takeout:'Takeout',dinein:'Dine in'},promo:{normal:'Regular Order',takeout:'Takeout 20%',happy:'HAPPY HOUR',upup:'UP & UP',set:'Set Menu'},dough:{original:'Original',thin:'Thin Crust',croissant:'Croissant'},crust:{original:'Original',cheeseRoll:'Cheese Roll',goldRing:'Gold Ring',thin:'Thin Crust',croissant:'Croissant'},size:{R:'Regular Size',L:'Large Size',F:'Family Size'},payment:{cash:'Cash',card:'Credit Card',meal_ticket:'Meal Ticket',bizle:'Bizle Meal Ticket'}},
     home:{location:'Papa John\'s Pangyo 2 Techno Valley',headlinePrefix:'Enjoy ',headlineAccent:'freshly baked',headlineSuffix:' pizza today!',tagline:'Better Ingredients. Better Pizza.',dineInTitle:'Dine in',dineInFeatureMeal:'Comfortable in-store dining',dineInFeatureSeats:'Various seating options',dineInFeatureSet:'Order set menus',takeoutTitle:'Takeout',takeoutFeatureFast:'Fast and easy takeout',takeoutFeatureReady:'Ready for quick pickup',takeoutFeatureBenefit:'Discount benefits',happyHourDeal:'R size pizza 15,000 won',takeoutDeal:'L/F takeout 20% off',takeoutDealDesc:'Order now with takeout discount',beerTitle:'Pizza & beer available!',beerHeineken:'Heineken draft beer 8,000 won',beerBudweiser:'Budweiser bottled beer 5,000 won'},
     orderType:{title:'How would you like to order?'},
